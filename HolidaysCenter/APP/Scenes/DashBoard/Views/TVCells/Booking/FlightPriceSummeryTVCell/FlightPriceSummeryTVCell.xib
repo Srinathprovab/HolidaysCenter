@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Medium.ttf">
+            <string>OpenSans-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="237" id="KGk-i7-Jjw" customClass="FlightPriceSummeryTVCell" customModule="HolidaysCenter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="237"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="478" height="237"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5r-l9-F2P" customClass="BorderedView" customModule="HolidaysCenter" customModuleProvider="target">
+                        <rect key="frame" x="10" y="0.0" width="458" height="237"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Purchase Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKh-cx-x69">
+                                <rect key="frame" x="14" y="15" width="430" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-se-Cz5">
+                                <rect key="frame" x="14" y="47" width="73.666666666666671" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-tG-9cJ">
+                                <rect key="frame" x="370.33333333333331" y="47" width="73.666666666666686" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Base Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cS-4f-x5U">
+                                <rect key="frame" x="14" y="79" width="74" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Taxes&amp; Fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp0-bH-MRc">
+                                <rect key="frame" x="14" y="111" width="93.666666666666671" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGO-XT-CIX">
+                                <rect key="frame" x="370.33333333333331" y="79" width="73.666666666666686" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-s3-wI5">
+                                <rect key="frame" x="370.33333333333331" y="111" width="73.666666666666686" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-32-7gP">
+                                <rect key="frame" x="14" y="193" width="430" height="1"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxW-l2-u3t">
+                                        <rect key="frame" x="0.0" y="-50" width="430" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promocode Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95n-il-R0t">
+                                                <rect key="frame" x="0.0" y="5" width="134" height="22"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                                <color key="textColor" name="AppLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-Nu-tus">
+                                                <rect key="frame" x="356.33333333333331" y="5" width="73.666666666666686" height="22"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                                <color key="textColor" name="AppLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuY-34-a4N">
+                                                <rect key="frame" x="0.0" y="29" width="130" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Fck-4n-nNh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Cancel Promo Code">
+                                                    <color key="titleColor" red="1" green="0.031372549020000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapOnCancelPromocodeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JUQ-Yb-WDB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="uuY-34-a4N" firstAttribute="top" secondItem="95n-il-R0t" secondAttribute="bottom" constant="2" id="KEg-fI-kRp"/>
+                                            <constraint firstItem="95n-il-R0t" firstAttribute="top" secondItem="vxW-l2-u3t" secondAttribute="top" constant="5" id="SVw-fL-liC"/>
+                                            <constraint firstItem="uuY-34-a4N" firstAttribute="leading" secondItem="vxW-l2-u3t" secondAttribute="leading" id="UjE-zq-weh"/>
+                                            <constraint firstItem="0Nk-Nu-tus" firstAttribute="centerY" secondItem="95n-il-R0t" secondAttribute="centerY" id="Xnf-Eh-k5H"/>
+                                            <constraint firstAttribute="height" constant="50" id="Y79-7r-55P"/>
+                                            <constraint firstItem="95n-il-R0t" firstAttribute="leading" secondItem="vxW-l2-u3t" secondAttribute="leading" id="evK-aP-BGG"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Nk-Nu-tus" secondAttribute="trailing" id="u0e-1W-PsO"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQm-mQ-sXE">
+                                        <rect key="frame" x="0.0" y="0.0" width="430" height="1"/>
+                                        <color key="backgroundColor" name="AppLabelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="xWh-yD-U4B"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total trip cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22b-an-9UE">
+                                <rect key="frame" x="14" y="204" width="91.333333333333329" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fare Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dp-GI-y0q">
+                                <rect key="frame" x="370.33333333333331" y="202.66666666666666" width="73.666666666666686" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="AppBtnColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="22b-an-9UE" firstAttribute="top" secondItem="fyz-32-7gP" secondAttribute="bottom" constant="10" id="17S-Nu-yip"/>
+                            <constraint firstItem="uGO-XT-CIX" firstAttribute="centerY" secondItem="7cS-4f-x5U" secondAttribute="centerY" id="1X4-Qc-09m"/>
+                            <constraint firstItem="gTI-se-Cz5" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="2vR-vm-MOv"/>
+                            <constraint firstItem="sp0-bH-MRc" firstAttribute="top" secondItem="7cS-4f-x5U" secondAttribute="bottom" constant="10" id="4Je-s5-BCy"/>
+                            <constraint firstItem="sp0-bH-MRc" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="8sy-7b-ZHd"/>
+                            <constraint firstItem="7cS-4f-x5U" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="IkV-nu-zMf"/>
+                            <constraint firstItem="22b-an-9UE" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="JSu-AF-91Z"/>
+                            <constraint firstItem="NKh-cx-x69" firstAttribute="top" secondItem="C5r-l9-F2P" secondAttribute="top" constant="15" id="JtV-rB-tqz"/>
+                            <constraint firstAttribute="trailing" secondItem="WyA-tG-9cJ" secondAttribute="trailing" constant="14" id="KHG-17-2Y1"/>
+                            <constraint firstAttribute="trailing" secondItem="NKh-cx-x69" secondAttribute="trailing" constant="14" id="MtE-nI-zNK"/>
+                            <constraint firstAttribute="trailing" secondItem="uGO-XT-CIX" secondAttribute="trailing" constant="14" id="SNT-et-ssa"/>
+                            <constraint firstAttribute="trailing" secondItem="fyz-32-7gP" secondAttribute="trailing" constant="14" id="Toy-ni-1JS"/>
+                            <constraint firstAttribute="trailing" secondItem="9dp-GI-y0q" secondAttribute="trailing" constant="14" id="XfQ-ng-cBm"/>
+                            <constraint firstItem="9dp-GI-y0q" firstAttribute="centerY" secondItem="22b-an-9UE" secondAttribute="centerY" id="YX7-J1-vcO"/>
+                            <constraint firstItem="NKh-cx-x69" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="aH9-hx-5wi"/>
+                            <constraint firstItem="fyz-32-7gP" firstAttribute="top" secondItem="sp0-bH-MRc" secondAttribute="bottom" constant="5" id="aR0-TN-DWS"/>
+                            <constraint firstItem="WyA-tG-9cJ" firstAttribute="centerY" secondItem="gTI-se-Cz5" secondAttribute="centerY" id="aSo-oe-RWP"/>
+                            <constraint firstAttribute="bottom" secondItem="22b-an-9UE" secondAttribute="bottom" constant="13.67" id="cmc-di-gPF"/>
+                            <constraint firstItem="7cS-4f-x5U" firstAttribute="top" secondItem="gTI-se-Cz5" secondAttribute="bottom" constant="10" id="dZ0-qM-F1A"/>
+                            <constraint firstAttribute="trailing" secondItem="KBj-s3-wI5" secondAttribute="trailing" constant="14" id="e3T-Ve-0cl"/>
+                            <constraint firstAttribute="bottom" secondItem="9dp-GI-y0q" secondAttribute="bottom" constant="12.33" id="gV1-eh-77N"/>
+                            <constraint firstItem="gTI-se-Cz5" firstAttribute="top" secondItem="NKh-cx-x69" secondAttribute="bottom" constant="10" id="ju5-o2-FaV"/>
+                            <constraint firstItem="fyz-32-7gP" firstAttribute="leading" secondItem="C5r-l9-F2P" secondAttribute="leading" constant="14" id="uvT-VM-u5J"/>
+                            <constraint firstItem="KBj-s3-wI5" firstAttribute="centerY" secondItem="sp0-bH-MRc" secondAttribute="centerY" id="yhD-Fy-wn8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="C5r-l9-F2P" secondAttribute="bottom" id="BiA-iV-yLJ"/>
+                    <constraint firstItem="C5r-l9-F2P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="SYo-X2-na6"/>
+                    <constraint firstItem="C5r-l9-F2P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xw7-EZ-XDa"/>
+                    <constraint firstAttribute="trailing" secondItem="C5r-l9-F2P" secondAttribute="trailing" constant="10" id="y1K-g2-tsj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="basefarelbl" destination="uGO-XT-CIX" id="AWh-go-E1E"/>
+                <outlet property="discountlbl" destination="0Nk-Nu-tus" id="taf-Ae-Miz"/>
+                <outlet property="fareTypelbl" destination="WyA-tG-9cJ" id="8u6-g4-eqQ"/>
+                <outlet property="grandTotallbl" destination="9dp-GI-y0q" id="L8m-Ad-htT"/>
+                <outlet property="promocodeView" destination="vxW-l2-u3t" id="xXy-8U-txW"/>
+                <outlet property="taxlbl" destination="KBj-s3-wI5" id="QkR-y7-oDh"/>
+            </connections>
+            <point key="canvasLocation" x="180.15267175572518" y="137.67605633802819"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppBtnColor">
+            <color red="0.0" green="0.37599998712539673" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppLabelColor">
+            <color red="0.0" green="0.37647058823529411" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

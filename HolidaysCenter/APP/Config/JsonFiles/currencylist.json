@@ -1,0 +1,61 @@
+
+
+
+
+
+
+{
+    "data": [
+        {
+            "origin": "1",
+            "type": "AUD",
+            "symbol": "AUD",
+            "value": "373",
+            "name": "Australian Dollars",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/AUD.png"
+        },
+        {
+            "origin": "5",
+            "type": "SAR",
+            "symbol": "SAR",
+            "value": "492",
+            "name": "Saudi Arabian Riyals",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/SAR.png"
+        },
+        {
+            "origin": "8",
+            "type": "USD",
+            "symbol": "USD",
+            "value": "520",
+            "name": "US Dollars",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/USD.png"
+        },
+        {
+            "origin": "10",
+            "type": "KWD",
+            "symbol": "KWD",
+            "value": "769",
+            "name": "Kuwaiti Dinars",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/KWD.png"
+        },
+        {
+            "origin": "17",
+            "type": "EUR",
+            "symbol": "EUR",
+            "value": "413",
+            "name": "Euro",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/EUR.png"
+        },
+        {
+            "origin": "21",
+            "type": "INR",
+            "symbol": "INR",
+            "value": "433",
+            "name": "Indian Rupees",
+            "icon": "https://holidayscenter.com/extras/system/template_list/template_v1/images/flag/INR.png"
+        }
+    ]
+   
+}
+
+
