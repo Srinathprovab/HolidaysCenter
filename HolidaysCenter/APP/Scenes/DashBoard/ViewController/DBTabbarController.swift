@@ -48,6 +48,13 @@ class DBTabbarController: UITabBarController {
         myTabBarItem3.selectedImage = UIImage(named: "tab3")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppNavBackColor)
         myTabBarItem3.title = "My Account"
         myTabBarItem3.imageInsets = UIEdgeInsets(top: -3, left: 0, bottom: -6, right: 0)
+        
+        
+//        let myTabBarItem4 = (self.tabBar.items?[3])! as UITabBarItem
+//        myTabBarItem4.image = UIImage(named: "ccontact")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#C4C4C4"))
+//        myTabBarItem4.selectedImage = UIImage(named: "ccontact")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppNavBackColor)
+//        myTabBarItem4.title = "Whatsapp"
+//        myTabBarItem4.imageInsets = UIEdgeInsets(top: -3, left: 0, bottom: -6, right: 0)
 
         
         

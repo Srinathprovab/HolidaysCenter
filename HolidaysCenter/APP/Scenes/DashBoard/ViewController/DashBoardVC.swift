@@ -18,6 +18,7 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         return vc
     }
     
+    let phoneNumber = "+61437214457"
     var tablerow = [TableRow]()
     var vm1:CountryListViewModel?
     var vm:IndexPageViewModel?
@@ -37,16 +38,9 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
     var payload = [String:Any]()
     
     
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         
         addObserver()
-        
-        
-        
-        
         
         if callapibool == true {
             callAPI()
@@ -338,6 +332,33 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         return .lightContent
     }
     
+    
+    
+    @IBAction func didTapOnWhatsappBtnAction(_ sender: Any) {
+        let alert = UIAlertController(title: "WhatsApp Account Found", message: "Would you like to continue to chat with \(phoneNumber)?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            self.openWhatsApp()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func openWhatsApp() {
+          // Replace with the phone number you want to open chat with
+          
+          // Check if WhatsApp is installed
+          guard let whatsappURL = URL(string: "whatsapp://send?phone=\(phoneNumber)") else {
+              return
+          }
+
+          if UIApplication.shared.canOpenURL(whatsappURL) {
+              // Open WhatsApp with the specified phone number
+              UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+          } else {
+              // WhatsApp is not installed, handle accordingly (e.g., show alert)
+              print("WhatsApp is not installed.")
+          }
+      }
 }
 
 

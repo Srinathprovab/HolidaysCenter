@@ -2,8 +2,81 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    
+    
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Personalized hotel recommendations and nearby options for a better travel experience.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.</string>
+
+	
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Semibold.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-Medium.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>Lato-Medium.ttf</string>
+		<string>Lato-Semibold.ttf</string>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-Regular.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
+		<string>Poppins-Italic.ttf</string>
+		<string>Poppins-Light.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-BoldItalic.ttf</string>
+		<string>Oswald-Regular.ttf</string>
+		<string>Oswald-SemiBold.ttf</string>
+		<string>Inter-Medium.otf</string>
+		<string>Inter-Regular.otf</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>whatsapp</string>
+    </array>
+    
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>com.HolidaysCenter</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>HolidaysCenter</string>
+            </array>
+        </dict>
+    </array>
+    
     <key>GOOGLE_MAPS_API_KEY</key>
-    <string>AIzaSyAfgpJ36EyQji0KETVN-UuooOpATS_zgb0</string>
+    <string>AIzaSyCEpdNVMXaQi4IWyJl2A1koF0CK6x36PaI</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
         <string>googlechromes</string>
@@ -14,48 +87,8 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
-    <key>UIAppFonts</key>
-    <array>
-        <string>OpenSans-Semibold.ttf</string>
-        <string>OpenSans-Bold.ttf</string>
-        <string>OpenSans-Regular.ttf</string>
-        <string>OpenSans-Medium.ttf</string>
-        <string>OpenSans-Light.ttf</string>
-        <string>Lato-Medium.ttf</string>
-        <string>Lato-Semibold.ttf</string>
-        <string>Lato-Light.ttf</string>
-        <string>Lato-Regular.ttf</string>
-        <string>Poppins-SemiBold.ttf</string>
-        <string>Poppins-Italic.ttf</string>
-        <string>Poppins-Light.ttf</string>
-        <string>Poppins-Medium.ttf</string>
-        <string>Poppins-Medium.ttf</string>
-        <string>Poppins-BoldItalic.ttf</string>
-        <string>Oswald-Regular.ttf</string>
-        <string>Oswald-SemiBold.ttf</string>
-        <string>Inter-Medium.otf</string>
-        <string>Inter-Regular.otf</string>
-    </array>
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-        <key>UIApplicationSupportsMultipleScenes</key>
-        <false/>
-        <key>UISceneConfigurations</key>
-        <dict>
-            <key>UIWindowSceneSessionRoleApplication</key>
-            <array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>Default Configuration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    <key>UISceneStoryboardFile</key>
-                    <string>Main</string>
-                </dict>
-            </array>
-        </dict>
-    </dict>
-    <key>UIFileSharingEnabled</key>
-    <true/>
+    
+    
+
 </dict>
 </plist>

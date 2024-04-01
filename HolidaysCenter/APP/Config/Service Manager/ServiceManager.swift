@@ -390,18 +390,18 @@ class ServiceManager {
             
             
             
-//            if let data = resp.data { // Assuming `response` is the API response object
-//                do {
-//                    if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
-//                        
-//                        let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
-//                        let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
-//                        print(theJSONText ?? "")
-//                    }
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//            }
+            if let data = resp.data { // Assuming `response` is the API response object
+                do {
+                    if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
+                        
+                        let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+                        let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
+                        print(theJSONText ?? "")
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
             
             
             
