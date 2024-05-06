@@ -2,16 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    
-    
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Personalized hotel recommendations and nearby options for a better travel experience.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.</string>
-
-	
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.HolidaysCenter</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>HolidaysCenter</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Semibold.ttf</string>
@@ -55,40 +68,5 @@
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>whatsapp</string>
-    </array>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLName</key>
-            <string>com.HolidaysCenter</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>HolidaysCenter</string>
-            </array>
-        </dict>
-    </array>
-    
-    <key>GOOGLE_MAPS_API_KEY</key>
-    <string>AIzaSyCEpdNVMXaQi4IWyJl2A1koF0CK6x36PaI</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>googlechromes</string>
-        <string>comgooglemaps</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    
-    
-
 </dict>
 </plist>

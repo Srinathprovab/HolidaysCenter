@@ -424,15 +424,7 @@ extension HotelSearchResultVC {
         
         isFetchingData = false // Reset the flag after API response
         loderBool = "hotel"
-        response.data?.hotelSearchResult?.forEach { i in
-            
-            let mapModel = MapModel(
-                longitude: i.longitude ?? "",
-                latitude: i.latitude ?? "",
-                hotelname: i.name ?? ""
-            )
-            mapModelArray.append(mapModel)
-        }
+        
         
         
         if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
@@ -455,10 +447,7 @@ extension HotelSearchResultVC {
 
 //MARK: - Hotel Filter By Applied
 extension HotelSearchResultVC:AppliedFilters {
-    
-    
-    func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
-        
+    func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
         isSearchBool = true
         isfilterApplied = true
@@ -474,7 +463,8 @@ extension HotelSearchResultVC:AppliedFilters {
         let filteredArray = hotelSearchResultArray.filter { hotel in
             guard let netPrice = (hotel.price) else { return false }
             
-            let ratingMatches = hotel.star_rating == Int(starRating) || starRating.isEmpty
+           // let ratingMatches = hotel.star_rating == Int(starRating) || starRating.isEmpty
+            let starRatingNewMatch = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let nearByLocMatch = nearByLocA.isEmpty || nearByLocA.contains(hotel.hotelLocation ?? "")
             
@@ -487,7 +477,7 @@ extension HotelSearchResultVC:AppliedFilters {
             }
             
             
-            return ratingMatches && netPrice >= minpricerange && netPrice <= maxpricerange && refundableMatch && nearByLocMatch && facilityMatch
+            return starRatingNewMatch && netPrice >= minpricerange && netPrice <= maxpricerange && refundableMatch && nearByLocMatch && facilityMatch
             
             
         }

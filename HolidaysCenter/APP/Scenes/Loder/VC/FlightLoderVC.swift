@@ -151,10 +151,6 @@ extension FlightLoderVC {
             return 0
         }
         
-        // Print parsed dates for debugging
-        print("Parsed Check-In Date:", checkIn)
-        print("Parsed Check-Out Date:", checkOut)
-        
         // Calculate the difference in days
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: checkIn, to: checkOut)
@@ -166,12 +162,12 @@ extension FlightLoderVC {
         }
         
         // Subtract 1 to get the number of nights
-        let numberOfNights = numberOfDays - 1
+        let numberOfNights = numberOfDays
         
         return numberOfNights
     }
 
-   
+    
 
     
 }

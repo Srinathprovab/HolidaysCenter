@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StarRatingCVCell" customModule="BeeoonsApp" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StarRatingCVCell" customModule="HolidaysCenter" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="111" height="64"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,17 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="111" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-Xh-Irg">
-                                <rect key="frame" x="10" y="0.0" width="101" height="64"/>
+                                <rect key="frame" x="10" y="0.0" width="41.5" height="64"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-AE-3Gy">
+                                <rect key="frame" x="61.5" y="22" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="dJ1-bQ-V6I"/>
+                                    <constraint firstAttribute="width" constant="20" id="p0e-6d-cnf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WyG-Xh-Irg" firstAttribute="leading" secondItem="7iv-3i-xGH" secondAttribute="leading" constant="10" id="6Cq-ix-lkm"/>
+                            <constraint firstItem="SIH-AE-3Gy" firstAttribute="leading" secondItem="WyG-Xh-Irg" secondAttribute="trailing" constant="10" id="6GP-Wl-i79"/>
+                            <constraint firstItem="SIH-AE-3Gy" firstAttribute="centerY" secondItem="WyG-Xh-Irg" secondAttribute="centerY" id="9pO-UV-ugi"/>
                             <constraint firstAttribute="bottom" secondItem="WyG-Xh-Irg" secondAttribute="bottom" id="CTX-dn-ug1"/>
-                            <constraint firstAttribute="trailing" secondItem="WyG-Xh-Irg" secondAttribute="trailing" id="tmL-5p-sUu"/>
                             <constraint firstItem="WyG-Xh-Irg" firstAttribute="top" secondItem="7iv-3i-xGH" secondAttribute="top" id="xlJ-c4-8E3"/>
                         </constraints>
                     </view>
@@ -53,6 +61,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="star" width="35.333332061767578" height="36.666667938232422"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

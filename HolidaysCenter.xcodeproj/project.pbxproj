@@ -10,6 +10,7 @@
 		48ED1E9025D0A31885B4374E /* Pods_HolidaysCenterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6331FCDBD0CE0B33F1CEB2 /* Pods_HolidaysCenterTests.framework */; };
 		617666D5114A5EBD8FB612A7 /* Pods_HolidaysCenter_HolidaysCenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDF9418F51073D96BEAB7A0 /* Pods_HolidaysCenter_HolidaysCenterUITests.framework */; };
 		65176D912BB69C8600283ED4 /* WhatsappVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65176D902BB69C8600283ED4 /* WhatsappVC.swift */; };
+		658CD65E2BBBD9F300C93BAC /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */; };
 		65F212202BA186EA00D04274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2121F2BA186EA00D04274 /* AppDelegate.swift */; };
 		65F212222BA186EA00D04274 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212212BA186EA00D04274 /* SceneDelegate.swift */; };
 		65F212292BA186EC00D04274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F212282BA186EC00D04274 /* Assets.xcassets */; };
@@ -57,7 +58,6 @@
 		65F214D72BA1871F00D04274 /* HBSearch_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212842BA1871D00D04274 /* HBSearch_data.swift */; };
 		65F214D82BA1871F00D04274 /* CancellationPolicyPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212862BA1871D00D04274 /* CancellationPolicyPopupVC.swift */; };
 		65F214D92BA1871F00D04274 /* ViewHotelDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212872BA1871D00D04274 /* ViewHotelDetailsVC.swift */; };
-		65F214DA2BA1871F00D04274 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212882BA1871D00D04274 /* MapViewVC.swift */; };
 		65F214DB2BA1871F00D04274 /* ModifyHotelSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212892BA1871D00D04274 /* ModifyHotelSearchVC.swift */; };
 		65F214DC2BA1871F00D04274 /* SelectedHotelInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2128A2BA1871D00D04274 /* SelectedHotelInfoVC.swift */; };
 		65F214DD2BA1871F00D04274 /* BookHotelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2128B2BA1871D00D04274 /* BookHotelVC.swift */; };
@@ -469,6 +469,7 @@
 		5705482BAEBF87C5431636A2 /* Pods-HolidaysCenterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidaysCenterTests.release.xcconfig"; path = "Target Support Files/Pods-HolidaysCenterTests/Pods-HolidaysCenterTests.release.xcconfig"; sourceTree = "<group>"; };
 		5DF86FB446DB8FFDBD430AE4 /* Pods-HolidaysCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidaysCenter.release.xcconfig"; path = "Target Support Files/Pods-HolidaysCenter/Pods-HolidaysCenter.release.xcconfig"; sourceTree = "<group>"; };
 		65176D902BB69C8600283ED4 /* WhatsappVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappVC.swift; sourceTree = "<group>"; };
+		658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		65F2121C2BA186EA00D04274 /* HolidaysCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidaysCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F2121F2BA186EA00D04274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F212212BA186EA00D04274 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -520,7 +521,6 @@
 		65F212842BA1871D00D04274 /* HBSearch_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBSearch_data.swift; sourceTree = "<group>"; };
 		65F212862BA1871D00D04274 /* CancellationPolicyPopupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationPolicyPopupVC.swift; sourceTree = "<group>"; };
 		65F212872BA1871D00D04274 /* ViewHotelDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHotelDetailsVC.swift; sourceTree = "<group>"; };
-		65F212882BA1871D00D04274 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		65F212892BA1871D00D04274 /* ModifyHotelSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyHotelSearchVC.swift; sourceTree = "<group>"; };
 		65F2128A2BA1871D00D04274 /* SelectedHotelInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedHotelInfoVC.swift; sourceTree = "<group>"; };
 		65F2128B2BA1871D00D04274 /* BookHotelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookHotelVC.swift; sourceTree = "<group>"; };
@@ -1181,12 +1181,12 @@
 			children = (
 				65F212862BA1871D00D04274 /* CancellationPolicyPopupVC.swift */,
 				65F212872BA1871D00D04274 /* ViewHotelDetailsVC.swift */,
-				65F212882BA1871D00D04274 /* MapViewVC.swift */,
 				65F212892BA1871D00D04274 /* ModifyHotelSearchVC.swift */,
 				65F2128A2BA1871D00D04274 /* SelectedHotelInfoVC.swift */,
 				65F2128B2BA1871D00D04274 /* BookHotelVC.swift */,
 				65F2128C2BA1871D00D04274 /* HotelSearchResultVC.swift */,
 				65F2128D2BA1871D00D04274 /* AddRoomsVCViewController.swift */,
+				658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3367,6 +3367,7 @@
 				65F216102BA1871F00D04274 /* LabelTVCell.swift in Sources */,
 				65F214CD2BA1871F00D04274 /* Hotel_cancelation_policy.swift in Sources */,
 				65F215712BA1871F00D04274 /* SortByPriceTVCell.swift in Sources */,
+				658CD65E2BBBD9F300C93BAC /* MapViewVC.swift in Sources */,
 				65F215E62BA1871F00D04274 /* BCHotelDetailsTVCell.swift in Sources */,
 				65F214C72BA1871F00D04274 /* Post_data.swift in Sources */,
 				65F216302BA1871F00D04274 /* TableViewHelper.swift in Sources */,
@@ -3433,7 +3434,6 @@
 				65F214BE2BA1871F00D04274 /* HotelListModel.swift in Sources */,
 				65F215D92BA1871F00D04274 /* ItineraryCVCell.swift in Sources */,
 				65F214EE2BA1871F00D04274 /* TwinSuperiorRoomTVCell.swift in Sources */,
-				65F214DA2BA1871F00D04274 /* MapViewVC.swift in Sources */,
 				65F215F62BA1871F00D04274 /* ContactUsVC.swift in Sources */,
 				65F216272BA1871F00D04274 /* Constants.swift in Sources */,
 				65F215032BA1871F00D04274 /* GetMealsListViewModel.swift in Sources */,
@@ -3808,17 +3808,21 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HolidaysCenter/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Personalized hotel recommendations and nearby options for a better travel experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HolidaysCenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3844,17 +3848,21 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HolidaysCenter/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Personalized hotel recommendations and nearby options for a better travel experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HolidaysCenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

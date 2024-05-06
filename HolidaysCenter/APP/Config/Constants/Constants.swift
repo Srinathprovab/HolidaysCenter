@@ -35,7 +35,7 @@ var BASE_URL = "https://holidayscenter.com/android_ios_webservices/index.php/"
 var BASE_URL1 = "https://holidayscenter.com/android_ios_webservices/index.php/"
 var loderBool = "normal"
 var ExecuteOnceBool = true
-
+let phoneNumber = "61437214457"
 
 var currencyListArray = [SelectCurrencyData]()
 var countrylist = [Country_list]()
@@ -92,7 +92,7 @@ var connectingFlightsA = [String]()
 var connectingAirportA = [String]()
 var departureTimeA = [String]()
 var arrivalTimeA = [String]()
-
+var startRatingArray = [String]()
 
 //Price Syummery
 var AdultsTotalPrice = String()

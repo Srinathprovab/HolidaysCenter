@@ -200,10 +200,65 @@
                                             <constraint firstAttribute="height" constant="100" id="men-ks-1Oq"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxc-Jh-jEy" customClass="BorderedView" customModule="HolidaysCenter" customModuleProvider="target">
+                                        <rect key="frame" x="244" y="796" width="150" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help ?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnq-yj-0YQ">
+                                                <rect key="frame" x="55" y="15" width="90" height="20"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whatsapp" translatesAutoresizingMaskIntoConstraints="NO" id="rhI-UZ-sti">
+                                                <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="STe-l3-lIw"/>
+                                                    <constraint firstAttribute="height" constant="40" id="eKf-oL-6W8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-am-eKb">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                                <color key="tintColor" name="refundcolor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="didTapOnWhatsappBtnAction:" destination="WHF-8c-Ydo" eventType="touchUpInside" id="7GT-jq-Kc2"/>
+                                                    <action selector="didTapOnWhatsappBtnAction:" destination="w3W-Wa-3yc" eventType="touchUpInside" id="xFC-we-BZS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="2ci-he-y3Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mnq-yj-0YQ" secondAttribute="trailing" constant="5" id="4Qu-bD-eeW"/>
+                                            <constraint firstItem="Mnq-yj-0YQ" firstAttribute="centerY" secondItem="rhI-UZ-sti" secondAttribute="centerY" id="Hn4-ky-ECa"/>
+                                            <constraint firstItem="Mnq-yj-0YQ" firstAttribute="leading" secondItem="rhI-UZ-sti" secondAttribute="trailing" constant="5" id="RV1-8t-zyy"/>
+                                            <constraint firstAttribute="trailing" secondItem="KXA-am-eKb" secondAttribute="trailing" id="VXX-hb-vJi"/>
+                                            <constraint firstItem="KXA-am-eKb" firstAttribute="leading" secondItem="kxc-Jh-jEy" secondAttribute="leading" id="c6k-4J-e13"/>
+                                            <constraint firstItem="KXA-am-eKb" firstAttribute="top" secondItem="kxc-Jh-jEy" secondAttribute="top" id="dCq-uY-Jmm"/>
+                                            <constraint firstAttribute="bottom" secondItem="KXA-am-eKb" secondAttribute="bottom" id="hTx-v5-aYT"/>
+                                            <constraint firstItem="rhI-UZ-sti" firstAttribute="leading" secondItem="kxc-Jh-jEy" secondAttribute="leading" constant="10" id="l5a-57-5uU"/>
+                                            <constraint firstAttribute="height" constant="50" id="qbv-Q2-IOn"/>
+                                            <constraint firstItem="rhI-UZ-sti" firstAttribute="centerY" secondItem="kxc-Jh-jEy" secondAttribute="centerY" id="yQ8-tC-NkS"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="AppBtnColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="iWM-ea-mLc" firstAttribute="top" secondItem="XcR-3S-WtV" secondAttribute="bottom" constant="10" id="FJd-zh-Qex"/>
+                                    <constraint firstAttribute="bottom" secondItem="kxc-Jh-jEy" secondAttribute="bottom" constant="50" id="FZi-5Q-EKg"/>
+                                    <constraint firstAttribute="trailing" secondItem="kxc-Jh-jEy" secondAttribute="trailing" constant="20" id="Ggv-Ih-SfQ"/>
                                     <constraint firstItem="mXe-PY-9e4" firstAttribute="top" secondItem="EvH-SP-kBv" secondAttribute="top" id="HBg-TE-n9a"/>
                                     <constraint firstAttribute="bottom" secondItem="iWM-ea-mLc" secondAttribute="bottom" id="Ha1-GU-Kco"/>
                                     <constraint firstAttribute="trailing" secondItem="XcR-3S-WtV" secondAttribute="trailing" id="IH3-nj-FpK"/>
@@ -265,7 +320,7 @@
                                         <rect key="frame" x="124.5" y="60" width="165" height="82.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Bookings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyY-fa-Nre">
-                                                <rect key="frame" x="24" y="0.0" width="117.5" height="27.5"/>
+                                                <rect key="frame" x="22.5" y="0.0" width="120.5" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="20"/>
                                                 <color key="textColor" name="BtnTitleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -277,7 +332,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-pK-4Ea">
-                                                                <rect key="frame" x="16.5" y="10.5" width="47.5" height="19"/>
+                                                                <rect key="frame" x="14.5" y="9" width="51" height="22"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -318,7 +373,7 @@
                                                         <rect key="frame" x="85" y="0.0" width="80" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAc-2a-8Zv">
-                                                                <rect key="frame" x="17" y="10.5" width="46" height="19"/>
+                                                                <rect key="frame" x="15" y="9" width="50" height="22"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -505,7 +560,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgr-z7-Fnh">
-                                        <rect key="frame" x="190" y="298.5" width="34.5" height="16.5"/>
+                                        <rect key="frame" x="189" y="297" width="36" height="19.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -608,26 +663,65 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-VW-lSa">
-                                        <rect key="frame" x="364" y="763" width="30" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-5g-fRB" customClass="BorderedView" customModule="HolidaysCenter" customModuleProvider="target">
+                                        <rect key="frame" x="254" y="753" width="150" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help ?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1r-bt-IWT">
+                                                <rect key="frame" x="55" y="15" width="90" height="20"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whatsapp" translatesAutoresizingMaskIntoConstraints="NO" id="3tC-HS-LDE">
+                                                <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="orN-pW-Fnn"/>
+                                                    <constraint firstAttribute="height" constant="40" id="qC0-0x-tdS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-VW-lSa">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                                <color key="tintColor" name="refundcolor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="didTapOnWhatsappBtnAction:" destination="w3W-Wa-3yc" eventType="touchUpInside" id="Fdh-d0-vCj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="rzF-bd-Qye"/>
-                                            <constraint firstAttribute="width" constant="30" id="vb3-WM-fjK"/>
+                                            <constraint firstItem="JrI-VW-lSa" firstAttribute="top" secondItem="gvb-5g-fRB" secondAttribute="top" id="BRy-99-Hgq"/>
+                                            <constraint firstItem="JrI-VW-lSa" firstAttribute="leading" secondItem="gvb-5g-fRB" secondAttribute="leading" id="D86-dJ-Swy"/>
+                                            <constraint firstAttribute="height" constant="50" id="UMm-2A-Wcl"/>
+                                            <constraint firstItem="3tC-HS-LDE" firstAttribute="leading" secondItem="gvb-5g-fRB" secondAttribute="leading" constant="10" id="Uwg-7u-Om0"/>
+                                            <constraint firstItem="h1r-bt-IWT" firstAttribute="centerY" secondItem="3tC-HS-LDE" secondAttribute="centerY" id="bUE-Wc-4DL"/>
+                                            <constraint firstAttribute="trailing" secondItem="JrI-VW-lSa" secondAttribute="trailing" id="cR5-BW-7qq"/>
+                                            <constraint firstAttribute="trailing" secondItem="h1r-bt-IWT" secondAttribute="trailing" constant="5" id="g2O-Gg-K6x"/>
+                                            <constraint firstAttribute="bottom" secondItem="JrI-VW-lSa" secondAttribute="bottom" id="mlk-cv-nVA"/>
+                                            <constraint firstItem="h1r-bt-IWT" firstAttribute="leading" secondItem="3tC-HS-LDE" secondAttribute="trailing" constant="5" id="n1o-qh-Ct0"/>
+                                            <constraint firstAttribute="width" constant="150" id="pmW-Hg-NW4"/>
+                                            <constraint firstItem="3tC-HS-LDE" firstAttribute="centerY" secondItem="gvb-5g-fRB" secondAttribute="centerY" id="uh7-t7-PTI"/>
                                         </constraints>
-                                        <color key="tintColor" name="refundcolor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="tab4"/>
-                                        <connections>
-                                            <action selector="didTapOnWhatsappBtnAction:" destination="w3W-Wa-3yc" eventType="touchUpInside" id="Fdh-d0-vCj"/>
-                                        </connections>
-                                    </button>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="AppBtnColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="JrI-VW-lSa" secondAttribute="trailing" constant="20" id="BOa-Kh-JWE"/>
+                                    <constraint firstAttribute="trailing" secondItem="gvb-5g-fRB" secondAttribute="trailing" constant="10" id="94m-5U-4OT"/>
                                     <constraint firstAttribute="bottom" secondItem="YWD-VA-CqD" secondAttribute="bottom" id="PQn-74-iTn"/>
                                     <constraint firstItem="YWD-VA-CqD" firstAttribute="top" secondItem="D0e-Yp-C3P" secondAttribute="top" id="VOM-QZ-bMd"/>
-                                    <constraint firstAttribute="bottom" secondItem="JrI-VW-lSa" secondAttribute="bottom" constant="20" id="beW-vm-J9P"/>
+                                    <constraint firstAttribute="bottom" secondItem="gvb-5g-fRB" secondAttribute="bottom" constant="10" id="mor-PU-HgT"/>
                                     <constraint firstItem="YWD-VA-CqD" firstAttribute="leading" secondItem="D0e-Yp-C3P" secondAttribute="leading" id="o1o-wv-LXB"/>
                                     <constraint firstAttribute="trailing" secondItem="YWD-VA-CqD" secondAttribute="trailing" id="wlV-TR-h2u"/>
                                 </constraints>
@@ -649,7 +743,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvK-GL-n3N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="629"/>
+            <point key="canvasLocation" x="800.00000000000011" y="628.79464285714278"/>
         </scene>
         <!--Item-->
         <scene sceneID="c5O-Qh-KL5">
@@ -694,7 +788,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login To View Your Bookings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2t-Gk-3A9">
-                                                <rect key="frame" x="116.5" y="283.5" width="181.5" height="16.5"/>
+                                                <rect key="frame" x="112" y="282" width="190.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2354,7 +2448,7 @@
                                         <buttonConfiguration key="configuration" style="plain" image="multiply" catalog="system"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modify Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vr-Sw-76Y">
-                                        <rect key="frame" x="155.5" y="80.5" width="103.5" height="19"/>
+                                        <rect key="frame" x="152" y="79" width="110" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2661,7 +2755,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="sort" width="19.5" height="23"/>
-        <image name="tab4" width="50" height="50"/>
+        <image name="whatsapp" width="48" height="48"/>
         <image name="wifi.slash" catalog="system" width="128" height="111"/>
         <namedColor name="AppBGColor">
             <color red="0.90200001001358032" green="0.9100000262260437" blue="0.90600001811981201" alpha="0.64800000190734863" colorSpace="custom" customColorSpace="sRGB"/>

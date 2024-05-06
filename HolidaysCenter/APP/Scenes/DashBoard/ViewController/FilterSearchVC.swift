@@ -27,6 +27,7 @@ struct HotelFilterModel {
     var minPriceRange: Double?
     var maxPriceRange: Double?
     var starRating = String()
+    var starRatingNew: [String] = []
     var refundableTypes: [String] = []
     var nearByLocA: [String] = []
     var niberhoodA: [String] = []
@@ -67,6 +68,7 @@ protocol AppliedFilters:AnyObject {
     func hotelFilterByApplied(minpricerange:Double,
                               maxpricerange:Double,
                               starRating: String,
+                              starRatingNew: [String],
                               refundableTypeArray:[String],
                               nearByLocA:[String],
                               niberhoodA:[String],
@@ -124,6 +126,7 @@ class FilterSearchVC: BaseTableVC {
     var selectedNeighbourwoodArray = [String]()
     var selectednearBylocationsArray = [String]()
     var selectedamenitiesArray = [String]()
+    var selectedStartRatingArray = [String]()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -603,6 +606,7 @@ class FilterSearchVC: BaseTableVC {
     
     override func didTapOnStarRatingCell(cell: StarRatingCVCell) {
         starRatingFilter = cell.titlelbl.text ?? ""
+        print(startRatingArray.joined(separator: ","))
     }
     
     
@@ -910,6 +914,7 @@ class FilterSearchVC: BaseTableVC {
                     
                     
                 }
+                
             }else {
                 
                 
@@ -936,6 +941,14 @@ class FilterSearchVC: BaseTableVC {
                         hotelfiltermodel.starRating = starRatingFilter
                     }else {
                         hotelfiltermodel.starRating = ""
+                    }
+                    
+                    
+                    
+                    if !startRatingArray.isEmpty {
+                        hotelfiltermodel.starRatingNew = startRatingArray
+                    }else {
+                        hotelfiltermodel.starRatingNew.removeAll()
                     }
                     
                     
@@ -967,7 +980,8 @@ class FilterSearchVC: BaseTableVC {
                     
                     delegate?.hotelFilterByApplied(minpricerange:  hotelfiltermodel.minPriceRange ?? 0.0,
                                                    maxpricerange:  hotelfiltermodel.maxPriceRange ?? 0.0,
-                                                   starRating:  hotelfiltermodel.starRating,
+                                                   starRating:  hotelfiltermodel.starRating, 
+                                                   starRatingNew: startRatingArray,
                                                    refundableTypeArray: hotelfiltermodel.refundableTypes,
                                                    nearByLocA: hotelfiltermodel.nearByLocA,
                                                    niberhoodA: hotelfiltermodel.niberhoodA,
@@ -1275,6 +1289,11 @@ extension FilterSearchVC {
         if !hotelfiltermodel.niberhoodA.isEmpty {
             selectedNeighbourwoodArray = hotelfiltermodel.niberhoodA
         }
+        
+        if !hotelfiltermodel.starRatingNew.isEmpty {
+            startRatingArray = hotelfiltermodel.starRatingNew
+        }
+        
     }
     
     
@@ -1297,7 +1316,7 @@ extension FilterSearchVC {
         hotelfiltermodel.nearByLocA.removeAll()
         hotelfiltermodel.niberhoodA.removeAll()
         hotelfiltermodel.starRating = ""
-        
+        hotelfiltermodel.starRatingNew.removeAll()
         
         starRatingFilter = ""
         if let cell = commonTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? StarRatingTVCell {
@@ -1308,6 +1327,7 @@ extension FilterSearchVC {
         selectednearBylocationsArray.removeAll()
         selectedNeighbourwoodArray.removeAll()
         selectedamenitiesArray.removeAll()
+        startRatingArray.removeAll()
         
         // Deselect all cells in your checkOptionsTVCell table view
         deselectAllCheckOptionsCells()

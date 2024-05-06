@@ -58,12 +58,6 @@ class SearchFlightResultVC: BaseTableVC, TimerManagerDelegate {
     }
     
     
-    
-    
-    
-    
-    
-    
     func setupUI() {
         if screenHeight > 835 {
             navHeight.constant = 190
@@ -567,11 +561,12 @@ extension SearchFlightResultVC {
 
 
 extension SearchFlightResultVC:AppliedFilters {
-    
-    func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
+    func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
     }
     
+    
+   
     
     // Create a function to check if a given time string is within a time range
     func isTimeInRange(time: String, range: String) -> Bool {

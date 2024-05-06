@@ -64,17 +64,7 @@ class CreateAccountTVCell: TableViewCell {
         loadCountryNamesAndCode()
     }
     
-    func loadCountryNamesAndCode(){
-        countryNames.removeAll()
-        countrycodesArray.removeAll()
-        countrylist.forEach { i in
-            countryNames.append(i.name ?? "")
-            countrycodesArray.append(i.country_code ?? "")
-        }
-        DispatchQueue.main.async {[self] in
-            dropDown.dataSource = countryNames
-        }
-    }
+   
     
     
     func setupUI() {
@@ -277,7 +267,17 @@ class CreateAccountTVCell: TableViewCell {
     }
     
     
-    
+    func loadCountryNamesAndCode(){
+        countryNames.removeAll()
+        countrycodesArray.removeAll()
+        countrylist.forEach { i in
+            countryNames.append(i.name ?? "")
+            countrycodesArray.append(i.country_code ?? "")
+        }
+        DispatchQueue.main.async {[self] in
+            dropDown.dataSource = countryNames
+        }
+    }
 }
 
 

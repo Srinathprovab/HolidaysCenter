@@ -18,7 +18,7 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         return vc
     }
     
-    let phoneNumber = "+61437214457"
+   
     var tablerow = [TableRow]()
     var vm1:CountryListViewModel?
     var vm:IndexPageViewModel?
@@ -343,7 +343,7 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         present(alert, animated: true, completion: nil)
     }
     
-    func openWhatsApp() {
+    func openWhatsApp1() {
           // Replace with the phone number you want to open chat with
           
           // Check if WhatsApp is installed
@@ -359,6 +359,20 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
               print("WhatsApp is not installed.")
           }
       }
+    
+     func openWhatsApp() {
+            let urlString = "https://wa.me/\(phoneNumber)"
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL) {
+                    UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                } else {
+                    print("WhatsApp is not installed.")
+                    // Handle case where WhatsApp is not installed
+                }
+            }
+        }
+    
+    
 }
 
 

@@ -656,6 +656,44 @@ class BookFlightVC: BaseTableVC {
         self.view.endEditing(true)
     }
     
+    @IBAction func didTapOnWhatsappBtnAction(_ sender: Any) {
+        let alert = UIAlertController(title: "WhatsApp Account Found", message: "Would you like to continue to chat with \(phoneNumber)?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            self.openWhatsApp()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func openWhatsApp1() {
+          // Replace with the phone number you want to open chat with
+          
+          // Check if WhatsApp is installed
+          guard let whatsappURL = URL(string: "whatsapp://send?phone=\(phoneNumber)") else {
+              return
+          }
+
+          if UIApplication.shared.canOpenURL(whatsappURL) {
+              // Open WhatsApp with the specified phone number
+              UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+          } else {
+              // WhatsApp is not installed, handle accordingly (e.g., show alert)
+              print("WhatsApp is not installed.")
+          }
+      }
+    
+     func openWhatsApp() {
+            let urlString = "https://wa.me/\(phoneNumber)"
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL) {
+                    UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                } else {
+                    print("WhatsApp is not installed.")
+                    // Handle case where WhatsApp is not installed
+                }
+            }
+        }
+    
     
 }
 
