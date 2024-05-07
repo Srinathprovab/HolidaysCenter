@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HotelSearchResultVC: BaseTableVC {
+class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
     
     
     @IBOutlet weak var nav: NavBar!
@@ -22,6 +22,13 @@ class HotelSearchResultVC: BaseTableVC {
     @IBOutlet weak var filterImg: UIImageView!
     @IBOutlet weak var filterpBtn: UIButton!
     
+    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchTFView: UIView!
+    @IBOutlet weak var searchTF: UITextField!
+    @IBOutlet weak var closeSearchTFBtn: UIButton!
+    
+    
     var bookingSourceDataArrayCount = Int()
     var bookingSourceDataArray = [BookingSourceData]()
     var isFetchingData = false
@@ -29,6 +36,7 @@ class HotelSearchResultVC: BaseTableVC {
     var filtered = [HotelSearchResult]()
     var nationalityCode = String()
     var viewModel:HotelListViewModel?
+    var hotelnamevm:HotelNameSearchVM?
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     var hotelSearchResultArray = [HotelSearchResult]()
@@ -55,6 +63,7 @@ class HotelSearchResultVC: BaseTableVC {
         // Do any additional setup after loading the view.
         setupUI()
         viewModel = HotelListViewModel(self)
+        hotelnamevm = HotelNameSearchVM(self)
     }
     
     func setupUI() {
@@ -83,12 +92,27 @@ class HotelSearchResultVC: BaseTableVC {
         filterpBtn.setTitle("", for: .normal)
         mapBtn.addTarget(self, action: #selector(didTapOnMapviewBtn(_:)), for: .touchUpInside)
         filterpBtn.addTarget(self, action: #selector(didTapOnFilterwBtn(_:)), for: .touchUpInside)
+        searchBtn.addTarget(self, action: #selector(didTapOnSearchHotelBtnAction(_:)), for: .touchUpInside)
+        searchTFView.isHidden = true
+        setupTF(tf: searchTF)
+        
+        closeSearchTFBtn.addTarget(self, action: #selector(didTapOnCloseSearchHotelBtnAction(_:)), for: .touchUpInside)
         
         commonTableView.registerTVCells(["EmptyTVCell",
                                          "HotelSearchResultTVCell"])
         
         
     }
+    
+    
+    func setupTF(tf:UITextField) {
+        tf.layer.cornerRadius = 6
+        tf.font = .OpenSansRegular(size: 14)
+        tf.setLeftPaddingPoints(15)
+        tf.addTarget(self, action: #selector(editingChanged(_ :)), for: .editingChanged)
+    }
+    
+    
     
     
     func setupLabels(lbl:UILabel,text:String,textcolor:UIColor,font:UIFont) {
@@ -113,6 +137,7 @@ class HotelSearchResultVC: BaseTableVC {
     
     
     @objc func backbtnAction(_ sender:UIButton) {
+        
         guard let vc = BookHotelVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         isFromVCBool = false
@@ -144,6 +169,20 @@ class HotelSearchResultVC: BaseTableVC {
         rateplanecode = cell.rateplanecode
         vc.token = cell.resultToken
         self.present(vc, animated: false)
+    }
+    
+    
+    @objc func didTapOnSearchHotelBtnAction(_ sender:UIButton) {
+        searchView.isHidden = true
+        searchTFView.isHidden = false
+        searchTF.becomeFirstResponder()
+    }
+    
+    @objc func didTapOnCloseSearchHotelBtnAction(_ sender:UIButton) {
+        searchView.isHidden = false
+        searchTFView.isHidden = true
+        searchTF.text = ""
+        searchTF.resignFirstResponder()
     }
     
 }
@@ -191,7 +230,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         
         // hbooking_source = response.boo ?? ""
         hsearch_id = String(response.search_id ?? 0)
-       
+        
         
         nav.citylbl.text = response.search_params?.city
         nav.datelbl.text = "CheckIn - \(convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "" , f1: "dd-MM-yyyy", f2: "dd MMM")) & CheckOut - \(convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "dd MMM"))"
@@ -218,7 +257,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         }
         
         
-       // callgetHotelListAPI(bs: "PTBSID0000000089")
+        // callgetHotelListAPI(bs: "PTBSID0000000089")
         
     }
     
@@ -230,7 +269,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         payload["booking_source"] = bs
         payload["search_id"] = hsearch_id
         payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
-    
+        
         viewModel?.CALL_GET_HOTEL_LIST_API(dictParam: payload)
     }
     
@@ -271,7 +310,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
                     self.appendValues(list: self.hotelSearchResultArray)
                 }
             }
-        
+            
         }
         
     }
@@ -289,7 +328,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         faretypeArray .removeAll()
         facilityArray.removeAll()
         mapModelArray.removeAll()
-        
+        hotelfiltermodel.starRatingNew = starRatingInputArray
         
         list.forEach { i in
             if let price = i.price, price > 0 {
@@ -353,7 +392,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
                 tablerow.append(TableRow(title:i.name,
                                          subTitle: "\(i.address ?? "")",
                                          kwdprice: "\(i.currency ?? "") \(String(format: "%.2f", i.price ?? 0.0))",
-                                         text: "\(i.hotel_code ?? "0")", 
+                                         text: "\(i.hotel_code ?? "0")",
                                          headerText:i.ratePlanCode,
                                          buttonTitle: i.resultToken ?? "",
                                          image: i.image,
@@ -463,7 +502,7 @@ extension HotelSearchResultVC:AppliedFilters {
         let filteredArray = hotelSearchResultArray.filter { hotel in
             guard let netPrice = (hotel.price) else { return false }
             
-           // let ratingMatches = hotel.star_rating == Int(starRating) || starRating.isEmpty
+            // let ratingMatches = hotel.star_rating == Int(starRating) || starRating.isEmpty
             let starRatingNewMatch = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let nearByLocMatch = nearByLocA.isEmpty || nearByLocA.contains(hotel.hotelLocation ?? "")
@@ -611,5 +650,43 @@ extension HotelSearchResultVC:TimerManagerDelegate {
                     font: .OpenSansRegular(size: 12),
                     align: .left)
     }
+    
+}
+
+
+
+extension HotelSearchResultVC {
+    
+    @objc func editingChanged(_ tf:UITextField) {
+        callHotelNameSearchAPI(str: tf.text ?? "")
+    }
+    
+    func callHotelNameSearchAPI(str:String) {
+        loderBool = "normal"
+        self.payload.removeAll()
+        self.payload["search_id"] = hsearch_id
+        self.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
+        self.payload["hotel_name"] = str
+        hotelnamevm?.CALL_GET_HOTEL_NAME_SEARCH_API(dictParam:  self.payload)
+    }
+    
+    
+    func hotelNameSearchDetails(response: HotelListModel) {
+        loderBool = "hotel"
+        if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
+            // Append the new data to the existing data
+            hotelSearchResultArray.append(contentsOf: newResults)
+            
+        } else {
+            // No more items to load, update UI accordingly
+            print("No more items to load.")
+            // You can show a message or hide a loading indicator here
+        }
+        
+        DispatchQueue.main.async {
+            self.appendValues(list: self.hotelSearchResultArray)
+        }
+    }
+    
     
 }

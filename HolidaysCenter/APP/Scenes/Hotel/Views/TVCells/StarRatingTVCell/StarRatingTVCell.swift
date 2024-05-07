@@ -38,6 +38,11 @@ class StarRatingTVCell: TableViewCell {
     func setupUI() {
         titlelbl.textColor = .AppLabelColor
         titlelbl.font = UIFont.OpenSansBold(size: 16)
+        
+        if starRatingInputArray.count > 0 {
+            hotelfiltermodel.starRatingNew = starRatingInputArray
+        }
+        
         setupCV()
     }
     

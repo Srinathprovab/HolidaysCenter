@@ -188,7 +188,7 @@ var amenitiesArray = [String]()
 var nearBylocationsArray = [String]()
 var isfilterApplied = false
 var starRatingFilter = String()
-
+var starRatingInputArray = [String]()
 
 
 
@@ -235,6 +235,7 @@ struct ApiEndpoints {
     static let general_mobileHotelSearch = "general/mobileHotelSearch"
     static let hoteldetails = "hotel/hotel_details_gte/"
     static let hotel_get_Cancellation_new = "hotel/get_Cancellation_new"
+    static let general_search_by_hotel = "general/search_by_hotel"
     
     static let hotelmobilebooking = "hotel/booking"
     static let mobilehotelprebooking = "hotel/pre_booking"
@@ -363,6 +364,7 @@ struct UserDefaultsKeys {
     static var guestcount = "guestcount"
     static var selectPersons = "selectPersons"
     static var kwdprice = "kwdprice"
+    static var starInputString = "starinputstring"
     
 }
 

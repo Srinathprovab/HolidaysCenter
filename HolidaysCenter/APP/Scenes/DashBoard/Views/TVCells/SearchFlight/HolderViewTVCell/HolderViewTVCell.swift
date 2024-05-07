@@ -22,7 +22,7 @@ class HolderViewTVCell: UITableViewCell {
     @IBOutlet weak var locImg1: UIImageView!
     @IBOutlet weak var tolabel: UILabel!
     @IBOutlet weak var toBtn: UIButton!
-
+    
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var swipeImg: UIImageView!
     @IBOutlet weak var swipeBtn: UIButton!
@@ -43,12 +43,11 @@ class HolderViewTVCell: UITableViewCell {
     }
     
     func setupUI() {
-       
+        
         contentView.backgroundColor = .AppHolderViewColor
         setupViews(v: holderView, radius: 4, color: HexColor("#E6E8E7",alpha: 0.20))
         setupLabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .OpenSansRegular(size: 16))
         locImg.image = UIImage(named: "loc")?.withRenderingMode(.alwaysOriginal)
-       // swipeImg.image = UIImage(named: "swap")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
         dropdownimg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppImgColor)
         dropdownimg.isHidden = true
         
@@ -56,15 +55,14 @@ class HolderViewTVCell: UITableViewCell {
         setupLabels(lbl: tolabel, text: "To", textcolor: .AppLabelColor, font: .OpenSansRegular(size: 16))
         locImg1.image = UIImage(named: "loc")?.withRenderingMode(.alwaysOriginal)
         toView.isHidden = true
-        
-        
-//        swipeView.backgroundColor = .AppBtnColor
-//        swipeView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 20)
+       
         swipeBtn.setTitle("", for: .normal)
         swipeBtn.addTarget(self, action: #selector(swapCity(_:)), for: .touchUpInside)
-
+        
         fromBtn.setTitle("", for: .normal)
         toBtn.setTitle("", for: .normal)
+        
+        
     }
     
     func setupViews(v:UIView,radius:CGFloat,color:UIColor) {
@@ -105,20 +103,68 @@ class HolderViewTVCell: UITableViewCell {
     
     
     func setupDropDown() {
+        self.titlelbl.textColor = .SubTitleColor
         dropDown.textColor = .AppLabelColor
         dropDown.direction = .bottom
         dropDown.backgroundColor = .WhiteColor
-        dropDown.anchorView = self.fromBtn
-        dropDown.bottomOffset = CGPoint(x: 0, y: fromBtn.frame.size.height + 10)
+        dropDown.anchorView = self.holderView
+        dropDown.bottomOffset = CGPoint(x: 0, y: holderView.frame.size.height + 10)
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.titlelbl.text = item
             self?.titlelbl.textColor = .AppLabelColor
-            self?.nationalityCode = countrylist[index].iso_country_code ?? ""
-            NotificationCenter.default.post(name: NSNotification.Name("nationalityCode"), object: self?.nationalityCode)
+            
+            starRatingInputArray.removeAll()
+          
+            
+            switch self?.titlelbl.text {
+                
+            case "Select Star":
+                starRatingInputArray.removeAll()
+                break
+                
+                
+            case "1 star to more":
+               
+                for i in 1...5 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "2 star to more":
+                for i in 2...5 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "3 star to more":
+                for i in 3...5 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "4 star to more":
+                for i in 4...5 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "5 star to more":
+                starRatingInputArray.append("5")
+                break
+                
+            default:
+                break
+            }
+            
+            
+            defaults.setValue(item, forKey: UserDefaultsKeys.starInputString)
+            
         }
-
+        
     }
-   
+    
+    
+    
     
     
     @IBAction func didTapONFromBtn(_ sender: Any) {

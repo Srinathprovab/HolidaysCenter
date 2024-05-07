@@ -29,6 +29,8 @@ class BookHotelVC: BaseTableVC {
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name("reload"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(nationalityCode(notification:)), name: NSNotification.Name("nationalityCode"), object: nil)
@@ -193,9 +195,11 @@ class BookHotelVC: BaseTableVC {
         payload["adult"] = adtArray
         payload["child"] = chArray
         
+        if starRatingInputArray.count > 0 {
+            payload["star_rating"] = starRatingInputArray
+        }
         
-        //        {"city":"Kuwait (Kuwait)","hotel_destination":"248","hotel_checkin":"13-03-2024","hotel_checkout":"14-03-2024","rooms":"1","adult":["2"],"child":["0"],"childAge_1":[""],"nationality":"IN","user_id":0,"currency":"USD"}
-        //
+        
         
         
         if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {

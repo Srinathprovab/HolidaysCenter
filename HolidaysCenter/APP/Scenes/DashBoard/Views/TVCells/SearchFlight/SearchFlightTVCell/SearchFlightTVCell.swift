@@ -60,7 +60,7 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     override func updateUI() {
         self.key = cellInfo?.key ?? ""
         if self.key == "hotel" {
-            viewHeight.constant = 350
+            viewHeight.constant = 400
         }else {
             viewHeight.constant = 420
         }
@@ -81,6 +81,7 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     
     func setupTV() {
         
+        
         holderView.backgroundColor = .AppBGcolor
         searchFlightTV.layer.cornerRadius = 10
         searchFlightTV.clipsToBounds = true
@@ -91,6 +92,7 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
         searchFlightTV.register(UINib(nibName: "HolderViewTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
         searchFlightTV.register(UINib(nibName: "DualViewTVCell", bundle: nil), forCellReuseIdentifier: "cell2")
         searchFlightTV.register(UINib(nibName: "HolderViewTVCell", bundle: nil), forCellReuseIdentifier: "cell3")
+        searchFlightTV.register(UINib(nibName: "HolderViewTVCell", bundle: nil), forCellReuseIdentifier: "cell6")
         searchFlightTV.register(UINib(nibName: "HolderViewTVCell", bundle: nil), forCellReuseIdentifier: "cell5")
         searchFlightTV.register(UINib(nibName: "NatinalityTVCell", bundle: nil), forCellReuseIdentifier: "cell55")
         searchFlightTV.register(UINib(nibName: "AdvancedSearchTVCell", bundle: nil), forCellReuseIdentifier: "cell66")
@@ -149,6 +151,11 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     }
     
     
+    @objc func didTapOnSelectStarRatingAction(cell:HolderViewTVCell){
+        
+    }
+    
+    
     @objc func didTapOnSearchHotelsBtn(cell:ButtonTVCell){
         delegate?.didTapOnSearchHotelsBtn(cell: cell)
     }
@@ -198,7 +205,7 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.key == "hotel" {
-            return 5
+            return 6
         }else {
             return 5
         }
@@ -255,11 +262,31 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
                     cell.selectionStyle = .none
                     cell.titlelbl.text = defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Nationality"
                     cell.dropdownimg.isHidden = false
-                    //                    cell.setupDropDown()
-                    //                    cell.dropDown.dataSource = countryNameArray
+                    
                     cell.fromBtn.addTarget(self, action: #selector(didTapOnSelectNationality(cell:)), for: .touchUpInside)
                     cell.swipeView.isHidden = true
                     cell.locImg.image = UIImage(named: "na")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#9C7945"))
+                    
+                    c = cell
+                }
+            }else  if indexPath.row == 4 {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as? HolderViewTVCell {
+                    cell.selectionStyle = .none
+                    cell.titlelbl.text = "Select Star"
+                    cell.dropdownimg.isHidden = false
+                    
+                    cell.setupDropDown()
+                    cell.dropDown.dataSource = ["Select Star","1 star to more","2 star to more","3 star to more","4 star to more","5 star to more"]
+                    
+                    
+                    cell.titlelbl.text = "\(defaults.string(forKey: UserDefaultsKeys.starInputString) ?? "Select Star")"
+                    
+                    
+                    cell.fromBtn.addTarget(self, action: #selector(didTapOnSelectStarRatingAction(cell:)), for: .touchUpInside)
+                    cell.swipeView.isHidden = true
+                    cell.locImg.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#9C7945"))
+                    
+                    
                     
                     c = cell
                 }
@@ -556,7 +583,7 @@ extension SearchFlightTVCell {
         // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
         let selectedDate = cell.depTF.isFirstResponder ? depDatePicker.date : retdepDatePicker.date
         retDatePicker.minimumDate = selectedDate
-
+        
         retDatePicker.preferredDatePickerStyle = .wheels
         
         

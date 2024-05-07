@@ -153,7 +153,9 @@ class ModifyHotelSearchVC: BaseTableVC {
         payload["adult"] = adtArray
         payload["child"] = chArray
         
-     
+        if starRatingInputArray.count > 0 {
+            payload["star_rating"] = starRatingInputArray
+        }
         
         for roomIndex in 0..<totalRooms {
                 if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
