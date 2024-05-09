@@ -159,7 +159,7 @@ extension ViewHotelDetailsVC {
         tablerow.append(TableRow(title:hotelDetails.hotel_details?.name,
                                  subTitle: hotelDetails.hotel_details?.address,
                                  key: "rating",
-                                 characterLimit: Int(hotelDetails.hotel_details?.star_rating ?? 0),
+                                 characterLimit: Int(hotelDetails.hotel_details?.star_rating ?? "0"),
                                  cellType:.RatingWithLabelsTVCell))
         
         

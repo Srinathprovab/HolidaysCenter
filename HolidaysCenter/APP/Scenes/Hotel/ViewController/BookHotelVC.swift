@@ -200,8 +200,6 @@ class BookHotelVC: BaseTableVC {
         }
         
         
-        
-        
         if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
             payload["childAge_1"] = [""]
         }else {

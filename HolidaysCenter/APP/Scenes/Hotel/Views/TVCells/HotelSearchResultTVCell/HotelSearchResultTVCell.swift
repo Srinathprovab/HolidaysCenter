@@ -47,7 +47,20 @@ class HotelSearchResultTVCell: TableViewCell {
         subtitlelbl.text = cellInfo?.subTitle
         ratingView.value = CGFloat(cellInfo?.characterLimit ?? 0)
         kwdlbl.text = cellInfo?.kwdprice
-        hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        
+     //   hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        
+        
+
+        if let imageUrlString = cellInfo?.image, let imageUrl = URL(string: imageUrlString) {
+            hotelImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
+        } else {
+            // Handle case where image URL is nil or invalid
+            hotelImg.image = UIImage(named: "noimg")
+        }
+
+        
+        
         hotelid = cellInfo?.text ?? ""
         resultToken = cellInfo?.buttonTitle ?? ""
         hotel_code = cellInfo?.tempText ?? ""

@@ -40,6 +40,7 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     var hotelSearchResultArray = [HotelSearchResult]()
+    var newhotelSearchResultArray = [HotelSearchResult]()
     var isVcFrom = String()
     var tablerow = [TableRow]()
     let refreshControl = UIRefreshControl()
@@ -93,7 +94,7 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
         mapBtn.addTarget(self, action: #selector(didTapOnMapviewBtn(_:)), for: .touchUpInside)
         filterpBtn.addTarget(self, action: #selector(didTapOnFilterwBtn(_:)), for: .touchUpInside)
         searchBtn.addTarget(self, action: #selector(didTapOnSearchHotelBtnAction(_:)), for: .touchUpInside)
-        searchTFView.isHidden = true
+       // searchTFView.isHidden = true
         setupTF(tf: searchTF)
         
         closeSearchTFBtn.addTarget(self, action: #selector(didTapOnCloseSearchHotelBtnAction(_:)), for: .touchUpInside)
@@ -108,7 +109,7 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
     func setupTF(tf:UITextField) {
         tf.layer.cornerRadius = 6
         tf.font = .OpenSansRegular(size: 14)
-        tf.setLeftPaddingPoints(15)
+        tf.setLeftPaddingPoints(35)
         tf.addTarget(self, action: #selector(editingChanged(_ :)), for: .editingChanged)
     }
     
@@ -322,6 +323,8 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         holderView.isHidden = false
         loderBool = "hotel"
         hideLoadera()
+        
+        
         
         prices.removeAll()
         nearBylocationsArray.removeAll()
@@ -662,20 +665,30 @@ extension HotelSearchResultVC {
     }
     
     func callHotelNameSearchAPI(str:String) {
-        loderBool = "normal"
+        
         self.payload.removeAll()
         self.payload["search_id"] = hsearch_id
         self.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
         self.payload["hotel_name"] = str
-        hotelnamevm?.CALL_GET_HOTEL_NAME_SEARCH_API(dictParam:  self.payload)
+       
+        newhotelSearchResultArray.removeAll()
+        
+        if str == "" || str.isEmpty == true{
+            appendValues(list: hotelSearchResultArray)
+        }else {
+            hotelnamevm?.CALL_GET_HOTEL_NAME_SEARCH_API(dictParam:  self.payload)
+        }
+        
+        
     }
     
     
     func hotelNameSearchDetails(response: HotelListModel) {
         loderBool = "hotel"
+       
         if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
             // Append the new data to the existing data
-            hotelSearchResultArray.append(contentsOf: newResults)
+            newhotelSearchResultArray.append(contentsOf: newResults)
             
         } else {
             // No more items to load, update UI accordingly
@@ -684,8 +697,21 @@ extension HotelSearchResultVC {
         }
         
         DispatchQueue.main.async {
-            self.appendValues(list: self.hotelSearchResultArray)
+            self.appendValues(list: self.newhotelSearchResultArray)
         }
+        
+        
+    }
+    
+    
+     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+         if scrollView.contentOffset.y <= 0 {
+             // Show topView when scrolling to the top
+             self.searchTFView.isHidden = false
+         } else {
+             // Hide topView when scrolling away from the top
+             self.searchTFView.isHidden = true
+         }
     }
     
     

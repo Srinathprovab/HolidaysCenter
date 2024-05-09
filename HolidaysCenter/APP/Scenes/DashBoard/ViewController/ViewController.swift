@@ -13,6 +13,7 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -121,4 +122,51 @@ extension ViewController {
             UserDefaults.standard.set(true, forKey: "ExecuteOnce")
         }
     }
+    
+    
+    
+    
 }
+
+
+class MySingleton {
+    // Static constant instance of the singleton class
+    static let shared = MySingleton()
+    
+    // Private initializer to prevent external instantiation
+    private init() {}
+    
+    // Add any properties and methods you need for your singleton class
+    var someProperty: String = "Hello"
+    
+    func loadImageFromURL(url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                // Handle network error
+                completion(nil, error)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                // Handle invalid response
+                completion(nil, NSError(domain: "InvalidResponse", code: 0, userInfo: nil))
+                return
+            }
+            
+            if httpResponse.statusCode == 200 {
+                // Image retrieved successfully
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image, nil)
+                } else {
+                    completion(nil, NSError(domain: "InvalidData", code: 0, userInfo: nil))
+                }
+            } else {
+                // Handle HTTP error (e.g., 404 Not Found)
+                completion(nil, NSError(domain: "HTTPError", code: httpResponse.statusCode, userInfo: nil))
+            }
+        }.resume()
+    }
+    
+}
+
+

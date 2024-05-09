@@ -49,6 +49,12 @@ class StarRatingTVCell: TableViewCell {
     
     
     
+    
+}
+
+extension StarRatingTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    
     func setupCV() {
         
         
@@ -71,9 +77,8 @@ class StarRatingTVCell: TableViewCell {
         starratingCV.allowsMultipleSelection = true
         
     }
-}
-
-extension StarRatingTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return array.count
     }
