@@ -40,6 +40,7 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     var hotelSearchResultArray = [HotelSearchResult]()
+    var hotelSearchResultArray1 = [HotelSearchResult]()
     var newhotelSearchResultArray = [HotelSearchResult]()
     var isVcFrom = String()
     var tablerow = [TableRow]()
@@ -308,6 +309,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
                 // holderView.isHidden = true
             }else {
                 DispatchQueue.main.async {
+                    self.hotelSearchResultArray1 = self.hotelSearchResultArray
                     self.appendValues(list: self.hotelSearchResultArray)
                 }
             }
@@ -671,11 +673,16 @@ extension HotelSearchResultVC {
         self.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
         self.payload["hotel_name"] = str
        
+        
+        hotelSearchResultArray.removeAll()
         newhotelSearchResultArray.removeAll()
         
         if str == "" || str.isEmpty == true{
+            isFetchingData = false
+            hotelSearchResultArray = hotelSearchResultArray1
             appendValues(list: hotelSearchResultArray)
         }else {
+            isFetchingData = true
             hotelnamevm?.CALL_GET_HOTEL_NAME_SEARCH_API(dictParam:  self.payload)
         }
         
