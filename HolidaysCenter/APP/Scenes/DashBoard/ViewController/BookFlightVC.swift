@@ -35,6 +35,8 @@ class BookFlightVC: BaseTableVC {
     var isVcFrom = String()
     var tablerow = [TableRow]()
     var vm:CountryListViewModel?
+    let formatter = DateFormatter()
+   
     static var newInstance: BookFlightVC? {
         let storyboard = UIStoryboard(name: Storyboard.Main.name,
                                       bundle: nil)
@@ -54,6 +56,8 @@ class BookFlightVC: BaseTableVC {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        formatter.dateFormat = "dd-MM-yyyy"
         
         NotificationCenter.default.addObserver(self, selector: #selector(offline), name: NSNotification.Name("offline"), object: nil)
         
@@ -413,6 +417,12 @@ class BookFlightVC: BaseTableVC {
                 showToast(message: "Please Select From City")
             }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "" {
                 showToast(message: "Please Select To City")
+            }else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.calDepDate),
+                      let checkoutDate = defaults.string(forKey: UserDefaultsKeys.calRetDate),
+                      let checkin = formatter.date(from: checkinDate),
+                      let checkout = formatter.date(from: checkoutDate),
+                      checkin > checkout {
+                showToast(message: "Invalid Date")
             }
             //        else if defaults.string(forKey:UserDefaultsKeys.toCity) == defaults.string(forKey:UserDefaultsKeys.fromCity) {
             //            showToast(message: "Please Select Different Citys")
@@ -634,14 +644,12 @@ class BookFlightVC: BaseTableVC {
         
         let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
         if journyType == "oneway" {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy"
+           
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
            
         }else {
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy"
+          
             defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
             defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
             

@@ -38,7 +38,7 @@ extension UIViewController: BaseViewModelProtocol {
     func showToast(message: String) {
         var style = ToastStyle()
         style.messageAlignment = .center
-        style.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        style.backgroundColor = UIColor.AppBackgroundColor
         style.messageFont = UIFont.OswaldSemiBold(size: 16)
         style.messageColor = .BtnTitleColor
         

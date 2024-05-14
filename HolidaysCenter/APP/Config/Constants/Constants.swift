@@ -93,6 +93,7 @@ var connectingAirportA = [String]()
 var departureTimeA = [String]()
 var arrivalTimeA = [String]()
 var startRatingArray = [String]()
+var isFirstCheckinSelection = true
 
 //Price Syummery
 var AdultsTotalPrice = String()

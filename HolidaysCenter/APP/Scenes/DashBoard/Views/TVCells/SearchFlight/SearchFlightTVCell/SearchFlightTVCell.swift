@@ -505,9 +505,6 @@ extension SearchFlightTVCell {
         
         
         
-        
-        
-        
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -541,10 +538,6 @@ extension SearchFlightTVCell {
             if let checkinDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "")  {
                 retdepDatePicker.date = checkinDate
                 
-                
-                if defaults.string(forKey: UserDefaultsKeys.checkin) == nil {
-                    retdepDatePicker.date = checkinDate
-                }
             }
             
         }else {
@@ -592,9 +585,11 @@ extension SearchFlightTVCell {
         
         
         if key == "hotel" {
+            
             if let checkoutDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "") {
                 retDatePicker.date = checkoutDate
             }
+            
         }else {
             
             

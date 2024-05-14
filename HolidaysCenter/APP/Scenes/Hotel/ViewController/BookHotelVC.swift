@@ -19,6 +19,7 @@ class BookHotelVC: BaseTableVC {
     var isVcFrom = String()
     var tablerow = [TableRow]()
     var payload = [String:Any]()
+    let formatter = DateFormatter()
     
     static var newInstance: BookHotelVC? {
         let storyboard = UIStoryboard(name: Storyboard.Hotel.name,
@@ -30,6 +31,7 @@ class BookHotelVC: BaseTableVC {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        formatter.dateFormat = "dd-MM-yyyy"
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name("reload"), object: nil)
         
@@ -240,9 +242,15 @@ class BookHotelVC: BaseTableVC {
             showToast(message: "Enter Checkout Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
+        }else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+                  let checkin = formatter.date(from: checkinDate),
+                  let checkout = formatter.date(from: checkoutDate),
+                  checkin > checkout {
+            showToast(message: "Invalid Date")
         }else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
             showToast(message: "Add Rooms For Booking")
-        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Nationality" {
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
         }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false {
             showToast(message: "Invalid Date")
@@ -285,10 +293,10 @@ class BookHotelVC: BaseTableVC {
     override func donedatePicker(cell:SearchFlightTVCell){
         
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        
         defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.checkin)
         defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.checkout)
+        
         
         commonTableView.reloadData()
         self.view.endEditing(true)
@@ -309,33 +317,33 @@ class BookHotelVC: BaseTableVC {
     }
     
     func openWhatsApp1() {
-          // Replace with the phone number you want to open chat with
-          
-          // Check if WhatsApp is installed
-          guard let whatsappURL = URL(string: "whatsapp://send?phone=\(phoneNumber)") else {
-              return
-          }
-
-          if UIApplication.shared.canOpenURL(whatsappURL) {
-              // Open WhatsApp with the specified phone number
-              UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
-          } else {
-              // WhatsApp is not installed, handle accordingly (e.g., show alert)
-              print("WhatsApp is not installed.")
-          }
-      }
+        // Replace with the phone number you want to open chat with
+        
+        // Check if WhatsApp is installed
+        guard let whatsappURL = URL(string: "whatsapp://send?phone=\(phoneNumber)") else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(whatsappURL) {
+            // Open WhatsApp with the specified phone number
+            UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+        } else {
+            // WhatsApp is not installed, handle accordingly (e.g., show alert)
+            print("WhatsApp is not installed.")
+        }
+    }
     
-     func openWhatsApp() {
-            let urlString = "https://wa.me/\(phoneNumber)"
-            if let whatsappURL = URL(string: urlString) {
-                if UIApplication.shared.canOpenURL(whatsappURL) {
-                    UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
-                } else {
-                    print("WhatsApp is not installed.")
-                    // Handle case where WhatsApp is not installed
-                }
+    func openWhatsApp() {
+        let urlString = "https://wa.me/\(phoneNumber)"
+        if let whatsappURL = URL(string: urlString) {
+            if UIApplication.shared.canOpenURL(whatsappURL) {
+                UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+            } else {
+                print("WhatsApp is not installed.")
+                // Handle case where WhatsApp is not installed
             }
         }
+    }
     
 }
 
