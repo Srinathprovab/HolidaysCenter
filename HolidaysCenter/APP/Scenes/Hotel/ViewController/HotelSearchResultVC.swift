@@ -21,12 +21,12 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var filterImg: UIImageView!
     @IBOutlet weak var filterpBtn: UIButton!
-    
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTFView: UIView!
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var closeSearchTFBtn: UIButton!
+    
     
     
     var bookingSourceDataArrayCount = Int()
@@ -104,6 +104,7 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
                                          "HotelSearchResultTVCell"])
         
         
+        
     }
     
     
@@ -113,8 +114,6 @@ class HotelSearchResultVC: BaseTableVC, HotelNameSearchVMDelegatr {
         tf.setLeftPaddingPoints(35)
         tf.addTarget(self, action: #selector(editingChanged(_ :)), for: .editingChanged)
     }
-    
-    
     
     
     func setupLabels(lbl:UILabel,text:String,textcolor:UIColor,font:UIFont) {
@@ -236,7 +235,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         
         nav.citylbl.text = response.search_params?.city
         nav.datelbl.text = "CheckIn - \(convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "" , f1: "dd-MM-yyyy", f2: "dd MMM")) & CheckOut - \(convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "dd MMM"))"
-        nav.travellerlbl.text = "Guests- \(defaults.string(forKey: UserDefaultsKeys.guestcount) ?? "1") / Room - \(response.search_params?.rooms ?? "")"
+        nav.travellerlbl.text = "Guests- \(defaults.string(forKey: UserDefaultsKeys.guestcount) ?? "1") / Room - \(response.search_params?.rooms ?? "") / \(totalNoofNights)"
         
         
         DispatchQueue.main.async {
@@ -384,6 +383,9 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         
         if hotelList.count == 0 {
             tablerow.removeAll()
+            
+            setupLabels(lbl: subtitlelbl, text: "0 Hotels Found", textcolor: .BtnTitleColor, font: .OpenSansRegular(size: 12))
+            
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
             commonTVData = tablerow
             commonTableView.reloadData()

@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 100 // Adjust this value as needed
-        GMSServices.provideAPIKey("AIzaSyB7uwDF-FDLdQDHZs621xFiVkIgo7sPmoE")
+     //   GMSServices.provideAPIKey("AIzaSyB7uwDF-FDLdQDHZs621xFiVkIgo7sPmoE")
+        GMSServices.provideAPIKey("AIzaSyAfgpJ36EyQji0KETVN-UuooOpATS_zgb0")
         
         return true
     }

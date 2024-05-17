@@ -133,8 +133,10 @@ extension FlightLoderVC {
        
         if nights == 0 || nights == 1 {
             self.nightslbl.text = "\(nights) Night"
+            totalNoofNights =   self.nightslbl.text ?? ""
         }else {
             self.nightslbl.text = "\(nights) Nights"
+            totalNoofNights =   self.nightslbl.text ?? ""
         }
 
         loadGifFrames()

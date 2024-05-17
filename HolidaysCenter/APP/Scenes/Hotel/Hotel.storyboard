@@ -52,7 +52,7 @@
                                         <rect key="frame" x="244" y="796" width="150" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help ?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-ew-H0W">
-                                                <rect key="frame" x="55" y="17" width="90" height="16.5"/>
+                                                <rect key="frame" x="55" y="15" width="90" height="20"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -452,33 +452,33 @@
                                                 <rect key="frame" x="20" y="358" width="374" height="180"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Updation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18m-nu-lLJ">
-                                                        <rect key="frame" x="15" y="10" width="344" height="19"/>
+                                                        <rect key="frame" x="15" y="10" width="344" height="22.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <color key="textColor" name="AppLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJ0-dq-JKe">
-                                                        <rect key="frame" x="0.0" y="39" width="374" height="1"/>
+                                                        <rect key="frame" x="0.0" y="42.5" width="374" height="1"/>
                                                         <color key="backgroundColor" name="AppBorderColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="W7v-kd-4iz"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room price has updated, do you want to continue" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjX-E2-oGK">
-                                                        <rect key="frame" x="15" y="55" width="344" height="37.5"/>
+                                                        <rect key="frame" x="15" y="58.5" width="344" height="45"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <color key="textColor" name="AppLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdg-Re-QpT">
-                                                        <rect key="frame" x="0.0" y="107.5" width="374" height="1"/>
+                                                        <rect key="frame" x="0.0" y="118.5" width="374" height="1"/>
                                                         <color key="backgroundColor" name="AppBorderColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="QeJ-mm-bFT"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baD-gj-WVK">
-                                                        <rect key="frame" x="309" y="123.5" width="50" height="30"/>
+                                                        <rect key="frame" x="309" y="134.5" width="50" height="33"/>
                                                         <color key="backgroundColor" name="AppBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="TRq-5s-dMH"/>
@@ -493,7 +493,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9z-yf-jo2">
-                                                        <rect key="frame" x="249" y="123.5" width="50" height="30"/>
+                                                        <rect key="frame" x="249" y="134.5" width="50" height="33"/>
                                                         <color key="backgroundColor" name="AppBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="x7Q-ac-srI"/>
@@ -619,7 +619,7 @@
                                                 <rect key="frame" x="50" y="27" width="314" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOb-x1-FR8">
-                                                        <rect key="frame" x="133.5" y="11.5" width="47.5" height="23.5"/>
+                                                        <rect key="frame" x="131" y="9.5" width="52.5" height="27.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                                         <color key="textColor" name="BtnTitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -817,7 +817,7 @@
                                 <rect key="frame" x="87" y="383" width="240" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Cancellation Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAj-Yg-0Xp">
-                                        <rect key="frame" x="10" y="10" width="136.5" height="22"/>
+                                        <rect key="frame" x="10" y="10" width="151" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="AppLabelColor"/>
                                         <nil key="highlightedColor"/>
@@ -833,7 +833,7 @@
                                         <rect key="frame" x="170" y="100" width="60" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEk-ti-Ncu">
-                                                <rect key="frame" x="14.5" y="5.5" width="31" height="14"/>
+                                                <rect key="frame" x="14.5" y="4.5" width="31.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" name="BtnTitleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -977,20 +977,50 @@
             </objects>
             <point key="canvasLocation" x="2691" y="1"/>
         </scene>
+        <!--Map Hotel InfoVC-->
+        <scene sceneID="UwO-Zo-fhx">
+            <objects>
+                <viewController storyboardIdentifier="MapHotelInfoVC" id="0iZ-SF-k8G" customClass="MapHotelInfoVC" customModule="HolidaysCenter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sgf-7B-8xj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ri7-lq-RrZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="miT-xF-bFv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ri7-lq-RrZ" secondAttribute="bottom" id="3J8-AE-Cjo"/>
+                            <constraint firstItem="Ri7-lq-RrZ" firstAttribute="top" secondItem="Sgf-7B-8xj" secondAttribute="top" id="9q2-Ka-o2e"/>
+                            <constraint firstItem="Ri7-lq-RrZ" firstAttribute="leading" secondItem="miT-xF-bFv" secondAttribute="leading" id="mvb-dD-miE"/>
+                            <constraint firstItem="miT-xF-bFv" firstAttribute="trailing" secondItem="Ri7-lq-RrZ" secondAttribute="trailing" id="r5G-vt-oEL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="holderView" destination="Ri7-lq-RrZ" id="iCZ-te-Hn4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cF9-Xh-7Ig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2743" y="702"/>
+        </scene>
     </scenes>
     <resources>
         <image name="close" width="17" height="17"/>
         <image name="filter" width="20" height="20"/>
         <image name="leftarrow" width="20" height="20"/>
         <image name="loc1" width="14" height="18"/>
-        <image name="magnifyingglass" catalog="system" width="32" height="32"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="search" width="24" height="24"/>
         <image name="whatsapp" width="48" height="48"/>
         <namedColor name="AppBackgroundColor">
             <color red="0.0" green="0.37599998712539673" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppBorderColor">
-            <color red="0.90200001001358032" green="0.9100000262260437" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppBtnColor">
             <color red="0.0" green="0.37599998712539673" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

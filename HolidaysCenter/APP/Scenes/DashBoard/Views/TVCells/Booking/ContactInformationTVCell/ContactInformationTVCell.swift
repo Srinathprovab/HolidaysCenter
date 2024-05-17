@@ -101,7 +101,17 @@ class ContactInformationTVCell: TableViewCell {
         
         
         setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16))
-        setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address.", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        }else {
+            setupLabels(lbl: subTitlelbl, text: "Your confirmation mail will be sent to your registered email address.", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        }
+        
+        subTitlelbl.numberOfLines = 0
+        
         //    setupLabels(lbl: countryCodeLbl, text: "+965", textcolor: .SubTitleColor, font: .LatoRegular(size: 16))
         
         countryCodeLbl.isHidden = true
@@ -148,7 +158,7 @@ class ContactInformationTVCell: TableViewCell {
         v.backgroundColor = color
         v.layer.cornerRadius = radius
         v.clipsToBounds = true
-        v.layer.borderWidth = 0.4
+        v.layer.borderWidth = 1
         v.layer.borderColor = UIColor.AppBorderColor.cgColor
     }
     

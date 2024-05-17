@@ -12,6 +12,7 @@
 		65176D912BB69C8600283ED4 /* WhatsappVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65176D902BB69C8600283ED4 /* WhatsappVC.swift */; };
 		658CD65E2BBBD9F300C93BAC /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */; };
 		65A1A60A2BE9FB0B0012C65D /* HotelNameSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A1A6092BE9FB0B0012C65D /* HotelNameSearchVM.swift */; };
+		65E892E12BF61C8B00DFC86A /* MapHotelInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E892E02BF61C8B00DFC86A /* MapHotelInfoVC.swift */; };
 		65F212202BA186EA00D04274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2121F2BA186EA00D04274 /* AppDelegate.swift */; };
 		65F212222BA186EA00D04274 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F212212BA186EA00D04274 /* SceneDelegate.swift */; };
 		65F212292BA186EC00D04274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F212282BA186EC00D04274 /* Assets.xcassets */; };
@@ -472,6 +473,7 @@
 		65176D902BB69C8600283ED4 /* WhatsappVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappVC.swift; sourceTree = "<group>"; };
 		658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		65A1A6092BE9FB0B0012C65D /* HotelNameSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelNameSearchVM.swift; sourceTree = "<group>"; };
+		65E892E02BF61C8B00DFC86A /* MapHotelInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHotelInfoVC.swift; sourceTree = "<group>"; };
 		65F2121C2BA186EA00D04274 /* HolidaysCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolidaysCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F2121F2BA186EA00D04274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F212212BA186EA00D04274 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1190,6 +1192,7 @@
 				65F2128C2BA1871D00D04274 /* HotelSearchResultVC.swift */,
 				65F2128D2BA1871D00D04274 /* AddRoomsVCViewController.swift */,
 				658CD65D2BBBD9F300C93BAC /* MapViewVC.swift */,
+				65E892E02BF61C8B00DFC86A /* MapHotelInfoVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3456,6 +3459,7 @@
 				65F215F42BA1871F00D04274 /* ContactusModel.swift in Sources */,
 				65F214B52BA1871F00D04274 /* GetCancellationViewModel.swift in Sources */,
 				65F216562BA1871F00D04274 /* BaseViewModelProtocol.swift in Sources */,
+				65E892E12BF61C8B00DFC86A /* MapHotelInfoVC.swift in Sources */,
 				65F2156B2BA1871F00D04274 /* ViewFlightDetailsVC.swift in Sources */,
 				65F214D82BA1871F00D04274 /* CancellationPolicyPopupVC.swift in Sources */,
 				65F215402BA1871F00D04274 /* Fare.swift in Sources */,
@@ -3812,6 +3816,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HolidaysCenter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Personalized hotel recommendations and nearby options for a better travel experience.";
@@ -3826,7 +3831,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HolidaysCenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3852,6 +3857,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HolidaysCenter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Uninterrupted access to personalized hotel suggestions, both in-app and in the background, for optimized travel planning.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Continuous personalized hotel suggestions and nearby amenities, even in the background, for seamless travel information access.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Personalized hotel recommendations and nearby options for a better travel experience.";
@@ -3866,7 +3872,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HolidaysCenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

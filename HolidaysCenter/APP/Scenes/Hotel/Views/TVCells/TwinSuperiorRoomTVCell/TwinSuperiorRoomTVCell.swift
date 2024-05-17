@@ -16,7 +16,6 @@ class TwinSuperiorRoomTVCell: UITableViewCell {
     
     
     @IBOutlet weak var holderView: UIView!
-    @IBOutlet weak var roomImg: UIImageView!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var cancellationPoloicyBtn: UIButton!
     @IBOutlet weak var subtitlelbl: UILabel!
@@ -58,7 +57,6 @@ class TwinSuperiorRoomTVCell: UITableViewCell {
     func setupUI() {
         contentView.backgroundColor = .WhiteColor
         holderView.backgroundColor = .WhiteColor
-        roomImg.image = UIImage(named: "hotel1")
         radioImg.image = UIImage(named: "radioUnselected")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppImgColor)
         cancellationPoloicyBtn.setTitle("", for: .normal)
         

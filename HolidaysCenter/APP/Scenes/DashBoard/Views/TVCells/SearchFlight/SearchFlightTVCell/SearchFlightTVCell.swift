@@ -276,7 +276,7 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
                     cell.dropdownimg.isHidden = false
                     
                     cell.setupDropDown()
-                    cell.dropDown.dataSource = ["Select Star","1 star to more","2 star to more","3 star to more","4 star to more","5 star to more"]
+                    cell.dropDown.dataSource = ["Select Star","1 star to less","2 star to less","3 star to less","4 star to less","5 star to less","1 star to more","2 star to more","3 star to more","4 star to more","5 star to more"]
                     
                     
                     cell.titlelbl.text = "\(defaults.string(forKey: UserDefaultsKeys.starInputString) ?? "Select Star")"

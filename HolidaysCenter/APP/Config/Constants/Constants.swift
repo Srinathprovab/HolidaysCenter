@@ -94,6 +94,7 @@ var departureTimeA = [String]()
 var arrivalTimeA = [String]()
 var startRatingArray = [String]()
 var isFirstCheckinSelection = true
+var totalNoofNights = String()
 
 //Price Syummery
 var AdultsTotalPrice = String()

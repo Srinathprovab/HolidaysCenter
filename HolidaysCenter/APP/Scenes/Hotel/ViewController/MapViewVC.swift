@@ -19,7 +19,7 @@ struct MapModel {
 
 
 
-class MapViewVC: UIViewController, CLLocationManagerDelegate {
+class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     
     @IBOutlet weak var backButton: UIButton!
@@ -48,6 +48,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     
     func setupUI() {
         
+        
         self.googleMapView.backgroundColor = .clear
         backButton.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
         
@@ -68,6 +69,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
             // Initialize the GMSMapView with the camera and frame
             let gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
             
+            gmsView.delegate = self
             // Set the mapView as googleMapView's subview
             googleMapView.addSubview(gmsView)
             
@@ -77,39 +79,39 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation() // You may want to stop updates after you have the user's location
         }
     }
-
-    
- 
     
     
-    func addMarkersToMap(_ mapView: GMSMapView) {
-        
-        for mapModel in mapModelArray {
-            if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
-                // Create and configure markers based on the mapModel data
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                marker.title = mapModel.hotelname
-                // Customize the marker as needed
-                
-                // Create a custom marker icon with an image
-                if let markerImage = UIImage(named: "mapicon") {
-                    let markerView = UIImageView(image: markerImage)
-                    marker.iconView = markerView
-                } else {
-                    print("Error: Marker image not found or is nil.")
-                }
-                
-                // Add the marker to the map
-                marker.map = mapView
-                
-                mapView.selectedMarker = marker
-                
-            } else {
-                print("Error: Invalid latitude or longitude values in mapModel.")
-            }
-        }
-    }
+    
+    
+    
+    //    func addMarkersToMap(_ mapView: GMSMapView) {
+    //
+    //        for mapModel in mapModelArray {
+    //            if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
+    //                // Create and configure markers based on the mapModel data
+    //                let marker = GMSMarker()
+    //                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    //                marker.title = mapModel.hotelname
+    //                // Customize the marker as needed
+    //
+    //                // Create a custom marker icon with an image
+    //                if let markerImage = UIImage(named: "mapicon") {
+    //                    let markerView = UIImageView(image: markerImage)
+    //                    marker.iconView = markerView
+    //                } else {
+    //                    print("Error: Marker image not found or is nil.")
+    //                }
+    //
+    //                // Add the marker to the map
+    //                marker.map = mapView
+    //
+    //                mapView.selectedMarker = marker
+    //
+    //            } else {
+    //                print("Error: Invalid latitude or longitude values in mapModel.")
+    //            }
+    //        }
+    //    }
     
     
     @objc func backbtnAction() {
@@ -121,4 +123,64 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
 }
 
 
+
+
+// Implementing GMSMapViewDelegate
+extension MapViewVC: GMSMapViewDelegate {
+    
+    
+    func addMarkersToMap(_ mapView: GMSMapView) {
+        for mapModel in mapModelArray {
+            if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
+                // Create and configure markers based on the mapModel data
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                marker.title = mapModel.hotelname
+                // Assign a custom identifier to the marker
+                marker.userData = mapModel // You can assign any unique identifier here
+                
+                // Create a custom marker icon with an image
+                if let markerImage = UIImage(named: "mapicon") {
+                    let markerView = UIImageView(image: markerImage)
+                    marker.iconView = markerView
+                } else {
+                    print("Error: Marker image not found or is nil.")
+                }
+                
+                // Add the marker to the map
+                marker.map = mapView
+            } else {
+                print("Error: Invalid latitude or longitude values in mapModel.")
+            }
+        }
+    }
+    
+    
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        // This method will be called when a marker is tapped.
+        // Here, you can show your popover view controller.
+        
+        // Example:
+        if let mapModel = marker.userData as? MapModel {
+             let popVC = MapHotelInfoVC()
+            
+            popVC.modalPresentationStyle = .popover
+            popVC.mapModel = mapModel
+            
+            var popOverVC = popVC.popoverPresentationController
+            popOverVC?.delegate = self
+           
+            popOverVC?.sourceView = marker.iconView
+          //  popOverVC?.sourceRect = marker.iconView
+            popVC.preferredContentSize = CGSize(width: 80, height: 80)
+            
+            
+            self.present(popVC, animated: true)
+        }
+        
+        return true
+    }
+    
+}
 

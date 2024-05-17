@@ -106,6 +106,8 @@ class HotelSearchResultTVCell: TableViewCell {
         delegate?.didTapOnDetailsBtn(cell: self)
     }
     
+    
+    
     func setupLabels(lbl:UILabel,text:String,textcolor:UIColor,font:UIFont) {
         lbl.text = text
         lbl.textColor = textcolor

@@ -123,6 +123,36 @@ class HolderViewTVCell: UITableViewCell {
                 break
                 
                 
+            case "1 star to less":
+                starRatingInputArray.append("1")
+                break
+                
+            case "2 star to less":
+                for i in 1...2 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "3 star to less":
+                for i in 1...3 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "4 star to less":
+                for i in 1...4 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+            case "5 star to less":
+                for i in 1...5 {
+                    starRatingInputArray.append("\(i)")
+                }
+                break
+                
+                
+                
             case "1 star to more":
                
                 for i in 1...5 {
