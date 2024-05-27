@@ -107,15 +107,26 @@
                                 <color key="textColor" red="1" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s06-x8-EiJ">
-                                <rect key="frame" x="427" y="65" width="38" height="16.5"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
-                                <color key="textColor" name="AppLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-lt-v15">
-                                <rect key="frame" x="427" y="81.5" width="38" height="16.5"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1A7-oF-oYQ">
+                                <rect key="frame" x="387" y="62" width="78" height="16.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s06-x8-EiJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                        <color key="textColor" name="AppLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180.00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-lt-v15">
+                                        <rect key="frame" x="40" y="0.0" width="38" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                        <color key="textColor" name="AppLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Per Night" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWe-90-cwe">
+                                <rect key="frame" x="387" y="80.5" width="78" height="11"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="8"/>
                                 <color key="textColor" name="AppLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -123,22 +134,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BNx-AX-vFI" firstAttribute="centerY" secondItem="Tt7-sa-xKz" secondAttribute="centerY" id="0P2-JR-AhR"/>
+                            <constraint firstAttribute="trailing" secondItem="1A7-oF-oYQ" secondAttribute="trailing" constant="10" id="3UD-Lc-17y"/>
                             <constraint firstItem="bqs-bK-FvC" firstAttribute="leading" secondItem="UnW-a5-aIq" secondAttribute="leading" id="4K9-Wi-iQw"/>
                             <constraint firstItem="sZS-cu-D3F" firstAttribute="leading" secondItem="Tt7-sa-xKz" secondAttribute="leading" constant="8" id="4eP-wn-9HQ"/>
-                            <constraint firstAttribute="trailing" secondItem="s06-x8-EiJ" secondAttribute="trailing" constant="10" id="5Wy-2E-Ufg"/>
                             <constraint firstItem="CFZ-nm-Vmj" firstAttribute="leading" secondItem="sZS-cu-D3F" secondAttribute="trailing" constant="5" id="7Od-Qz-ga0"/>
                             <constraint firstItem="eUv-fj-OgA" firstAttribute="leading" secondItem="sZS-cu-D3F" secondAttribute="leading" id="A2F-uN-r6R"/>
                             <constraint firstItem="sZS-cu-D3F" firstAttribute="top" secondItem="Tt7-sa-xKz" secondAttribute="top" constant="10" id="BDH-wM-wAL"/>
                             <constraint firstItem="bqs-bK-FvC" firstAttribute="top" secondItem="UnW-a5-aIq" secondAttribute="bottom" constant="5.5" id="BHx-hV-8Q7"/>
-                            <constraint firstAttribute="trailing" secondItem="PMx-lt-v15" secondAttribute="trailing" constant="10" id="F08-sS-KMK"/>
                             <constraint firstItem="UnW-a5-aIq" firstAttribute="top" secondItem="inI-iO-nd6" secondAttribute="bottom" constant="5" id="IAV-bl-zB9"/>
-                            <constraint firstItem="s06-x8-EiJ" firstAttribute="leading" secondItem="PMx-lt-v15" secondAttribute="leading" id="O1k-BC-FTk"/>
+                            <constraint firstAttribute="trailing" secondItem="sWe-90-cwe" secondAttribute="trailing" constant="10" id="Jkg-Ul-E74"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="Pai-Q3-aQG"/>
                             <constraint firstItem="UnW-a5-aIq" firstAttribute="leading" secondItem="eUv-fj-OgA" secondAttribute="leading" id="ZIt-Fg-FnC"/>
                             <constraint firstAttribute="trailing" secondItem="CFZ-nm-Vmj" secondAttribute="trailing" constant="60" id="ZcS-Lq-gQN"/>
-                            <constraint firstItem="PMx-lt-v15" firstAttribute="top" secondItem="s06-x8-EiJ" secondAttribute="bottom" id="cgP-ix-L4Q"/>
-                            <constraint firstItem="s06-x8-EiJ" firstAttribute="top" secondItem="BNx-AX-vFI" secondAttribute="bottom" constant="5" id="dhW-fI-ZaL"/>
+                            <constraint firstItem="sWe-90-cwe" firstAttribute="top" secondItem="1A7-oF-oYQ" secondAttribute="bottom" constant="2" id="blO-L8-WhX"/>
+                            <constraint firstItem="sWe-90-cwe" firstAttribute="leading" secondItem="s06-x8-EiJ" secondAttribute="leading" id="gFZ-uW-QoE"/>
                             <constraint firstItem="inI-iO-nd6" firstAttribute="leading" secondItem="eUv-fj-OgA" secondAttribute="trailing" constant="4" id="icD-m4-Mzy"/>
+                            <constraint firstItem="1A7-oF-oYQ" firstAttribute="top" secondItem="BNx-AX-vFI" secondAttribute="bottom" constant="2" id="mcJ-rG-NYw"/>
                             <constraint firstAttribute="trailing" secondItem="BNx-AX-vFI" secondAttribute="trailing" constant="10" id="p4U-YL-M2H"/>
                             <constraint firstItem="inI-iO-nd6" firstAttribute="centerY" secondItem="eUv-fj-OgA" secondAttribute="centerY" id="rjX-fr-7JL"/>
                             <constraint firstItem="inI-iO-nd6" firstAttribute="top" secondItem="CFZ-nm-Vmj" secondAttribute="bottom" constant="4" id="uWs-PU-QVv"/>
