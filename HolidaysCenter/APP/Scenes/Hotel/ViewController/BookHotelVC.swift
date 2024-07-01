@@ -252,7 +252,7 @@ class BookHotelVC: BaseTableVC {
             showToast(message: "Add Rooms For Booking")
         }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
-        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false {
+        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false ||   checkDepartureAndReturnDates(payload, p1: "hotel_checkout", p2: "hotel_checkin") == false{
             showToast(message: "Invalid Date")
         }else {
             
@@ -276,6 +276,7 @@ class BookHotelVC: BaseTableVC {
     
     
     func gotoSearchHotelsResultVC(){
+        defaults.setValue(starRatingInputArray, forKey: UserDefaultsKeys.starRatingInputArray)
         loderBool = "hotel"
         defaults.set(false, forKey: "hoteltfilteronce")
         guard let vc = HotelSearchResultVC.newInstance.self else {return}
@@ -296,6 +297,7 @@ class BookHotelVC: BaseTableVC {
         
         defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.checkin)
         defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.checkout)
+        
         
         
         commonTableView.reloadData()

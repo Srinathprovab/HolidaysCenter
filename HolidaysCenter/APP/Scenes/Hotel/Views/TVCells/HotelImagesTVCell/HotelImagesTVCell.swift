@@ -39,25 +39,31 @@ class HotelImagesTVCell: TableViewCell {
         }
        
         
-        if cellInfo?.image?.isEmpty == true || cellInfo?.image == nil {
-            self.hotelImg.image = UIImage(named: "noimg")
-        }else {
-            self.hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""),placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-            
-            
-//            // Assuming mg is a UIImageView instance
-//            hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""),
-//                            placeholderImage: UIImage(named: "placeholder.png"),
-//                            completed: { (image, error, cacheType, imageURL) in
-//                
-//                if let error = error {
-//                    // Handle error, image couldn't be loaded
-//                    print("Error loading image: \(error.localizedDescription)")
-//                    // Set your placeholder image or default image here
-//                    self.hotelImg.image = UIImage(named: "noimage1")
-//                }
-//            })
-        }
+//        if cellInfo?.image?.isEmpty == true || cellInfo?.image == nil {
+//            self.hotelImg.image = UIImage(named: "noimg")
+//        }else {
+//            self.hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""),placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            
+//            
+//
+//        }
+        
+        
+        hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""),
+                                                 placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            // Handle error loading image
+                            print("Error loading banner image: \(error.localizedDescription)")
+                            // Check if the error is due to a 404 Not Found response
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                // Set placeholder image for 404 error
+                                self.hotelImg.image = UIImage(named: "noimage")
+                            } else {
+                                // Set placeholder image for other errors
+                                self.hotelImg.image = UIImage(named: "noimage")
+                            }
+                        }
+                    })
         
         hotelImagesCV.reloadData()
     }
@@ -108,7 +114,24 @@ extension HotelImagesTVCell:UICollectionViewDelegate,UICollectionViewDataSource 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImageCVCell {
             cell.hotelImg.image = UIImage(named: "hotel1")
             
-            cell.hotelImg.sd_setImage(with: URL(string: imgs[indexPath.row] ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            cell.hotelImg.sd_setImage(with: URL(string: imgs[indexPath.row] ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            
+            
+            cell.hotelImg.sd_setImage(with: URL(string: imgs[indexPath.row] ),
+                                                     placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                            if let error = error {
+                                // Handle error loading image
+                                print("Error loading banner image: \(error.localizedDescription)")
+                                // Check if the error is due to a 404 Not Found response
+                                if (error as NSError).code == NSURLErrorBadServerResponse {
+                                    // Set placeholder image for 404 error
+                                    cell.hotelImg.image = UIImage(named: "noimage")
+                                } else {
+                                    // Set placeholder image for other errors
+                                    cell.hotelImg.image = UIImage(named: "noimage")
+                                }
+                            }
+                        })
             
             commonCell = cell
         }

@@ -89,22 +89,25 @@ extension StarRatingTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             cell.titlelbl.text = array[indexPath.row]
           
             
-            if hotelfiltermodel.starRatingNew.contains(cell.titlelbl.text ?? "") {
+           
                 
-                DispatchQueue.main.async {
-                    cell.holderview.layer.borderColor = UIColor.AppNavBackColor.cgColor
-                    cell.titlelbl.textColor = .AppNavBackColor
-                    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+                if hotelfiltermodel.starRatingNew.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.holderview.layer.borderColor = UIColor.AppNavBackColor.cgColor
+                        cell.titlelbl.textColor = .AppNavBackColor
+                        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+                    }
+                    
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.holderview.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+                        cell.titlelbl.textColor = .AppLabelColor
+                    }
+                    
                 }
                 
-            } else {
-                
-                DispatchQueue.main.async {
-                    cell.holderview.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-                    cell.titlelbl.textColor = .AppLabelColor
-                }
-                
-            }
             
             
             commonCell = cell

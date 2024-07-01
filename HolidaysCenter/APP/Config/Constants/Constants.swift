@@ -349,6 +349,8 @@ struct UserDefaultsKeys {
     static var htravellerDetails = "htraveller_Details"
     static var roomType = "Room_Type"
     static var refundtype = "refundtype"
+    static var starRatingInputArray = "starRatingInputArray"
+    
     
     
     static var select = "select"

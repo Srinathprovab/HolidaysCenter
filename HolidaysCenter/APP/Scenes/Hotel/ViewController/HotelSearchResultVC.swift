@@ -266,7 +266,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
     func callgetHotelListAPI(bs:String) {
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "10"
+        payload["limit"] = "100"
         payload["booking_source"] = bs
         payload["search_id"] = hsearch_id
         payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
@@ -293,6 +293,15 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
             // Append the new data to the existing data
             hotelSearchResultArray.append(contentsOf: newResults)
             
+            
+            if hotelSearchResultArray.count > 0 {
+                DispatchQueue.main.async {
+                    self.hotelSearchResultArray1 = self.hotelSearchResultArray
+                    self.appendValues(list: self.hotelSearchResultArray)
+                }
+            }
+            
+            
         } else {
             // No more items to load, update UI accordingly
             print("No more items to load.")
@@ -309,7 +318,12 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
             }else {
                 DispatchQueue.main.async {
                     self.hotelSearchResultArray1 = self.hotelSearchResultArray
+                    
+                    self.setupLabels(lbl: self.subtitlelbl, text: "\(self.hotelSearchResultArray1.count) Hotels Found", textcolor: .BtnTitleColor, font: .OpenSansRegular(size: 12))
+                    
                     self.appendValues(list: self.hotelSearchResultArray)
+                    
+                    
                 }
             }
             
@@ -332,6 +346,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
         faretypeArray .removeAll()
         facilityArray.removeAll()
         mapModelArray.removeAll()
+        
         hotelfiltermodel.starRatingNew = starRatingInputArray
         
         list.forEach { i in
@@ -404,7 +419,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
                                          buttonTitle: i.resultToken ?? "",
                                          image: i.image,
                                          tempText: i.hotel_code ?? "",
-                                         characterLimit: i.star_rating,
+                                         characterLimit: Int(i.star_rating ?? "0"),
                                          cellType:.HotelSearchResultTVCell,
                                          questionBase: i.booking_source ?? ""))
                 
@@ -433,11 +448,13 @@ extension HotelSearchResultVC {
         
         let lastRowIndex = tableView.numberOfRows(inSection: 0) - 1
         
-        if indexPath.row == lastRowIndex && !isFetchingData && isfilterApplied == false {
+        if indexPath.row == lastRowIndex && !isFetchingData  {
             
-            let seconds = 1.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                self.callHotelSearchPaginationAPI()
+            if isSearchBool == false {
+                let seconds = 0.5
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    self.callHotelSearchPaginationAPI()
+                }
             }
         }
         
@@ -500,7 +517,7 @@ extension HotelSearchResultVC:AppliedFilters {
         
         print("====minpricerange ==== \(minpricerange)")
         print("====maxpricerange ==== \(maxpricerange)")
-        print(" ==== starRating === \(starRating)")
+        print(" ==== starRatingNew === \(starRatingNew.joined(separator: ","))")
         print(" ==== refundableTypeArray === \n\(refundableTypeArray)")
         print(" ==== nearByLocA === \n\(nearByLocA)")
         print(" ==== aminitiesA === \n\(aminitiesA)")
@@ -510,7 +527,7 @@ extension HotelSearchResultVC:AppliedFilters {
             guard let netPrice = (hotel.price) else { return false }
             
             // let ratingMatches = hotel.star_rating == Int(starRating) || starRating.isEmpty
-            let starRatingNewMatch = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
+            let starRatingNewMatch = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? "0")")
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let nearByLocMatch = nearByLocA.isEmpty || nearByLocA.contains(hotel.hotelLocation ?? "")
             
@@ -544,6 +561,7 @@ extension HotelSearchResultVC:AppliedFilters {
     
     
     func filtersSortByApplied(sortBy: SortParameter) {
+        isSearchBool = true
         
         switch sortBy {
         case .PriceLow:
@@ -722,6 +740,7 @@ extension HotelSearchResultVC {
              self.searchTFView.isHidden = true
          }
     }
+    
     
     
 }

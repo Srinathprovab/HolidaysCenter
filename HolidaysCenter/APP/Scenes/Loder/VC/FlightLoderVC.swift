@@ -16,8 +16,6 @@ class FlightLoderVC: UIViewController {
     @IBOutlet weak var depDatelbl: UILabel!
     @IBOutlet weak var retDatelbl: UILabel!
     @IBOutlet weak var economylbl: UILabel!
-    
-    
     @IBOutlet weak var hotelgifimg: UIImageView!
     @IBOutlet weak var hotelcitylbl: UILabel!
     @IBOutlet weak var checkinlbl: UILabel!

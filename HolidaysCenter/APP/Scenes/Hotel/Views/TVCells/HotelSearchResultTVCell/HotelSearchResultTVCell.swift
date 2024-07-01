@@ -52,13 +52,32 @@ class HotelSearchResultTVCell: TableViewCell {
         
         
 
-        if let imageUrlString = cellInfo?.image, let imageUrl = URL(string: imageUrlString) {
-            hotelImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
-        } else {
-            // Handle case where image URL is nil or invalid
-            hotelImg.image = UIImage(named: "noimg")
-        }
+//        if let imageUrlString = cellInfo?.image, let imageUrl = URL(string: imageUrlString) {
+//            hotelImg.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
+//        } else {
+//            // Handle case where image URL is nil or invalid
+//            hotelImg.image = UIImage(named: "noimg")
+//        }
 
+        
+        hotelImg.sd_setImage(with: URL(string: cellInfo?.image ?? ""),
+                                                 placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            // Handle error loading image
+                            print("Error loading banner image: \(error.localizedDescription)")
+                            // Check if the error is due to a 404 Not Found response
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                // Set placeholder image for 404 error
+                                self.hotelImg.image = UIImage(named: "noimage")
+                            } else {
+                                // Set placeholder image for other errors
+                                self.hotelImg.image = UIImage(named: "noimage")
+                            }
+                        }
+                    })
+                    
+        
+        
         
         
         hotelid = cellInfo?.text ?? ""
