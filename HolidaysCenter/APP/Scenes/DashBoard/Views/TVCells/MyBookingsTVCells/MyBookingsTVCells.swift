@@ -63,7 +63,21 @@ class MyBookingsTVCells: TableViewCell {
         fromDatelbl.text = convertDateFormat(inputDate: cellInfo?.fromdate ?? "", f1: "dd MMM yyyy", f2: "dd-MM-yyyy")
         toDatelbl.text = convertDateFormat(inputDate: cellInfo?.todate ?? "", f1: "dd MMM yyyy", f2: "dd-MM-yyyy")
         
-        logoImg.sd_setImage(with: URL(string: cellInfo?.airlineslogo ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+      //  logoImg.sd_setImage(with: URL(string: cellInfo?.airlineslogo ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        
+        
+        self.logoImg.sd_setImage(with: URL(string: cellInfo?.airlineslogo ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+               
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    self.logoImg.image = UIImage(named: "noimage")
+                } else {
+                    self.logoImg.image = UIImage(named: "noimage")
+                }
+            }
+        })
+        
+        
         
         
         switch cellInfo?.noosStops {

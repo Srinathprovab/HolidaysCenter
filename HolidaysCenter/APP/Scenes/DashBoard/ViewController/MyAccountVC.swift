@@ -40,6 +40,9 @@ class MyAccountVC: BaseTableVC, ProfileUpdateViewModelDelegate {
     var vm:ProfileUpdateViewModel?
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        BASE_URL = BASE_URL1
+    }
     
     
     @objc func offline(){
@@ -113,7 +116,22 @@ class MyAccountVC: BaseTableVC, ProfileUpdateViewModelDelegate {
         phone = profildata?.phone ?? ""
         email = profildata?.email ?? ""
         
-        self.profilePic.sd_setImage(with: URL(string: profildata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+    //    self.profilePic.sd_setImage(with: URL(string: profildata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        
+        self.profilePic.sd_setImage(with: URL(string: profildata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                // Handle error loading image
+               // print("Error loading image: \(error.localizedDescription)")
+                // Check if the error is due to a 404 Not Found response
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    // Set placeholder image for 404 error
+                    self.profilePic.image = UIImage(named: "noimage")
+                } else {
+                    // Set placeholder image for other errors
+                    self.profilePic.image = UIImage(named: "noimage")
+                }
+            }
+        })
         
         DispatchQueue.main.async {[self] in
             appendLoginTvcells()

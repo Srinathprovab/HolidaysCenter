@@ -1363,7 +1363,6 @@ extension PayNowVC {
     func  searchHotelAgain(){
         
         payload.removeAll()
-        
         payload["city"] = defaults.string(forKey: UserDefaultsKeys.locationcity)
         payload["hotel_destination"] = defaults.string(forKey: UserDefaultsKeys.locationid)
         payload["hotel_checkin"] = defaults.string(forKey: UserDefaultsKeys.checkin)
@@ -1373,25 +1372,41 @@ extension PayNowVC {
         payload["adult"] = adtArray
         payload["child"] = chArray
         
-        for roomIndex in 0..<totalRooms {
-            
-            
-            if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
-                var childAges: [String] = Array(repeating: "0", count: numChildren)
-                
-                if numChildren > 2 {
-                    childAges.append("0")
-                }
-                
-                payload["childAge_\(roomIndex + 1)"] = childAges
-            }
+        if starRatingInputArray.count > 0 {
+            payload["star_rating"] = starRatingInputArray
         }
         
         
+        if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
+            payload["childAge_1"] = [""]
+        }else {
+            
+            for roomIndex in 0..<totalRooms {
+                if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
+                    var childAges: [String] = []
+                    
+                    // Check if childAgesArray has data and if it's applicable for the current room
+                    if childAgesArray.count > roomIndex && childAgesArray[roomIndex].count > 0 {
+                        // Iterate through the selected child ages for the current room
+                        for selectedAge in childAgesArray[roomIndex].suffix(numChildren) {
+                            childAges.append(selectedAge)
+                        }
+                        
+                    }
+                    
+                    // Pad the array with "0" for the remaining children
+                    for _ in childAges.count..<numChildren {
+                        childAges.append("0")
+                    }
+                    
+                    payload["childAge_\(roomIndex + 1)"] = childAges
+                }
+            }
+            
+        }
+        
         payload["nationality"] = defaults.string(forKey: UserDefaultsKeys.hnationalitycode) ?? "KW"
-        //        payload["language"] = "english"
-        //        payload["search_source"] = "postman"
-        //        payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
+        payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
         if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
@@ -1402,11 +1417,23 @@ extension PayNowVC {
             showToast(message: "Enter Checkout Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
+        }
+        
+//        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+//                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+//                  let checkin = formatter.date(from: checkinDate),
+//                  let checkout = formatter.date(from: checkoutDate),
+//                  checkin > checkout {
+//
+//
+//            showToast(message: "Invalid Date")
+//        }
+        
+        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
             showToast(message: "Add Rooms For Booking")
-        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Nationality" {
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
-        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false {
+        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false ||   checkDepartureAndReturnDates(payload, p1: "hotel_checkout", p2: "hotel_checkin") == false{
             showToast(message: "Invalid Date")
         }else {
             
@@ -1424,11 +1451,14 @@ extension PayNowVC {
             }
             
             gotoSearchHotelsResultVC()
+            
         }
     }
     
     
     func gotoSearchHotelsResultVC(){
+        defaults.setValue(starRatingInputArray, forKey: UserDefaultsKeys.starRatingInputArray)
+        loderBool = "hotel"
         defaults.set(false, forKey: "hoteltfilteronce")
         guard let vc = HotelSearchResultVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen

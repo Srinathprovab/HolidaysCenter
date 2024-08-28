@@ -266,7 +266,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
     func callgetHotelListAPI(bs:String) {
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "100"
+        payload["limit"] = "10"
         payload["booking_source"] = bs
         payload["search_id"] = hsearch_id
         payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
@@ -318,9 +318,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
             }else {
                 DispatchQueue.main.async {
                     self.hotelSearchResultArray1 = self.hotelSearchResultArray
-                    
                     self.setupLabels(lbl: self.subtitlelbl, text: "\(self.hotelSearchResultArray1.count) Hotels Found", textcolor: .BtnTitleColor, font: .OpenSansRegular(size: 12))
-                    
                     self.appendValues(list: self.hotelSearchResultArray)
                     
                     
@@ -474,7 +472,7 @@ extension HotelSearchResultVC {
         payload.removeAll()
         payload["search_id"] = hsearch_id
         payload["no_of_nights"] = "1"
-        payload["offset"] = "\((hotelSearchResultArray.count + 10))"
+        payload["offset"] = "\((hotelSearchResultArray.count + 1))"
         payload["limit"] = "10"
         payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
         

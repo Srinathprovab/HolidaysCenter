@@ -117,7 +117,7 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         tablerow.append(TableRow(height:10,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         
         if sliderimagesflight.count != 0 {
-            tablerow.append(TableRow(title:"BEST DEALS FLIGHTS ",key: "deals", text:imgPath, height:50,cellType:.DashboardDealsTitleTVCell))
+            tablerow.append(TableRow(title:"Top Flight Destinations ",key: "deals", text:imgPath, height:50,cellType:.DashboardDealsTitleTVCell))
             tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
             tablerow.append(TableRow(key1:"flight",cellType:.HotelDealsTVCell))
         }
@@ -125,7 +125,7 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         
         if sliderimageshotel.count != 0 {
-            tablerow.append(TableRow(title:"BEST DEALS HOTELS ",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
+            tablerow.append(TableRow(title:"Discover the Latest Travel Deals ",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
             tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
             tablerow.append(TableRow(key1:"hotel",cellType:.HotelDealsTVCell))
         }
@@ -134,12 +134,12 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
         tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         
         if sliderimageshotel.count != 0 {
-            tablerow.append(TableRow(title:"BEST HOLIDAY DEALS ",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
+            tablerow.append(TableRow(title:"Last-Minute Holiday Vacation Deals ",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
             tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
             tablerow.append(TableRow(key1:"holiday",cellType:.HotelDealsTVCell))
         }
         
-        tablerow.append(TableRow(height:30,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(height:100,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         
         commonTVData = tablerow
         commonTableView.reloadData()
@@ -635,30 +635,30 @@ extension DashBoardVC {
         if let userinfo = ns.userInfo as? [String:Any] {
             defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
             
-            defaults.set(userinfo["city"] as? String, forKey: UserDefaultsKeys.locationcity)
-            defaults.set(userinfo["hotel_destination"] as? String, forKey: UserDefaultsKeys.locationid)
-            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkin"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
-            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkout"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
-            defaults.set("IN", forKey: UserDefaultsKeys.hnationalitycode)
-            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
+//            defaults.set(userinfo["city"] as? String, forKey: UserDefaultsKeys.locationcity)
+//            defaults.set(userinfo["hotel_destination"] as? String, forKey: UserDefaultsKeys.locationid)
+//            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkin"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
+//            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkout"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
+//            defaults.set("IN", forKey: UserDefaultsKeys.hnationalitycode)
+//            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
+//            
+//            payload.removeAll()
+//            payload["city"] = userinfo["city"] as? String
+//            payload["hotel_destination"] = userinfo["hotel_destination"] as? String
+//            payload["hotel_checkin"] = userinfo["hotel_checkin"] as? String
+//            payload["hotel_checkout"] = userinfo["hotel_checkout"] as? String
+//            
+//            payload["rooms"] = "1"
+//            payload["adult"] = ["2"]
+//            payload["child"] = ["0"]
+//            
+//            payload["nationality"] = "IN"
+//            payload["language"] = "english"
+//            payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
+//            payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
             
-            payload.removeAll()
-            payload["city"] = userinfo["city"] as? String
-            payload["hotel_destination"] = userinfo["hotel_destination"] as? String
-            payload["hotel_checkin"] = userinfo["hotel_checkin"] as? String
-            payload["hotel_checkout"] = userinfo["hotel_checkout"] as? String
-            
-            payload["rooms"] = "1"
-            payload["adult"] = ["2"]
-            payload["child"] = ["0"]
-            
-            payload["nationality"] = "IN"
-            payload["language"] = "english"
-            payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
-            payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
-            
-            gotoSearchHotelsResultVC()
-            
+          //  gotoSearchHotelsResultVC()
+            gotoBookHotelVC()
             // showToast(message: "Hotel module is not available yet. Stay tuned!")
             
         }
@@ -674,6 +674,8 @@ extension DashBoardVC {
         vc.payload = payload
         present(vc, animated: true)
     }
+    
+    
     
     
 }

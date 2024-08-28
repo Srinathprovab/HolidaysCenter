@@ -104,9 +104,11 @@ class SelectFromCityVC: BaseTableVC, SelectCityViewModelProtocal {
         
         searchImg.image = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         searchTF.backgroundColor = .clear
+        
         searchTF.setLeftPaddingPoints(20)
         searchTF.font = UIFont.LatoRegular(size: 16)
         searchTF.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
+        
         commonTableView.register(UINib(nibName: "FromCityTVCell", bundle: nil), forCellReuseIdentifier: "cell")
         commonTableView.separatorStyle = .singleLine
         commonTableView.separatorColor = .lightGray

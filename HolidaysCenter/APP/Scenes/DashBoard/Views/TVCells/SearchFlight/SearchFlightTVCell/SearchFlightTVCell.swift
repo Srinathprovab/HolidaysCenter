@@ -39,8 +39,14 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     
     
+    
+    var currentCell: DualViewTVCell?
     let depDatePicker = UIDatePicker()
     let retdepDatePicker = UIDatePicker()
+    
+    let checkinDatePicker = UIDatePicker()
+    let checkoutDatePicker = UIDatePicker()
+    
     let retDatePicker = UIDatePicker()
     var countryNameArray = [String]()
     var key = String()
@@ -485,6 +491,8 @@ extension SearchFlightTVCell {
     
     //MARK: - showdepDatePicker
     func showdepDatePicker(cell:DualViewTVCell){
+        
+        currentCell = cell
         //Formate Date
         depDatePicker.datePickerMode = .date
         depDatePicker.minimumDate = Date()
@@ -523,6 +531,8 @@ extension SearchFlightTVCell {
     
     //MARK: - showreturndepDatePicker
     func showreturndepDatePicker(cell:DualViewTVCell){
+        
+        currentCell = cell
         //Formate Date
         retdepDatePicker.datePickerMode = .date
         retdepDatePicker.minimumDate = Date()
@@ -537,7 +547,6 @@ extension SearchFlightTVCell {
             
             if let checkinDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "")  {
                 retdepDatePicker.date = checkinDate
-                
             }
             
         }else {
@@ -570,6 +579,8 @@ extension SearchFlightTVCell {
     
     //MARK: - showretDatePicker
     func showretDatePicker(cell:DualViewTVCell){
+        
+        currentCell = cell
         //Formate Date
         retDatePicker.datePickerMode = .date
         //        retDatePicker.minimumDate = Date()
@@ -623,6 +634,45 @@ extension SearchFlightTVCell {
     
     
     @objc func donedatePicker(){
+        
+        let cell = currentCell
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        if let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) {
+            if tabselect == "Hotel"{
+                
+                let selectedDepDate = self.retdepDatePicker.date
+                if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+                    if cell?.depTF.isFirstResponder == true {
+                        defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.checkin)
+                        defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.checkout)
+                        self.retDatePicker.minimumDate = nextDay
+                    }else {
+                        defaults.set(formatter.string(from: self.retdepDatePicker.date), forKey: UserDefaultsKeys.checkin)
+                        defaults.set(formatter.string(from: self.retDatePicker.date), forKey: UserDefaultsKeys.checkout)
+                    }
+                    
+                }
+            }else {
+                
+                let selectedDepDate = self.retdepDatePicker.date
+                if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+                    if cell?.depTF.isFirstResponder == true {
+                        defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.calDepDate)
+                        defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.calRetDate)
+                        self.retDatePicker.minimumDate = nextDay
+                    }else {
+                        defaults.set(formatter.string(from: self.retdepDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
+                        defaults.set(formatter.string(from: self.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        
         delegate?.donedatePicker(cell:self)
     }
     

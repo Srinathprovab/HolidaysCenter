@@ -12,11 +12,15 @@ class HotelDealsCVCell: UICollectionViewCell {
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var imgHolderView: UIView!
     @IBOutlet weak var dealsImg: UIImageView!
-    @IBOutlet weak var citylbl: UILabel!
-    @IBOutlet weak var countrylbl: UILabel!
+    @IBOutlet weak var fromcitylbl: UILabel!
+    @IBOutlet weak var toitylbl: UILabel!
+    @IBOutlet weak var tripimg: UIImageView!
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var kwdView: UIView!
     
+    
+    @IBOutlet weak var hotelcityview: UIView!
+    @IBOutlet weak var hotelcitynamelbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,9 +38,11 @@ class HotelDealsCVCell: UICollectionViewCell {
         holderView.layer.borderColor = UIColor.lightGray.cgColor
         
         dealsImg.image = UIImage(named: "flight1")
-        setupLabels(lbl: citylbl, text: "", textcolor: .AppLabelColor, font: .OpenSansMedium(size: 12))
-        setupLabels(lbl: countrylbl, text: "", textcolor: .SubTitleColor, font: .OpenSansRegular(size: 10))
+        setupLabels(lbl: fromcitylbl, text: "", textcolor: .AppLabelColor, font: .OpenSansMedium(size: 12))
+        setupLabels(lbl: toitylbl, text: "", textcolor: .SubTitleColor, font: .OpenSansRegular(size: 12))
         setupLabels(lbl: kwdlbl, text: "", textcolor: .AppLabelColor, font: .OpenSansRegular(size: 10))
+        setupLabels(lbl: hotelcitynamelbl, text: "", textcolor: .AppLabelColor, font: .OpenSansRegular(size: 12))
+
         kwdView.addCornerRadiusWithShadow(color: .lightGray, borderColor: .AppBorderColor, cornerRadius: 10)
         kwdView.backgroundColor = .WhiteColor
     }

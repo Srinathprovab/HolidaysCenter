@@ -26,7 +26,7 @@ class DashboardDealsTitleTVCell: TableViewCell {
     
     override func updateUI() {
         holderView.backgroundColor = .AppBGcolor
-        setuplabels(lbl: titlelbl, text: cellInfo?.title ?? "", textcolor: .AppLabelColor, font: .OpenSansMedium(size: 18), align: .left)
+        setuplabels(lbl: titlelbl, text: cellInfo?.title ?? "", textcolor: .AppBtnColor, font: .OpenSansBold(size: 18), align: .center)
     }
     
 }

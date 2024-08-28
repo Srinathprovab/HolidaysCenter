@@ -121,13 +121,8 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Traveler Tools",key: "ourproducts", image: "",cellType:.MenuTitleTVCell))
         
-        if  userloginstatus == true {
-            tablerow.append(TableRow(title:"Check My Bookings",key: "menu", image: "menu1",cellType:.checkOptionsTVCell))
-        }
         
-        
-        
-        tablerow.append(TableRow(title:"Offers",key: "mail", image: "offers",cellType:.checkOptionsTVCell))
+        // tablerow.append(TableRow(title:"Offers",key: "mail", image: "offers",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(title:"Manage Booking",key: "menu", image: "mbooking",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
@@ -223,11 +218,25 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
             break
             
             
+        case "Manage Booking":
+            gotoManageBookings()
+            break
+            
+            
         default:
             break
         }
     }
     
+    
+    
+    //MARK: - gotoManageBookings
+    func gotoManageBookings() {
+        guard let vc = DBTabbarController.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 1
+        present(vc, animated: false)
+    }
     
     
     //MARK: - didTapOnAboutUsLink

@@ -36,7 +36,7 @@ class HotelDealsTVCell: TableViewCell {
     
     
     func setupCV() {
-      //  contentView.backgroundColor = .AppBGcolor
+        //  contentView.backgroundColor = .AppBGcolor
         holderView.backgroundColor = .AppBGcolor
         dealsCV.backgroundColor = .AppBGcolor
         let nib = UINib(nibName: "HotelDealsCVCell", bundle: nil)
@@ -82,11 +82,26 @@ extension HotelDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                     dealsCV.setEmptyMessage("")
                     let data = perfectholidays[indexPath.row]
                     
-                    cell.dealsImg.sd_setImage(with: URL(string: "\(imgPath )\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-                    cell.citylbl.text = "\(data.country_name ?? "") - \(data.country_code ?? "")"
-                    cell.countrylbl.text = data.country_code
-                    cell.kwdView.isHidden = true
                     
+                    cell.dealsImg.sd_setImage(with: URL(string: "\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            } else {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            }
+                        }
+                    })
+                    
+                    
+                    
+                    //    cell.dealsImg.sd_setImage(with: URL(string: "\(imgPath )\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+                    cell.fromcitylbl.text = data.title
+                    cell.toitylbl.isHidden = true
+                    cell.tripimg.isHidden = true
+                    cell.hotelcityview.isHidden = false
+                    cell.hotelcitynamelbl.text = data.title
                     
                 }
                 
@@ -98,10 +113,29 @@ extension HotelDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                     dealsCV.setEmptyMessage("")
                     let data = sliderimagesflight[indexPath.row]
                     
-                    cell.dealsImg.sd_setImage(with: URL(string: "\(imgPath )\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-                    cell.citylbl.text = "\(data.to_city_name ?? "") - \(data.to_city_loc ?? "")"
-                    cell.countrylbl.text = data.to_country
-                    cell.kwdlbl.text = "\(currencyType) \(data.price ?? "")"
+                    cell.dealsImg.sd_setImage(with: URL(string: "\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            } else {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            }
+                        }
+                    })
+                    
+                    
+                    
+                    
+                    cell.fromcitylbl.text =  data.from_city_name
+                    cell.toitylbl.text = data.to_city_name
+
+                    if data.trip_type == "oneway" {
+                        cell.tripimg.image = UIImage(named: "trip1")
+                    }else {
+                        cell.tripimg.image = UIImage(named: "trip2")
+                    }
+                    
                 }
                 
             }else {
@@ -111,15 +145,31 @@ extension HotelDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                 }else {
                     dealsCV.setEmptyMessage("")
                     let data = sliderimageshotel[indexPath.row]
-
-                    cell.dealsImg.sd_setImage(with: URL(string: "\(imgPath )\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-                    cell.citylbl.text = "\(data.city_name ?? "")"
-                    cell.countrylbl.text = data.country_name
-                    cell.kwdView.isHidden = true
+                    
+                    
+                    cell.dealsImg.sd_setImage(with: URL(string: "\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            } else {
+                                cell.dealsImg.image = UIImage(named: "noimage")
+                            }
+                        }
+                    })
+                    
+                    
+                    //  cell.dealsImg.sd_setImage(with: URL(string: "\(data.image ?? "")"), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+                    cell.fromcitylbl.text = "\(data.city_name ?? "")"
+                    cell.toitylbl.isHidden = true
+                    cell.tripimg.isHidden = true
+                    cell.hotelcityview.isHidden = false
+                    cell.hotelcitynamelbl.text = data.city_name
+                    
                 }
                 
-              
-
+                
+                
             }
             commonCell = cell
         }
@@ -140,14 +190,14 @@ extension HotelDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             userinfo["hotel_destination"] = data.hotel_destination
             userinfo["hotel_checkin"] = data.check_in
             userinfo["hotel_checkout"] = data.check_out
-                    
+            
             NotificationCenter.default.post(name: NSNotification.Name("hoteldealstap"), object: nil,userInfo: userinfo)
             
         }else if self.key == "flight" {
             let data = sliderimagesflight[indexPath.row]
             userinfo.removeAll()
-           
-          
+            
+            
             userinfo["trip_type"] = data.trip_type
             userinfo["from"] = "\(data.from_city_name ?? ""),\(data.from_airport_name ?? "") (\(data.from_city_loc ?? ""))"
             userinfo["from_loc_id"] = data.from_city
@@ -162,10 +212,10 @@ extension HotelDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             userinfo["from_city_name"] = data.from_city_name
             userinfo["from_city_loc"] = data.from_city_loc
             
-           
+            
             NotificationCenter.default.post(name: NSNotification.Name("flightdealstap"), object: nil,userInfo: userinfo)
             
-           
+            
         }else if self.key == "holiday"{
             
             NotificationCenter.default.post(name: NSNotification.Name("holidaysdealstap"), object: nil,userInfo: userinfo)

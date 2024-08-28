@@ -157,36 +157,37 @@ class ModifyHotelSearchVC: BaseTableVC {
             payload["star_rating"] = starRatingInputArray
         }
         
-        for roomIndex in 0..<totalRooms {
+        
+        if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
+            payload["childAge_1"] = [""]
+        }else {
+            
+            for roomIndex in 0..<totalRooms {
                 if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
                     var childAges: [String] = []
-
                     
-                    if childAgesArray.count > 0 {
-                        
+                    // Check if childAgesArray has data and if it's applicable for the current room
+                    if childAgesArray.count > roomIndex && childAgesArray[roomIndex].count > 0 {
                         // Iterate through the selected child ages for the current room
-                        for selectedAge in childAgesArray[roomIndex] {
+                        for selectedAge in childAgesArray[roomIndex].suffix(numChildren) {
                             childAges.append(selectedAge)
                         }
-                    }else {
                         
-                        // Pad the array with "0" for the remaining children
-                        for _ in childAges.count..<numChildren {
-                            childAges.append("0")
-                        }
                     }
-
-                  
-
+                    
+                    // Pad the array with "0" for the remaining children
+                    for _ in childAges.count..<numChildren {
+                        childAges.append("0")
+                    }
+                    
                     payload["childAge_\(roomIndex + 1)"] = childAges
                 }
             }
-        
+            
+        }
         
         payload["nationality"] = defaults.string(forKey: UserDefaultsKeys.hnationalitycode) ?? "KW"
-        payload["language"] = "english"
-        payload["search_source"] = "postman"
-        payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
+        payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
         if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
@@ -197,11 +198,23 @@ class ModifyHotelSearchVC: BaseTableVC {
             showToast(message: "Enter Checkout Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
+        }
+        
+        //        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+        //                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+        //                  let checkin = formatter.date(from: checkinDate),
+        //                  let checkout = formatter.date(from: checkoutDate),
+        //                  checkin > checkout {
+        //
+        //
+        //            showToast(message: "Invalid Date")
+        //        }
+        
+        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
             showToast(message: "Add Rooms For Booking")
-        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Nationality" {
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
-        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false {
+        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false ||   checkDepartureAndReturnDates(payload, p1: "hotel_checkout", p2: "hotel_checkin") == false{
             showToast(message: "Invalid Date")
         }else {
             
@@ -225,6 +238,8 @@ class ModifyHotelSearchVC: BaseTableVC {
     
     
     func gotoSearchHotelsResultVC(){
+        defaults.setValue(starRatingInputArray, forKey: UserDefaultsKeys.starRatingInputArray)
+        loderBool = "hotel"
         defaults.set(false, forKey: "hoteltfilteronce")
         guard let vc = HotelSearchResultVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
@@ -235,18 +250,10 @@ class ModifyHotelSearchVC: BaseTableVC {
     }
     
     
-    
-    
-    
+
     //MARK: - donedatePicker cancelDatePicker
     
     override func donedatePicker(cell:SearchFlightTVCell){
-        
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.checkin)
-        defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.checkout)
         
         commonTableView.reloadData()
         self.view.endEditing(true)

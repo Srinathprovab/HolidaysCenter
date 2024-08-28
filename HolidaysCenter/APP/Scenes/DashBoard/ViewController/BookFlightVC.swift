@@ -168,7 +168,7 @@ class BookFlightVC: BaseTableVC {
         
         tablerow.append(TableRow(cellType:.AddCityTVCell))
         tablerow.append(TableRow(height:10,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"BEST DEALS FLIGHTS ",key: "deals", text:imgPath, height:50,cellType:.DashboardDealsTitleTVCell))
+        tablerow.append(TableRow(title:"Top Flight Destinations",key: "deals", text:imgPath, height:50,cellType:.DashboardDealsTitleTVCell))
         tablerow.append(TableRow(height:18,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         tablerow.append(TableRow(key1:"flight",cellType:.HotelDealsTVCell))
         tablerow.append(TableRow(height:30,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
@@ -417,13 +417,15 @@ class BookFlightVC: BaseTableVC {
                 showToast(message: "Please Select From City")
             }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "" {
                 showToast(message: "Please Select To City")
-            }else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.calDepDate),
-                      let checkoutDate = defaults.string(forKey: UserDefaultsKeys.calRetDate),
-                      let checkin = formatter.date(from: checkinDate),
-                      let checkout = formatter.date(from: checkoutDate),
-                      checkin > checkout {
-                showToast(message: "Invalid Date")
             }
+            
+//            else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.calDepDate),
+//                      let checkoutDate = defaults.string(forKey: UserDefaultsKeys.calRetDate),
+//                      let checkin = formatter.date(from: checkinDate),
+//                      let checkout = formatter.date(from: checkoutDate),
+//                      checkin > checkout {
+//                showToast(message: "Invalid Date")
+//            }
             //        else if defaults.string(forKey:UserDefaultsKeys.toCity) == defaults.string(forKey:UserDefaultsKeys.fromCity) {
             //            showToast(message: "Please Select Different Citys")
             //        }
@@ -433,9 +435,11 @@ class BookFlightVC: BaseTableVC {
                 showToast(message: "Add Traveller")
             }else if defaults.string(forKey:UserDefaultsKeys.selectClass) == "Add Details" {
                 showToast(message: "Add Class")
-            }else if isDepartureBeforeOrEqual == false {
+            }
+            else if isDepartureBeforeOrEqual == false {
                 showToast(message: "Invalid Date")
-            }else{
+            }
+            else{
                 gotoSearchFlightResultVC(input: payload)
             }
             
@@ -642,19 +646,19 @@ class BookFlightVC: BaseTableVC {
     
     override func donedatePicker(cell:SearchFlightTVCell){
         
-        let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
-        if journyType == "oneway" {
-           
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
-           
-        }else {
-            
-          
-            defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
-            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
-            
-        }
-        
+//        let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
+//        if journyType == "oneway" {
+//           
+//            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
+//           
+//        }else {
+//            
+//          
+//            defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
+//            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
+//            
+//        }
+//        
         
         commonTableView.reloadData()
         self.view.endEditing(true)

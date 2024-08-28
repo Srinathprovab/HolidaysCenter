@@ -107,7 +107,7 @@ class BookHotelVC: BaseTableVC {
         
         tablerow.append(TableRow(key:"hotel",cellType:.SearchFlightTVCell))
         tablerow.append(TableRow(height:10,bgColor: .AppHolderViewColor,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"BEST DEALS HOTELS ",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
+        tablerow.append(TableRow(title:"BDiscover the Latest Travel Deals",key: "deals",text:imgPath,height:50,cellType:.DashboardDealsTitleTVCell))
         tablerow.append(TableRow(key1:"hotel",cellType:.HotelDealsTVCell))
         tablerow.append(TableRow(height:100,bgColor: .AppHolderViewColor,cellType:.EmptyTVCell))
         
@@ -242,13 +242,19 @@ class BookHotelVC: BaseTableVC {
             showToast(message: "Enter Checkout Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
-                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
-                  let checkin = formatter.date(from: checkinDate),
-                  let checkout = formatter.date(from: checkoutDate),
-                  checkin > checkout {
-            showToast(message: "Invalid Date")
-        }else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
+        }
+        
+//        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+//                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+//                  let checkin = formatter.date(from: checkinDate),
+//                  let checkout = formatter.date(from: checkoutDate),
+//                  checkin > checkout {
+//            
+//            
+//            showToast(message: "Invalid Date")
+//        }
+        
+        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
             showToast(message: "Add Rooms For Booking")
         }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
@@ -292,14 +298,7 @@ class BookHotelVC: BaseTableVC {
     //MARK: - donedatePicker cancelDatePicker
     
     override func donedatePicker(cell:SearchFlightTVCell){
-        
-        
-        
-        defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.checkin)
-        defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.checkout)
-        
-        
-        
+   
         commonTableView.reloadData()
         self.view.endEditing(true)
     }
@@ -362,28 +361,28 @@ extension BookHotelVC {
         if let userinfo = ns.userInfo as? [String:Any] {
             defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
             
-            defaults.set(userinfo["city"] as? String, forKey: UserDefaultsKeys.locationcity)
-            defaults.set(userinfo["hotel_destination"] as? String, forKey: UserDefaultsKeys.locationid)
-            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkin"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
-            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkout"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
-            defaults.set("IN", forKey: UserDefaultsKeys.hnationalitycode)
-            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
-            
-            payload.removeAll()
-            payload["city"] = userinfo["city"] as? String
-            payload["hotel_destination"] = userinfo["hotel_destination"] as? String
-            payload["hotel_checkin"] = userinfo["hotel_checkin"] as? String
-            payload["hotel_checkout"] = userinfo["hotel_checkout"] as? String
-            
-            payload["rooms"] = "1"
-            payload["adult"] = ["2"]
-            payload["child"] = ["0"]
-            
-            payload["nationality"] = "IN"
-            payload["language"] = "english"
-            payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
-            
-            payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+//            defaults.set(userinfo["city"] as? String, forKey: UserDefaultsKeys.locationcity)
+//            defaults.set(userinfo["hotel_destination"] as? String, forKey: UserDefaultsKeys.locationid)
+//            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkin"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
+//            defaults.set(convertDateFormat(inputDate: userinfo["hotel_checkout"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
+//            defaults.set("IN", forKey: UserDefaultsKeys.hnationalitycode)
+//            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
+//            
+//            payload.removeAll()
+//            payload["city"] = userinfo["city"] as? String
+//            payload["hotel_destination"] = userinfo["hotel_destination"] as? String
+//            payload["hotel_checkin"] = userinfo["hotel_checkin"] as? String
+//            payload["hotel_checkout"] = userinfo["hotel_checkout"] as? String
+//            
+//            payload["rooms"] = "1"
+//            payload["adult"] = ["2"]
+//            payload["child"] = ["0"]
+//            
+//            payload["nationality"] = "IN"
+//            payload["language"] = "english"
+//            payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
+//            
+//            payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
             
             gotoSearchHotelsResultVC()
             
