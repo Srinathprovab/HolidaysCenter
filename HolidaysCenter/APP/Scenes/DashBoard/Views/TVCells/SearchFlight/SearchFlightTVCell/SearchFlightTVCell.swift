@@ -39,6 +39,8 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     
     
+    let newdateFormatter = DateFormatter()
+    let dateFormat = "dd-MM-yyyy"
     
     var currentCell: DualViewTVCell?
     let depDatePicker = UIDatePicker()
@@ -86,6 +88,8 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     
     
     func setupTV() {
+        newdateFormatter.dateFormat = dateFormat
+        newdateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         
         holderView.backgroundColor = .AppBGcolor
@@ -203,7 +207,26 @@ class SearchFlightTVCell: TableViewCell,DualViewTVCellDelegate,ButtonTVCellDeleg
     }
     
     
-    
+    //MARK: - updateIfDateIsPast
+    func updateIfDateIsPast(dateKey: String, defaultLabel: String) -> String {
+        if let dateString = defaults.string(forKey: dateKey),
+           let storedDate = newdateFormatter.date(from: dateString) {
+            if storedDate < Date() {
+                // Update to today's date if the stored date is in the past
+                let todayDateString = newdateFormatter.string(from: Date())
+                defaults.set(todayDateString, forKey: dateKey)
+                return todayDateString
+            } else {
+                // Return the stored date if it's not in the past
+                return dateString
+            }
+        } else {
+            // If the date is not set, update to today's date
+            let todayDateString = newdateFormatter.string(from: Date())
+            defaults.set(todayDateString, forKey: dateKey)
+            return todayDateString
+        }
+    }
 }
 
 
@@ -237,8 +260,13 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as? DualViewTVCell {
                     cell.selectionStyle = .none
                     cell.delegate = self
-                    cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.checkin) ?? "Check In"
-                    cell.returnlbl.text = defaults.string(forKey: UserDefaultsKeys.checkout) ?? "Check Out"
+//                    cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.checkin) ?? "Check In"
+//                    cell.returnlbl.text = defaults.string(forKey: UserDefaultsKeys.checkout) ?? "Check Out"
+                    
+                    
+                    cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.checkin, defaultLabel: "Check In")
+                    cell.returnlbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.checkout, defaultLabel: "Check Out")
+                    
                     cell.depBtn.addTarget(self, action: #selector(didtapOnCheckInBtn(cell:)), for: .touchUpInside)
                     cell.returnBtn.addTarget(self, action: #selector(didtapOnCheckOutBtn(cell:)), for: .touchUpInside)
                     
@@ -364,22 +392,33 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
                         cell.showReturnView()
                         
                         
-                        if let datestr1 = defaults.string(forKey: UserDefaultsKeys.calDepDate), let datestr2 = defaults.string(forKey: UserDefaultsKeys.calRetDate){
-                            if datestr1.isEmpty == true {
-                                cell.deplbl.text =  "Select Date"
-                                //cell.returnlbl.text =  "Select Date"
-                            }
-                            
-                            if datestr2.isEmpty == true{
-                                //cell.deplbl.text =  "Select Date"
-                                cell.returnlbl.text =  "Select Date"
-                            }
-                            
-                            if datestr1.isEmpty == false &&  datestr1.isEmpty == false{
-                                cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Select Date"
-                                cell.returnlbl.text = defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "Select Date"
-                            }
-                        }
+//                        if let datestr1 = defaults.string(forKey: UserDefaultsKeys.calDepDate), let datestr2 = defaults.string(forKey: UserDefaultsKeys.calRetDate){
+//                            if datestr1.isEmpty == true {
+//                                //cell.deplbl.text =  "Select Date"
+//                                //cell.returnlbl.text =  "Select Date"
+//                                cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Select Date")
+//                            }
+//                            
+//                            if datestr2.isEmpty == true{
+//                                //cell.deplbl.text =  "Select Date"
+//                                //cell.returnlbl.text =  "Select Date"
+//                                cell.returnlbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Select Date")
+//                            }
+//                            
+//                            if datestr1.isEmpty == false &&  datestr1.isEmpty == false{
+////                                cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Select Date"
+////                                cell.returnlbl.text = defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "Select Date"
+//                                
+//                                
+//                                cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Select Date")
+//                                cell.returnlbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Select Date")
+//
+//                            }
+//                        }
+                        
+                        
+                        cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Select Date")
+                        cell.returnlbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Select Date")
                         
                         
                         cell.depTF.isHidden = false
@@ -388,14 +427,19 @@ extension SearchFlightTVCell:UITableViewDelegate,UITableViewDataSource {
                         showretDatePicker(cell: cell)
                     }else {
                         
-                        if let datestr1 = defaults.string(forKey: UserDefaultsKeys.calDepDate){
-                            if datestr1.isEmpty == true {
-                                cell.deplbl.text =  "Select Date"
-                            }
-                            if datestr1.isEmpty == false &&  datestr1.isEmpty == false{
-                                cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? ""
-                            }
-                        }
+//                        if let datestr1 = defaults.string(forKey: UserDefaultsKeys.calDepDate){
+//                            if datestr1.isEmpty == true {
+//                                cell.deplbl.text =  "Select Date"
+//                            }
+//                            if datestr1.isEmpty == false &&  datestr1.isEmpty == false{
+//                                //cell.deplbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? ""
+//                                cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Select Date")
+//
+//                            }
+//                        }
+                        
+                        cell.deplbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Select Date")
+                        cell.returnlbl.text = updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Select Date")
                         
                         
                         cell.depTF.isHidden = false
@@ -576,7 +620,7 @@ extension SearchFlightTVCell {
     }
     
     
-    
+     
     //MARK: - showretDatePicker
     func showretDatePicker(cell:DualViewTVCell){
         

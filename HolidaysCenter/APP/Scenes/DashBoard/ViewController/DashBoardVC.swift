@@ -202,11 +202,19 @@ class DashBoardVC: BaseTableVC, IndexPageViewModelDelegate, CountryListViewModel
     }
     
     func gotoContactUsVC(){
-        guard let vc = ContactUsVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        isFromVCBool = true
-        vc.keystr = "dashboard"
-        self.present(vc, animated: true)
+     //   guard let vc = ContactUsVC.newInstance.self else {return}
+//        vc.modalPresentationStyle = .fullScreen
+//        isFromVCBool = true
+//        vc.keystr = "dashboard"
+//        self.present(vc, animated: true)
+        
+            guard let vc = LoadWebViewVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.urlString = "https://cruises.holidayscenter.com/app/0/cruise/0/search.html"
+            //isFromVCBool = true
+        vc.isVcFrom = "dash"
+            self.present(vc, animated: true)
+        
     }
     
     override func didTapOnLaungageBtn(cell:SelectTabTVCell){

@@ -20,7 +20,8 @@ struct MapModel {
 
 
 
-class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate, MapLocationViewModelDelegate {
+    
     
     
     @IBOutlet weak var backButton: UIButton!
@@ -35,16 +36,28 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
         return vc
     }
     
+    
+    var payload = [String:Any]()
+    var maplocvm:MapLocationViewModel?
     var gmsView: GMSMapView?
     let locationManager = CLLocationManager()
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        loderBool = "hotel"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        callGetLocationAPI()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setupUI()
+       
         
-        
+        maplocvm = MapLocationViewModel(self)
         
     }
     
@@ -124,29 +137,29 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     
     @IBAction func didTaspOnShowMapViewBtnAction(_ sender: Any) {
-           taponMapBtn()
+        taponMapBtn()
         
         
         
-//        let popVC = MapHotelInfoVC()
-//        popVC.modalPresentationStyle = .popover
-//        //popVC.mapModel = mapModel
-//        
-//        if let popOverVC = popVC.popoverPresentationController {
-//            popOverVC.delegate = self
-//            
-//            // Set source view and source rect
-//            popOverVC.sourceView = sender as? UIView
-//            popOverVC.sourceRect = (sender as AnyObject).bounds
-//            
-//            
-//            // Set arrow direction and content size
-//            popOverVC.permittedArrowDirections = .up
-//            popVC.preferredContentSize = CGSize(width: 200, height: 200)
-//        }
-//        
-//        self.present(popVC, animated: true, completion: nil)
-//        
+        //        let popVC = MapHotelInfoVC()
+        //        popVC.modalPresentationStyle = .popover
+        //        //popVC.mapModel = mapModel
+        //
+        //        if let popOverVC = popVC.popoverPresentationController {
+        //            popOverVC.delegate = self
+        //
+        //            // Set source view and source rect
+        //            popOverVC.sourceView = sender as? UIView
+        //            popOverVC.sourceRect = (sender as AnyObject).bounds
+        //
+        //
+        //            // Set arrow direction and content size
+        //            popOverVC.permittedArrowDirections = .up
+        //            popVC.preferredContentSize = CGSize(width: 200, height: 200)
+        //        }
+        //
+        //        self.present(popVC, animated: true, completion: nil)
+        //
         
         
     }
@@ -280,44 +293,76 @@ extension MapViewVC: GMSMapViewDelegate {
 extension MapViewVC {
     
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        // Handle marker tap event here
-//        if let mapModel = marker.userData as? MapModel {
-//            let popVC = MapHotelInfoVC()
-//            popVC.modalPresentationStyle = .popover
-//            popVC.mapModel = mapModel
-//            
-//            if let popOverVC = popVC.popoverPresentationController {
-//                popOverVC.delegate = self
-//                
-//                // Set source view and source rect
-//                popOverVC.sourceView = mapView
-//                popOverVC.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
-//                
-//                // If the marker has an icon view, use its bounds to set the sourceRect
-//                if let iconView = marker.iconView {
-//                    popOverVC.sourceRect = mapView.convert(iconView.bounds, from: iconView)
-//                } else {
-//                    // Fallback: use the marker's position on the map view
-//                    let point = mapView.projection.point(for: marker.position)
-//                    popOverVC.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
-//                }
-//                
-//                // Set arrow direction and content size
-//                popOverVC.permittedArrowDirections = .up
-//                popVC.preferredContentSize = CGSize(width: 200, height: 200)
-//            }
-//            
-//            self.present(popVC, animated: true, completion: nil)
-//        }
-//        
-//        return true // Return true to consume the tap event
-//    }
+    //    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+    //        // Handle marker tap event here
+    //        if let mapModel = marker.userData as? MapModel {
+    //            let popVC = MapHotelInfoVC()
+    //            popVC.modalPresentationStyle = .popover
+    //            popVC.mapModel = mapModel
+    //
+    //            if let popOverVC = popVC.popoverPresentationController {
+    //                popOverVC.delegate = self
+    //
+    //                // Set source view and source rect
+    //                popOverVC.sourceView = mapView
+    //                popOverVC.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    //
+    //                // If the marker has an icon view, use its bounds to set the sourceRect
+    //                if let iconView = marker.iconView {
+    //                    popOverVC.sourceRect = mapView.convert(iconView.bounds, from: iconView)
+    //                } else {
+    //                    // Fallback: use the marker's position on the map view
+    //                    let point = mapView.projection.point(for: marker.position)
+    //                    popOverVC.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
+    //                }
+    //
+    //                // Set arrow direction and content size
+    //                popOverVC.permittedArrowDirections = .up
+    //                popVC.preferredContentSize = CGSize(width: 200, height: 200)
+    //            }
+    //
+    //            self.present(popVC, animated: true, completion: nil)
+    //        }
+    //
+    //        return true // Return true to consume the tap event
+    //    }
     
     
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+}
+
+
+
+extension MapViewVC {
+    
+    
+    func callGetLocationAPI() {
+        loderBool = "normal"
+        payload.removeAll()
+        payload["search_id"] = hsearch_id
+        maplocvm?.CALL_GET_MAP_LOCATIONS_API(dictParam: payload)
+    }
+    
+    func locationsResponse(response: [MapLocationModel]) {
+        
+        response.forEach { i in
+            let mapModel = MapModel(
+                longitude: i.longitude ?? "",
+                latitude: i.latitude ?? "",
+                hotelname: i.name ?? "",
+                hotelimg: ""
+            )
+            mapModelArray.append(mapModel)
+        }
+        
+        
+        DispatchQueue.main.async {
+            self.setupUI()
+        }
     }
     
 }

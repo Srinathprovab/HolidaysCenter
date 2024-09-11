@@ -243,6 +243,7 @@ struct ApiEndpoints {
     static let mobilehotelprebooking = "hotel/pre_booking"
     static let hotelsecurebooking = "hotel/secure_booking"
     static let hotel_mobile_hotel_booking_details = "hotel/mobile_hotel_booking_details"
+    static let general_all_map_location = "general/all_map_location"
     
     
 }

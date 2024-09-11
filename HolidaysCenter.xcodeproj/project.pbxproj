@@ -399,8 +399,8 @@
 		65F2162B2BA1871F00D04274 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F214792BA1871E00D04274 /* NavBar.swift */; };
 		65F2162C2BA1871F00D04274 /* loderimg1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65F2147B2BA1871E00D04274 /* loderimg1.gif */; };
 		65F2162D2BA1871F00D04274 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2147C2BA1871E00D04274 /* ServiceManager.swift */; };
-		65F2162E2BA1871F00D04274 /* loderimg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65F2147D2BA1871E00D04274 /* loderimg.gif */; };
-		65F2162F2BA1871F00D04274 /* hotelloder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65F2147E2BA1871E00D04274 /* hotelloder.gif */; };
+		65F2162E2BA1871F00D04274 /* loderimg2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65F2147D2BA1871E00D04274 /* loderimg2.gif */; };
+		65F2162F2BA1871F00D04274 /* hotelloder1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 65F2147E2BA1871E00D04274 /* hotelloder1.gif */; };
 		65F216302BA1871F00D04274 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F214802BA1871E00D04274 /* TableViewHelper.swift */; };
 		65F216312BA1871F00D04274 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F214812BA1871E00D04274 /* UIViewControllerExtension.swift */; };
 		65F216322BA1871F00D04274 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F214822BA1871E00D04274 /* ButtonExtension.swift */; };
@@ -444,6 +444,10 @@
 		65F216582BA1871F00D04274 /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F214AE2BA1871E00D04274 /* StoryboardExtension.swift */; };
 		65F216592BA1871F00D04274 /* currencylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F214B02BA1871E00D04274 /* currencylist.json */; };
 		65F2165A2BA1871F00D04274 /* countrylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F214B12BA1871E00D04274 /* countrylist.json */; };
+		8497E8AC2C81670F002075E5 /* MapLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497E8AB2C81670F002075E5 /* MapLocationModel.swift */; };
+		8497E8AE2C816731002075E5 /* MapLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497E8AD2C816731002075E5 /* MapLocationViewModel.swift */; };
+		8497E8B02C81855A002075E5 /* hotelloder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8497E8AF2C81855A002075E5 /* hotelloder.gif */; };
+		8497E8B22C818576002075E5 /* loderimg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8497E8B12C818576002075E5 /* loderimg.gif */; };
 		F843799ADC213E65AC2AE0E6 /* Pods_HolidaysCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A174C4E786CE7555C975736 /* Pods_HolidaysCenter.framework */; };
 /* End PBXBuildFile section */
 
@@ -864,8 +868,8 @@
 		65F214792BA1871E00D04274 /* NavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		65F2147B2BA1871E00D04274 /* loderimg1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loderimg1.gif; sourceTree = "<group>"; };
 		65F2147C2BA1871E00D04274 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
-		65F2147D2BA1871E00D04274 /* loderimg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loderimg.gif; sourceTree = "<group>"; };
-		65F2147E2BA1871E00D04274 /* hotelloder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hotelloder.gif; sourceTree = "<group>"; };
+		65F2147D2BA1871E00D04274 /* loderimg2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loderimg2.gif; sourceTree = "<group>"; };
+		65F2147E2BA1871E00D04274 /* hotelloder1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hotelloder1.gif; sourceTree = "<group>"; };
 		65F214802BA1871E00D04274 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		65F214812BA1871E00D04274 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		65F214822BA1871E00D04274 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
@@ -910,6 +914,10 @@
 		65F214B02BA1871E00D04274 /* currencylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = currencylist.json; sourceTree = "<group>"; };
 		65F214B12BA1871E00D04274 /* countrylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countrylist.json; sourceTree = "<group>"; };
 		7722019D5B2745870E78D3AC /* Pods-HolidaysCenterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidaysCenterTests.debug.xcconfig"; path = "Target Support Files/Pods-HolidaysCenterTests/Pods-HolidaysCenterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8497E8AB2C81670F002075E5 /* MapLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationModel.swift; sourceTree = "<group>"; };
+		8497E8AD2C816731002075E5 /* MapLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationViewModel.swift; sourceTree = "<group>"; };
+		8497E8AF2C81855A002075E5 /* hotelloder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hotelloder.gif; sourceTree = "<group>"; };
+		8497E8B12C818576002075E5 /* loderimg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loderimg.gif; sourceTree = "<group>"; };
 		BE6331FCDBD0CE0B33F1CEB2 /* Pods_HolidaysCenterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolidaysCenterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A3B7CA8B2B47905CB0752C /* Pods-HolidaysCenter-HolidaysCenterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolidaysCenter-HolidaysCenterUITests.release.xcconfig"; path = "Target Support Files/Pods-HolidaysCenter-HolidaysCenterUITests/Pods-HolidaysCenter-HolidaysCenterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FBDF9418F51073D96BEAB7A0 /* Pods_HolidaysCenter_HolidaysCenterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolidaysCenter_HolidaysCenterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1074,6 +1082,7 @@
 				65F2125A2BA1871D00D04274 /* HotelDetailsViewModel.swift */,
 				65F2125B2BA1871D00D04274 /* HotelMBViewModel.swift */,
 				65A1A6092BE9FB0B0012C65D /* HotelNameSearchVM.swift */,
+				8497E8AD2C816731002075E5 /* MapLocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1081,6 +1090,7 @@
 		65F2125C2BA1871D00D04274 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8497E8AA2C816682002075E5 /* MapLocationModel */,
 				65F2125D2BA1871D00D04274 /* HotelSearchModel */,
 				65F212612BA1871D00D04274 /* HotelListModel */,
 				65F212662BA1871D00D04274 /* GetCancellationModel */,
@@ -2801,10 +2811,12 @@
 		65F2147A2BA1871E00D04274 /* Service Manager */ = {
 			isa = PBXGroup;
 			children = (
+				8497E8B12C818576002075E5 /* loderimg.gif */,
+				8497E8AF2C81855A002075E5 /* hotelloder.gif */,
 				65F2147B2BA1871E00D04274 /* loderimg1.gif */,
 				65F2147C2BA1871E00D04274 /* ServiceManager.swift */,
-				65F2147D2BA1871E00D04274 /* loderimg.gif */,
-				65F2147E2BA1871E00D04274 /* hotelloder.gif */,
+				65F2147D2BA1871E00D04274 /* loderimg2.gif */,
+				65F2147E2BA1871E00D04274 /* hotelloder1.gif */,
 			);
 			path = "Service Manager";
 			sourceTree = "<group>";
@@ -2923,6 +2935,14 @@
 				5705482BAEBF87C5431636A2 /* Pods-HolidaysCenterTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8497E8AA2C816682002075E5 /* MapLocationModel */ = {
+			isa = PBXGroup;
+			children = (
+				8497E8AB2C81670F002075E5 /* MapLocationModel.swift */,
+			);
+			path = MapLocationModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3053,6 +3073,7 @@
 				65F216002BA1871F00D04274 /* LoginTitleTVCell.xib in Resources */,
 				65F216092BA1871F00D04274 /* ButtonTVCell.xib in Resources */,
 				65F215AB2BA1871F00D04274 /* SearchFlightResultInfoTVCell.xib in Resources */,
+				8497E8B02C81855A002075E5 /* hotelloder.gif in Resources */,
 				65F216472BA1871F00D04274 /* Oswald-Medium.ttf in Resources */,
 				65F2161E2BA1871F00D04274 /* CreateAccountTVCell.xib in Resources */,
 				65F214E02BA1871F00D04274 /* PriceLabelsTVCell.xib in Resources */,
@@ -3103,10 +3124,11 @@
 				65F214E82BA1871F00D04274 /* FacilitiesTVCell.xib in Resources */,
 				65F216482BA1871F00D04274 /* Poppins-ExtraBold.ttf in Resources */,
 				65F216462BA1871F00D04274 /* Poppins-Medium.ttf in Resources */,
-				65F2162E2BA1871F00D04274 /* loderimg.gif in Resources */,
+				65F2162E2BA1871F00D04274 /* loderimg2.gif in Resources */,
 				65F215B22BA1871F00D04274 /* CommonTVCell.xib in Resources */,
 				65F215C92BA1871F00D04274 /* TravellerAdultTVCell.xib in Resources */,
 				65F2162C2BA1871F00D04274 /* loderimg1.gif in Resources */,
+				8497E8B22C818576002075E5 /* loderimg.gif in Resources */,
 				65F215732BA1871F00D04274 /* SliderTVCell.xib in Resources */,
 				65F216162BA1871F00D04274 /* SignUpWithTVCell.xib in Resources */,
 				65F2163A2BA1871F00D04274 /* Inter-Regular.otf in Resources */,
@@ -3162,7 +3184,7 @@
 				65F215FE2BA1871F00D04274 /* TextfieldTVCell.xib in Resources */,
 				65F215BF2BA1871F00D04274 /* AdvancedSearchTVCell.xib in Resources */,
 				65F215012BA1871F00D04274 /* Calender.storyboard in Resources */,
-				65F2162F2BA1871F00D04274 /* hotelloder.gif in Resources */,
+				65F2162F2BA1871F00D04274 /* hotelloder1.gif in Resources */,
 				65F215E72BA1871F00D04274 /* BCHotelDetailsTVCell.xib in Resources */,
 				65F215DC2BA1871F00D04274 /* BaggageDateCVCell.xib in Resources */,
 				65F214F32BA1871F00D04274 /* specialRequestInfoTVCell.xib in Resources */,
@@ -3417,11 +3439,13 @@
 				65F216382BA1871F00D04274 /* UITapGestureRecognizer.swift in Sources */,
 				65F214BF2BA1871F00D04274 /* GetCancellationModel.swift in Sources */,
 				65F214D62BA1871F00D04274 /* Price_summary.swift in Sources */,
+				8497E8AC2C81670F002075E5 /* MapLocationModel.swift in Sources */,
 				65F2156A2BA1871F00D04274 /* commonFunctions.swift in Sources */,
 				65F215B62BA1871F00D04274 /* AboutustitleTVCell.swift in Sources */,
 				65F216232BA1871F00D04274 /* BaseVC.swift in Sources */,
 				65F215E22BA1871F00D04274 /* calendarCVCell.swift in Sources */,
 				65F216152BA1871F00D04274 /* SignUpWithTVCell.swift in Sources */,
+				8497E8AE2C816731002075E5 /* MapLocationViewModel.swift in Sources */,
 				65F215802BA1871F00D04274 /* BookNowTVCell.swift in Sources */,
 				65F215422BA1871F00D04274 /* Origin.swift in Sources */,
 				65F2154B2BA1871F00D04274 /* Flight_top_destinations1.swift in Sources */,
@@ -3833,7 +3857,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = holidaysCenter.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3877,7 +3901,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = holidaysCenter.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

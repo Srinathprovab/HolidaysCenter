@@ -258,9 +258,14 @@ class BookHotelVC: BaseTableVC {
             showToast(message: "Add Rooms For Booking")
         }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == nil {
             showToast(message: "Please Select Nationality.")
-        }else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false ||   checkDepartureAndReturnDates(payload, p1: "hotel_checkout", p2: "hotel_checkin") == false{
-            showToast(message: "Invalid Date")
-        }else {
+        }
+        
+//        else if checkDepartureAndReturnDates(payload, p1: "hotel_checkin", p2: "hotel_checkout") == false ||   checkDepartureAndReturnDates(payload, p1: "hotel_checkout", p2: "hotel_checkin") == false{
+//            showToast(message: "Invalid Date")
+//        }
+        
+        
+        else {
             
             
             do{
@@ -384,7 +389,8 @@ extension BookHotelVC {
 //            
 //            payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
             
-            gotoSearchHotelsResultVC()
+           // gotoSearchHotelsResultVC()
+          //  commonTableView.reloadData()
             
             //showToast(message: "Hotel module is not available yet. Stay tuned!")
             

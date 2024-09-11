@@ -119,7 +119,7 @@ class LoadWebViewVC: UIViewController, TimerManagerDelegate, SecureBookingViewMO
     func setupUI() {
         
         if screenHeight > 835 {
-            navHeight.constant = 130
+            navHeight.constant = 110
         }else {
             navHeight.constant = 110
         }
@@ -129,7 +129,10 @@ class LoadWebViewVC: UIViewController, TimerManagerDelegate, SecureBookingViewMO
         
         if isVcFrom == "voucher" {
             nav.titlelbl.text = "Voucher Details"
-        }else {
+        }else if isVcFrom == "dash" {
+            navHeight.constant = 100
+            nav.titlelbl.text = ""
+        }else{
             nav.titlelbl.text = "Payment"
         }
         nav.backBtn.addTarget(self, action: #selector(didTapOnBackBtn(_:)), for: .touchUpInside)
