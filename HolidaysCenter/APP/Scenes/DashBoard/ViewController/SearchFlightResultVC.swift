@@ -231,6 +231,7 @@ extension SearchFlightResultVC {
         
         loderBool = "flight"
         hideLoadera()
+        
         prices.removeAll()
         noofStopsA.removeAll()
         fareTypeA.removeAll()
