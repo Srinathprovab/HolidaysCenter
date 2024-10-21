@@ -64,17 +64,6 @@ class SelectFromCityVC: BaseTableVC, SelectCityViewModelProtocal {
     
     
     
-    
-    func CallShowCityListAPI(str:String) {
-        payload["term"] = str
-        cityViewModel?.CallShowCityListAPI(dictParam: payload)
-    }
-    
-    func CallShowHotelorCityListAPI(str:String) {
-        payload["term"] = str
-        cityViewModel?.CALL_GET_HOTEL_CITY_LIST_API(dictParam: payload)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -183,8 +172,23 @@ class SelectFromCityVC: BaseTableVC, SelectCityViewModelProtocal {
     
     
     
+    
+    
+    func CallShowCityListAPI(str:String) {
+        payload["term"] = str
+        cityViewModel?.CallShowCityListAPI(dictParam: payload)
+    }
+    
+    func CallShowHotelorCityListAPI(str:String) {
+        payload["term"] = str
+        cityViewModel?.CALL_GET_HOTEL_CITY_LIST_API(dictParam: payload)
+    }
+    
+    
     func ShowCityList(response: [SelectCityModel]) {
+        
         self.cityList = response
+        
         DispatchQueue.main.async {[self] in
             commonTableView.reloadData()
         }
@@ -401,3 +405,5 @@ extension SelectFromCityVC {
     
     
 }
+
+

@@ -24,10 +24,13 @@ class SelectedHotelInfoVC: BaseTableVC, HotelDetailsViewModelDelegate {
     @IBOutlet weak var nobtn: UIButton!
     @IBOutlet weak var priceUpdationView: UIView!
     
+    
+    
+    var selectedRoomBool = false
     var htoken = String()
     var htoken89 = String()
     var htokenkey89 = String()
-
+    
     var room_token = String()
     var roomDetails = String()
     var hotel_details = String()
@@ -91,12 +94,14 @@ class SelectedHotelInfoVC: BaseTableVC, HotelDetailsViewModelDelegate {
         bookNowBtn.setTitle("", for: .normal)
         bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
         
-      
+        
         commonTableView.registerTVCells(["EmptyTVCell",
                                          "HotelSearchResultTVCell",
                                          "RatingWithLabelsTVCell",
                                          "FacilitiesTVCell",
                                          "HotelImagesTVCell",
+                                         "TwinSuperiorRoomTVCell",
+                                         "TitleLblTVCell",
                                          "RoomsTVCell"])
         
         
@@ -156,7 +161,7 @@ class SelectedHotelInfoVC: BaseTableVC, HotelDetailsViewModelDelegate {
         ratekeyArray.append(cell.ratekey)
         
         newGrandTotal = "\(cell.kwdlbl.text ?? ""):\(cell.kwdPricelbl.text ?? "")"
-
+        
         setupLabels(lbl: titlelbl, text: "\(cell.kwdlbl.text ?? ""):\(cell.kwdPricelbl.text ?? "")", textcolor: .AppLabelColor, font: .OpenSansRegular(size: 20))
         promoGrandAmount = cell.kwdPricelbl.text ?? ""
         
@@ -166,7 +171,7 @@ class SelectedHotelInfoVC: BaseTableVC, HotelDetailsViewModelDelegate {
     @objc func didTapOnBookNowBtn(_ sender:UIButton) {
         
         
-        if room_selected != "" {
+        if self.selectedRoomBool != false {
             guard let vc = PayNowVC.newInstance.self else {return}
             vc.modalPresentationStyle = .fullScreen
             callapibool = true
@@ -177,8 +182,6 @@ class SelectedHotelInfoVC: BaseTableVC, HotelDetailsViewModelDelegate {
             vc.roomDetails = self.roomDetails
             vc.roomselected = room_selected
             vc.hpayableAmount = titlelbl.text ?? ""
-            
-            
             self.present(vc, animated: false)
             
         }else {
@@ -228,7 +231,7 @@ extension SelectedHotelInfoVC {
     
     
     func hotelDetails(response: HotelDetailsModel) {
-      
+        
         holderView.isHidden = false
         hd = response
         
@@ -260,7 +263,7 @@ extension SelectedHotelInfoVC {
             self.setupTVCells(hotelDetails: response)
         }
         
-
+        
     }
     
     
@@ -279,17 +282,25 @@ extension SelectedHotelInfoVC {
         tablerow.append(TableRow(height:20,bgColor: .AppBGcolor,cellType:.EmptyTVCell))
         
         
-      
-            
-            tablerow.append(TableRow(title:hotelDetails.hotel_details?.hotel_desc ?? "",
-                                     image:hotelDetails.hotel_details?.image,
-                                     moreData: hotelDetails.hotel_details?.images,
-                                     cellType:.HotelImagesTVCell))
         
         
-        tablerow.append(TableRow(title:"Rooms",
-                                 moreData: hotelDetails.hotel_details?.rooms,
-                                 cellType:.RoomsTVCell))
+        tablerow.append(TableRow(title:hotelDetails.hotel_details?.hotel_desc ?? "",
+                                 image:hotelDetails.hotel_details?.image,
+                                 moreData: hotelDetails.hotel_details?.images,
+                                 cellType:.HotelImagesTVCell))
+        
+        
+
+        tablerow.append(TableRow(title:"Rooms",key: "room",cellType:.TitleLblTVCell))
+        
+        hotelDetails.hotel_details?.rooms?.forEach({ i in
+           
+            for (index,value) in i.enumerated() {
+                tablerow.append(TableRow(title:"\(index)",moreData: value,cellType:.TwinSuperiorRoomTVCell))
+            }
+        })
+        
+        
         
         
         
@@ -308,6 +319,28 @@ extension SelectedHotelInfoVC {
         commonTVData = tablerow
         commonTableView.reloadData()
         
+    }
+    
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? TwinSuperiorRoomTVCell {
+            cell.radioImg.image = UIImage(named: "radioSelected")
+           
+            selectedRoomBool = true
+            defaults.set(cell.titlelbl.text, forKey: UserDefaultsKeys.roomType)
+            defaults.set(cell.nonRefundablelbl.text, forKey: UserDefaultsKeys.refundtype)
+            
+            
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? TwinSuperiorRoomTVCell {
+            cell.radioImg.image = UIImage(named: "radioUnselected")
+        }
     }
 }
 

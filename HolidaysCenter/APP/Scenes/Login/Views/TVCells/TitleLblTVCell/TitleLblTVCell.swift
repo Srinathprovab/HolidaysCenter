@@ -86,6 +86,12 @@ class TitleLblTVCell: TableViewCell {
             holderViewTraling.constant = 15
             subtitlelbl.text = ""
         }
+        
+        if cellInfo?.key == "room" {
+            titlelbl.textColor = UIColor.AppLabelColor
+            titlelbl.font = .OpenSansSemibold(size: 14)
+            subtitlelbl.text = ""
+        }
     }
     
     

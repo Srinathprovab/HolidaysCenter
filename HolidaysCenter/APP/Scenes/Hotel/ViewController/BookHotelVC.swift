@@ -206,27 +206,59 @@ class BookHotelVC: BaseTableVC {
             payload["childAge_1"] = [""]
         }else {
             
+//            for roomIndex in 0..<totalRooms {
+//                if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
+//                    var childAges: [String] = []
+//                    
+//                    // Check if childAgesArray has data and if it's applicable for the current room
+//                    if childAgesArray.count > roomIndex && childAgesArray[roomIndex].count > 0 {
+//                        // Iterate through the selected child ages for the current room
+//                        for selectedAge in childAgesArray[roomIndex].suffix(numChildren) {
+//                            childAges.append(selectedAge)
+//                        }
+//                        
+//                    }
+//                    
+//                    // Pad the array with "0" for the remaining children
+//                    for _ in childAges.count..<numChildren {
+//                        childAges.append("0")
+//                    }
+//                    
+//                    payload["childAge_\(roomIndex + 1)"] = childAges
+//                }
+//            }
+            
+            // Assuming chArray is an array of strings representing the number of children per room
             for roomIndex in 0..<totalRooms {
+                // Get the number of children for the current room
                 if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
                     var childAges: [String] = []
                     
-                    // Check if childAgesArray has data and if it's applicable for the current room
+                    // Check if childAgesArray has data for the current room
                     if childAgesArray.count > roomIndex && childAgesArray[roomIndex].count > 0 {
                         // Iterate through the selected child ages for the current room
                         for selectedAge in childAgesArray[roomIndex].suffix(numChildren) {
                             childAges.append(selectedAge)
                         }
-                        
                     }
-                    
-                    // Pad the array with "0" for the remaining children
+
+                    // Pad the array with "0" for any remaining children if necessary
                     for _ in childAges.count..<numChildren {
                         childAges.append("0")
                     }
-                    
+
+                    // Set the payload for the current room (childAge_1, childAge_2, etc.)
                     payload["childAge_\(roomIndex + 1)"] = childAges
                 }
             }
+
+            // Check if there are no children at all and handle the case
+            if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
+                payload["childAge_1"] = [""]
+            }
+
+
+
             
         }
         

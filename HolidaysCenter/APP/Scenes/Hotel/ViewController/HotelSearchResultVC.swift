@@ -406,7 +406,7 @@ extension HotelSearchResultVC: HotelListViewModelDelegate{
             
             tablerow.removeAll()
             setupLabels(lbl: subtitlelbl, text: "\(hotelList.count) Hotels Found", textcolor: .BtnTitleColor, font: .OpenSansRegular(size: 12))
-            
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
             hotelList.forEach { i in
                 tablerow.append(TableRow(title:i.name,

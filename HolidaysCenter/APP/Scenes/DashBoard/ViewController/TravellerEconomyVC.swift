@@ -229,16 +229,8 @@ class TravellerEconomyVC: BaseTableVC {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioButtonTVCell {
             cell.radioImg.image = UIImage(named: "radioSelected")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBackgroundColor)
             
-            
-            if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
-                if journeyType == "oneway" {
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
-                }else if journeyType == "circle" {
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
-                }else {
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.mselectClass)
-                }
-            }
+            defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
+
             
         }
     }
@@ -251,23 +243,9 @@ class TravellerEconomyVC: BaseTableVC {
     
     func gotoBookFlightVC() {
         
-        if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
-            if journeyType == "oneway" {
-                
-                
-                let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "1") Traveller - \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy")"
-                defaults.set(totaltraverlers, forKey: UserDefaultsKeys.travellerDetails)
-                
-                
-            }else if journeyType == "circle" {
-                let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "1") Traveller - \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy")"
-                defaults.set(totaltraverlers, forKey: UserDefaultsKeys.travellerDetails)
-            }else{
-                let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "1") Traveller - \(defaults.string(forKey: UserDefaultsKeys.mselectClass) ?? "Economy")"
-                defaults.set(totaltraverlers, forKey: UserDefaultsKeys.mtravellerDetails)
-            }
-        }
-        
+
+        let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "1") Traveller - \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy")"
+        defaults.set(totaltraverlers, forKey: UserDefaultsKeys.travellerDetails)
         
         
         NotificationCenter.default.post(name: NSNotification.Name("calreloadTV"), object: nil)

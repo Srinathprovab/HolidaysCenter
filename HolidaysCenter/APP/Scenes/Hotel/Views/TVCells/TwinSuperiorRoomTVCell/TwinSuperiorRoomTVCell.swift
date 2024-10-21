@@ -1,5 +1,5 @@
 //
-//  TwinSuperiorRoomTVCell.swift
+//  TwinSuperiorRoomTVself.swift
 //  BeeoonsApp
 //
 //  Created by MA673 on 22/08/22.
@@ -12,7 +12,7 @@ protocol TwinSuperiorRoomTVCellDelegate {
     func didTapOnCancellationPolicyBtn(cell:TwinSuperiorRoomTVCell)
 }
 
-class TwinSuperiorRoomTVCell: UITableViewCell {
+class TwinSuperiorRoomTVCell: TableViewCell {
     
     
     @IBOutlet weak var holderView: UIView!
@@ -25,6 +25,9 @@ class TwinSuperiorRoomTVCell: UITableViewCell {
     @IBOutlet weak var kwdPricelbl: UILabel!
     @IBOutlet weak var radioImg: UIImageView!
     
+    
+    var selectedindex = 0
+    var room : Rooms?
     var cancellationPoloicy = [String]()
     var ratekey = String()
     var refundValue = String()
@@ -41,18 +44,50 @@ class TwinSuperiorRoomTVCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-//        if isSelected == true {
+        if isSelected == true {
+            self.radioImg.image = UIImage(named: "radioSelected")
+        }else {
+            self.radioImg.image = UIImage(named: "radioUnselected")
+        }
+    }
+    
+
+    
+    
+    override func prepareForReuse() {
+        
+//        if selectedindex == (Int(cellInfo?.title ?? "") ?? 0) {
 //            self.radioImg.image = UIImage(named: "radioSelected")
-//
 //        }else {
 //            self.radioImg.image = UIImage(named: "radioUnselected")
 //        }
     }
     
-//    override func prepareForReuse() {
-//        self.radioImg.image = UIImage(named: "radioUnselected")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppImgColor)
-//    }
-//
+    override func updateUI() {
+        room = cellInfo?.moreData as? Rooms
+        
+        
+        self.room_selected = "\(room?.room_selected ?? 0)"
+        self.titlelbl.text = room?.name
+        
+        self.kwdlbl.text = room?.currency
+        self.kwdPricelbl.text = room?.roomPrice
+        self.cancellationPoloicy = room?.cancellationPolicies ?? []
+        self.noOfRoomslbl.text = "Avail Rooms: \(room?.rooms ?? 1)"
+        self.token = room?.token ?? ""
+        self.ratekey = room?.rateKey ?? ""
+        
+        
+        if room?.refund == true {
+            self.nonRefundablelbl.text = "Refundable"
+            self.nonRefundablelbl.textColor = .AppBtnColor
+        }else {
+            self.nonRefundablelbl.text = "Non Refundable"
+            self.nonRefundablelbl.textColor = HexColor("#FF0808")
+        }
+        
+        
+    }
     
     func setupUI() {
         contentView.backgroundColor = .WhiteColor

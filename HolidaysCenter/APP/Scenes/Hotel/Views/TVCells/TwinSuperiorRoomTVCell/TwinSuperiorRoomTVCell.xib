@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -143,7 +144,7 @@
                             <constraint firstItem="bqs-bK-FvC" firstAttribute="top" secondItem="UnW-a5-aIq" secondAttribute="bottom" constant="5.5" id="BHx-hV-8Q7"/>
                             <constraint firstItem="UnW-a5-aIq" firstAttribute="top" secondItem="inI-iO-nd6" secondAttribute="bottom" constant="5" id="IAV-bl-zB9"/>
                             <constraint firstAttribute="trailing" secondItem="sWe-90-cwe" secondAttribute="trailing" constant="10" id="Jkg-Ul-E74"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="Pai-Q3-aQG"/>
+                            <constraint firstAttribute="height" constant="106" id="Pai-Q3-aQG"/>
                             <constraint firstItem="UnW-a5-aIq" firstAttribute="leading" secondItem="eUv-fj-OgA" secondAttribute="leading" id="ZIt-Fg-FnC"/>
                             <constraint firstAttribute="trailing" secondItem="CFZ-nm-Vmj" secondAttribute="trailing" constant="60" id="ZcS-Lq-gQN"/>
                             <constraint firstItem="sWe-90-cwe" firstAttribute="top" secondItem="1A7-oF-oYQ" secondAttribute="bottom" constant="2" id="blO-L8-WhX"/>

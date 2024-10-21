@@ -73,7 +73,13 @@ extension CommonTVCell:UITableViewDataSource,UITableViewDelegate {
         var ccell = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? RadioButtonTVCell {
             cell.selectionStyle = .none
-            if indexPath.row == index {
+            
+            
+             let selectedclass = defaults.string(forKey: UserDefaultsKeys.selectClass)
+            
+
+            
+            if selectedclass == selectClassArray[indexPath.row] {
                 infoTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
                 infoTV.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
                 cell.show()
@@ -89,19 +95,8 @@ extension CommonTVCell:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioButtonTVCell {
             cell.show()
-            
-            if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
-                if journeyType == "oneway" {
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
-                    defaults.set(indexPath.row, forKey: UserDefaultsKeys.select_classIndex)
-                }else if journeyType == "circle"{
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
-                    defaults.set(indexPath.row, forKey: UserDefaultsKeys.rselect_classIndex)
-                }else {
-                    defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.mselectClass)
-                    defaults.set(indexPath.row, forKey: UserDefaultsKeys.mselect_classIndex)
-                }
-            }
+            defaults.set(cell.titlelbl.text ?? "", forKey: UserDefaultsKeys.selectClass)
+            defaults.set(indexPath.row, forKey: UserDefaultsKeys.select_classIndex)
         }
     }
     

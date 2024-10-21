@@ -56,7 +56,7 @@ class RoomsTVCell: TableViewCell, TwinSuperiorRoomTVCellDelegate {
     
     
     func updateHeight() {
-        tvHeight.constant = CGFloat(rooms.count * 130)
+        tvHeight.constant = CGFloat(rooms.count * 106)
         roomsTV.reloadData()
     }
     

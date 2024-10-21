@@ -315,7 +315,7 @@ class RoomsCountTVCell: UITableViewCell {
         
         
         //Room2 ===============================================
-        room2Height.constant = 220
+        room2Height.constant = 280
         r2childage1View.isHidden = true
         room2ChildageView1.backgroundColor = .WhiteColor
         room2ChildageView1.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 3)
@@ -364,7 +364,7 @@ class RoomsCountTVCell: UITableViewCell {
         
         
         //Room3
-        room3Height.constant = 220
+        room3Height.constant = 280
         r3childage1View.isHidden = true
         room3ChildageView1.backgroundColor = .WhiteColor
         room3ChildageView1.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 3)

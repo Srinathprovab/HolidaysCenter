@@ -94,7 +94,7 @@ class CreateAccountVC: BaseTableVC, RegisterUserViewModelDelegate {
     }
     
     override func editingMDCOutlinedTextField(tf:MDCOutlinedTextField){
-        setcolor(tf: tf, color: .black)
+       
         switch tf.tag {
         case 1:
             fname = tf.text ?? ""
@@ -162,7 +162,7 @@ class CreateAccountVC: BaseTableVC, RegisterUserViewModelDelegate {
             setcolor(tf: cell.createPassTF, color: .red)
             setcolor(tf: cell.createPassTF, color: .red)
         }else  if cpass.isEmpty == true {
-            showToast3(message: "Enter Conform Password")
+            showToast3(message: "Enter Confirm Password")
             setcolor(tf: cell.confPassTF, color: .red)
             setcolor(tf: cell.confPassTF, color: .red)
         }else  if pass != cpass {

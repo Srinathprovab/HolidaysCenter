@@ -8,7 +8,7 @@
 import UIKit
 import MaterialComponents
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate,TextfieldTVCellDelegate, SelectGenderTVCellDelegate, RadioButtonTVCellDelegate, SignUpWithTVCellDelegate, MenuBGTVCellDelegate,LabelWithButtonTVCellDelegate, SelectTabTVCellDelegate, SearchFlightTVCellDelegate, TravellerEconomyTVCellDelegate, SearchFlightResultInfoTVCellDelegate, BookNowTVCellDelegate, TDetailsLoginTVCellDelegate,PromocodeTVCellDelegate, PriceSummaryTVCellDelegate, AddTravellersDetailsTVCellDelegate, CheckBoxTVCellDelegate,MultiCityTripTVCellDelegate, HotelSearchResultTVCellDelegate, RoomsTVCellDelegate, StarRatingTVCellDelegate, ChooseProfilPpictureTVCellDelegate,checkOptionsTVCellDelegate, AboutusTVCellDelegate, RoundTripTVcellDelegate, SortByPriceTVCellDelegate, SliderTVCellDelegate, ContactInformationTVCellDelegate, AcceptTermsAndConditionTVCellDelegate, FareRulesTVCellDelegate, MyBookingsTVCellsDelegate, CreateAccountTVCellDelegate, AddCityTVCellDelegate, DownloadBtnTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, MobileTFTVCellDelegate, ContactUsTVCellDelegate, AddDeatilsOfGuestTVCellDelegate, FlightPromocodeTVCellDelegate, LoginTVCellDelegate, ResetPasswordTVCellDelegate, CruiseBookingContactTVCellDelegate, SpecialRequestTVCellDelegate, HotelMyBookingTVCellDelegate {
+class BaseTableVC: UIViewController, ButtonTVCellDelegate,TextfieldTVCellDelegate, SelectGenderTVCellDelegate, RadioButtonTVCellDelegate, SignUpWithTVCellDelegate, MenuBGTVCellDelegate,LabelWithButtonTVCellDelegate, SelectTabTVCellDelegate, SearchFlightTVCellDelegate, TravellerEconomyTVCellDelegate, SearchFlightResultInfoTVCellDelegate, BookNowTVCellDelegate, TDetailsLoginTVCellDelegate,PromocodeTVCellDelegate, PriceSummaryTVCellDelegate, AddTravellersDetailsTVCellDelegate, CheckBoxTVCellDelegate,MultiCityTripTVCellDelegate, HotelSearchResultTVCellDelegate, RoomsTVCellDelegate, StarRatingTVCellDelegate, ChooseProfilPpictureTVCellDelegate,checkOptionsTVCellDelegate, AboutusTVCellDelegate, RoundTripTVcellDelegate, SortByPriceTVCellDelegate, SliderTVCellDelegate, ContactInformationTVCellDelegate, AcceptTermsAndConditionTVCellDelegate, FareRulesTVCellDelegate, MyBookingsTVCellsDelegate, CreateAccountTVCellDelegate, AddCityTVCellDelegate, DownloadBtnTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, MobileTFTVCellDelegate, ContactUsTVCellDelegate, AddDeatilsOfGuestTVCellDelegate, FlightPromocodeTVCellDelegate, LoginTVCellDelegate, ResetPasswordTVCellDelegate, CruiseBookingContactTVCellDelegate, SpecialRequestTVCellDelegate, HotelMyBookingTVCellDelegate, TwinSuperiorRoomTVCellDelegate {
     
     
     
@@ -725,6 +725,12 @@ extension BaseTableVC: UITableViewDataSource {
                 
             case .SpecialRequestTVCell:
                 let cell: SpecialRequestTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+                
+            case .TwinSuperiorRoomTVCell:
+                let cell: TwinSuperiorRoomTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 cell.delegate = self
                 commonCell = cell
                 

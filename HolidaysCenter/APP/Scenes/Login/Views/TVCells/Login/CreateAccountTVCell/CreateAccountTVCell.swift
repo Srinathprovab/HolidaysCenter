@@ -69,13 +69,14 @@ class CreateAccountTVCell: TableViewCell {
     
     func setupUI() {
         
-        setupTextField(txtField1: fnameTF, tag1: 1, label: "First Name*", placeholder: "Enter First Name")
-        setupTextField(txtField1: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Enter Last Name")
-        setupTextField(txtField1: emailTF, tag1: 3, label: "Email Address*", placeholder: "Enter Email Address")
-        setupTextField(txtField1: countryCodeTF, tag1: 7, label: "Code*", placeholder: "Kuwait")
-        setupTextField(txtField1: mobileTF, tag1: 4, label: "Mobile Number*", placeholder: "Mobile Number")
-        setupTextField(txtField1: createPassTF, tag1: 5, label: "Create Password*", placeholder: "Create Password")
-        setupTextField(txtField1: confPassTF, tag1: 6, label: "Confirm Password*", placeholder: "Conform Password")
+        checkImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.BtnTitleColor)
+        setupTextField(txtField1: fnameTF, tag1: 1, label: "First Name*", placeholder: "")
+        setupTextField(txtField1: lnameTF, tag1: 2, label: "Last Name*", placeholder: "")
+        setupTextField(txtField1: emailTF, tag1: 3, label: "Email Address*", placeholder: "")
+        setupTextField(txtField1: countryCodeTF, tag1: 7, label: "Code*", placeholder: "")
+        setupTextField(txtField1: mobileTF, tag1: 4, label: "Mobile Number*", placeholder: "")
+        setupTextField(txtField1: createPassTF, tag1: 5, label: "Create Password*", placeholder: "")
+        setupTextField(txtField1: confPassTF, tag1: 6, label: "Confirm Password*", placeholder: "")
         createPassTF.isSecureTextEntry = true
         confPassTF.isSecureTextEntry = true
        // createAccountBtnView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 4)
@@ -95,9 +96,11 @@ class CreateAccountTVCell: TableViewCell {
         countryCodeTF.text = defaults.string(forKey: UserDefaultsKeys.mobilecountrycode)
         mobileTF.keyboardType = .numberPad
         
-        countryCodeTF.textColor = .AppLabelColor
-        countryCodeTF.setNormalLabelColor(UIColor.AppLabelColor, for: .normal)
-        countryCodeTF.setFloatingLabelColor(UIColor.AppLabelColor, for: .editing)
+//        countryCodeTF.textColor = .AppLabelColor
+//        countryCodeTF.setNormalLabelColor(UIColor.AppLabelColor, for: .normal)
+//        countryCodeTF.setFloatingLabelColor(UIColor.AppLabelColor, for: .editing)
+        
+        
     }
     
     
@@ -166,25 +169,34 @@ class CreateAccountTVCell: TableViewCell {
     }
     
     @objc func editingMDCOutlinedTextField(textField:MDCOutlinedTextField) {
-        textField.setOutlineColor(.BtnTitleColor, for: .editing)
-        textField.setOutlineColor(.BtnTitleColor, for: .normal)
         
-        if textField == mobileTF {
-            if let text = textField.text {
-                let length = text.count
-                if length != mobilenoMaxLength {
+        if textField.text?.isEmpty != true {
+            
+            textField.setOutlineColor(.BtnTitleColor, for: .editing)
+            textField.setOutlineColor(.BtnTitleColor, for: .normal)
+            
+            
+            if textField == mobileTF {
+                if let text = textField.text {
+                    let length = text.count
+                    if length != mobilenoMaxLength {
+                        mobilenoMaxLengthBool = false
+                    }else{
+                        mobilenoMaxLengthBool = true
+                    }
+                    
+                } else {
                     mobilenoMaxLengthBool = false
-                }else{
-                    mobilenoMaxLengthBool = true
                 }
-                
-            } else {
-                mobilenoMaxLengthBool = false
             }
+        }else {
+            
+            textField.setOutlineColor( .lightGray.withAlphaComponent(0.4) , for: .normal)
         }
         
         delegate?.editingMDCOutlinedTextField(tf: textField)
     }
+    
     
     
     

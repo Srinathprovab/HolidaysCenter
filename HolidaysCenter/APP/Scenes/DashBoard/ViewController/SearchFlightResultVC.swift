@@ -202,20 +202,20 @@ extension SearchFlightResultVC {
             
         case "multicity":
             
-            do {
-                let arrJson = try JSONSerialization.data(withJSONObject: payload, options: JSONSerialization.WritingOptions.prettyPrinted)
-                let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
-                print(theJSONText ?? "")
-                
-                payload1["search_params"] = theJSONText
-                payload1["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
-                
-                vm?.CALL_GET_AIRLINE_MULTICITY_LIST_API(dictParam: payload1)
-                
-                
-            }catch let error as NSError{
-                print(error.description)
-            }
+//            do {
+//                let arrJson = try JSONSerialization.data(withJSONObject: payload, options: JSONSerialization.WritingOptions.prettyPrinted)
+//                let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
+//                print(theJSONText ?? "")
+//                
+//                payload1["search_params"] = theJSONText
+//                payload1["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+//                
+//              //  vm?.CALL_GET_AIRLINE_MULTICITY_LIST_API(dictParam: payload1)
+//                
+//                
+//            }catch let error as NSError{
+//                print(error.description)
+//            }
             
             
             break
@@ -347,8 +347,12 @@ extension SearchFlightResultVC {
             break
         }
         
-        
-        setupRoundTripTVCells(jfl: oneWayFlights)
+        // Check if oneWayFlights has at least one non-empty flight array
+        if oneWayFlights.isEmpty == false && oneWayFlights.first?.isEmpty == false {
+            setupRoundTripTVCells(jfl: oneWayFlights)
+        } else {
+            resultnil()
+        }
     }
     
     
@@ -378,7 +382,7 @@ extension SearchFlightResultVC {
         commonTableView.reloadData()
         
         
-        if jfl.count == 0 {
+        if jfl.isEmpty == true {
             tablerow.removeAll()
             
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)

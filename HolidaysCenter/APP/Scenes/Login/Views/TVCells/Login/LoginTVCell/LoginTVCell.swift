@@ -22,8 +22,11 @@ class LoginTVCell: TableViewCell {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var forgetPasswordBtn: UIButton!
     @IBOutlet weak var createAccountBtn: UIButton!
+    @IBOutlet weak var hidepassBtn: UIButton!
+    @IBOutlet weak var hidepassImg: UIImageView!
     
     
+    var showPassbool = false
     var delegate:LoginTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,22 +43,26 @@ class LoginTVCell: TableViewCell {
     func setupUI() {
         setupTextField(txtField1: emailTF,
                        tagno: 1,
-                       placeholder: "Email Address*",
+                       placeholder: "",
                        title: "Email Address*",
                        subTitle: "Email Address*")
         
         
         setupTextField(txtField1: passTF,
                        tagno: 2,
-                       placeholder: "Password*",
+                       placeholder: "",
                        title: "Password*",
                        subTitle: "Password")
         
         passTF.isSecureTextEntry = true
+      //  hidepassImg.image = UIImage(named: "hidepass")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.AppBtnColor)
+        
+        
         loginBtn.layer.cornerRadius = 25
         forgetPasswordBtn.addTarget(self, action: #selector(didTapOnForgetPasswordBtnAction(_:)), for: .touchUpInside)
         loginBtn.addTarget(self, action: #selector(didTapOnLoginBtnAction(_:)), for: .touchUpInside)
         createAccountBtn.addTarget(self, action: #selector(didTapOnBackToCreateAccountBtn(_:)), for: .touchUpInside)
+        hidepassBtn.addTarget(self, action: #selector(didTapOnHideOrShowPasswordBtnAction(_:)), for: .touchUpInside)
         
     }
     
@@ -86,11 +93,15 @@ class LoginTVCell: TableViewCell {
     
     
     @objc func editingText(textField:MDCOutlinedTextField) {
-        textField.setOutlineColor(.BtnTitleColor, for: .editing)
-        textField.setOutlineColor(.BtnTitleColor, for: .normal)
+        
+        if textField.text?.isEmpty != true {
+            textField.setOutlineColor(.BtnTitleColor, for: .editing)
+            textField.setOutlineColor(.BtnTitleColor, for: .normal)
+        }else {
+            textField.setOutlineColor( .lightGray.withAlphaComponent(0.4) , for: .normal)
+        }
         delegate?.editingTextField(tf: textField)
     }
-    
     
     
     @objc func didTapOnForgetPasswordBtnAction(_ sender:UIButton) {
@@ -103,6 +114,18 @@ class LoginTVCell: TableViewCell {
     
     @objc func didTapOnBackToCreateAccountBtn(_ sender:UIButton) {
         delegate?.didTapOnBackToCreateAccountBtn(cell: self)
+    }
+    
+    @objc func didTapOnHideOrShowPasswordBtnAction(_ sender:UIButton) {
+        showPassbool.toggle()
+      
+        if showPassbool {
+            passTF.isSecureTextEntry = false
+            hidepassImg.image = UIImage(named: "showpass")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.BtnTitleColor)
+        }else {
+            passTF.isSecureTextEntry = true
+            hidepassImg.image = UIImage(named: "hidepass")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.BtnTitleColor)
+        }
     }
     
 }

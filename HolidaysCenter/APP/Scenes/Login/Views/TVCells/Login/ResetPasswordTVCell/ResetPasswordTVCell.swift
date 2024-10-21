@@ -67,14 +67,14 @@ class ResetPasswordTVCell: TableViewCell {
     func setupUI() {
         setupTextField(txtField1: emailTF,
                        tagno: 1,
-                       placeholder: "Email Address*",
+                       placeholder: "",
                        title: "Email Address*",
                        subTitle: "Email Address*")
         
         
         setupTextField(txtField1: mobileTF,
                        tagno: 2,
-                       placeholder: "Enter Mobile Number*",
+                       placeholder: "",
                        title: "Mobile Number*",
                        subTitle: "Mobile Number*")
         
@@ -83,7 +83,7 @@ class ResetPasswordTVCell: TableViewCell {
         
         setupTextField(txtField1: countryCodeTF,
                        tagno: 7,
-                       placeholder: "Code*",
+                       placeholder: "",
                        title: "Code*",
                        subTitle: "Code*")
         
@@ -99,9 +99,9 @@ class ResetPasswordTVCell: TableViewCell {
         countryCodeTF.text = defaults.string(forKey: UserDefaultsKeys.mobilecountrycode)
         mobileTF.keyboardType = .numberPad
         
-        countryCodeTF.textColor = .AppLabelColor
-        countryCodeTF.setNormalLabelColor(UIColor.AppLabelColor, for: .normal)
-        countryCodeTF.setFloatingLabelColor(UIColor.AppLabelColor, for: .editing)
+//        countryCodeTF.textColor = .BtnTitleColor
+//        countryCodeTF.setNormalLabelColor(UIColor.BtnTitleColor, for: .normal)
+//        countryCodeTF.setFloatingLabelColor(UIColor.BtnTitleColor, for: .editing)
         
     }
     
@@ -119,7 +119,7 @@ class ResetPasswordTVCell: TableViewCell {
         txtField1.setOutlineColor( .BtnTitleColor, for: .editing)
         txtField1.setOutlineColor( .red , for: .disabled)
         txtField1.setOutlineColor( .lightGray.withAlphaComponent(0.4) , for: .normal)
-        
+       
         
         txtField1.setTextColor(.BtnTitleColor, for: .editing)
         txtField1.setTextColor(.BtnTitleColor, for: .normal)
@@ -129,25 +129,38 @@ class ResetPasswordTVCell: TableViewCell {
         
         txtField1.setFloatingLabelColor(UIColor.BtnTitleColor, for: .editing)
         txtField1.setFloatingLabelColor(UIColor.BtnTitleColor, for: .normal)
+        
+        
+        
     }
     
     
     @objc func editingText(textField:MDCOutlinedTextField) {
-        textField.setOutlineColor(.BtnTitleColor, for: .editing)
-        textField.setOutlineColor(.BtnTitleColor, for: .normal)
         
-        if textField == mobileTF {
-            if let text = textField.text {
-                let length = text.count
-                if length != mobilenoMaxLength {
+        
+        if textField.text?.isEmpty != true {
+            
+            textField.setOutlineColor(.BtnTitleColor, for: .editing)
+            textField.setOutlineColor(.BtnTitleColor, for: .normal)
+            
+            
+            
+            if textField == mobileTF {
+                if let text = textField.text {
+                    let length = text.count
+                    if length != mobilenoMaxLength {
+                        mobilenoMaxLengthBool = false
+                    }else{
+                        mobilenoMaxLengthBool = true
+                    }
+                    
+                } else {
                     mobilenoMaxLengthBool = false
-                }else{
-                    mobilenoMaxLengthBool = true
                 }
-                
-            } else {
-                mobilenoMaxLengthBool = false
             }
+        }else {
+           
+            textField.setOutlineColor( .lightGray.withAlphaComponent(0.4) , for: .normal)
         }
         
         delegate?.editingTextField(tf: textField)

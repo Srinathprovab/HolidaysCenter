@@ -114,8 +114,8 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
         tablerow.append(TableRow(cellType:.MenuBGTVCell))
         tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Bookings",key: "ourproducts", image: "",cellType:.MenuTitleTVCell))
-        tablerow.append(TableRow(title:"Flight",key: "menu", image: "menu5",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(title:"Hotel",key: "menu", image: "menu6",cellType:.checkOptionsTVCell))
+        tablerow.append(TableRow(title:"Flight",key: "menu", image: "menu5",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(title:"Cruise",key: "menu", image: "htab3",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(title:"Holidays",key: "menu", image: "holiday",cellType:.checkOptionsTVCell))
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
@@ -206,10 +206,7 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
             
             
         case "Delete Account":
-            loderBool = "normal"
-            payload.removeAll()
-            payload["user_id"]  = defaults.string(forKey: UserDefaultsKeys.userid)
-            vm?.CALL_DELETE_USER_ACCOUNT_API(dictParam: payload)
+            showDeleteAccountAlert()
             break
             
             
@@ -226,6 +223,14 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
         default:
             break
         }
+    }
+    
+    
+    func deleteAccountAPI() {
+        loderBool = "normal"
+        payload.removeAll()
+        payload["user_id"]  = defaults.string(forKey: UserDefaultsKeys.userid)
+        vm?.CALL_DELETE_USER_ACCOUNT_API(dictParam: payload)
     }
     
     
@@ -313,6 +318,29 @@ class SideMenuVC: BaseTableVC, ProfileUpdateViewModelDelegate {
         openEmail(mailstr: "info@holidayscenter.com")
     }
     
+    // This function shows the alert
+    func showDeleteAccountAlert() {
+        let alertController = UIAlertController(
+            title: "Delete Account",
+            message: "Are you sure you want to delete your account?",
+            preferredStyle: .alert
+        )
+        
+        // Add the "Delete" action, which will call your API
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
+            deleteAccountAPI()
+        }
+        
+        // Add the "Cancel" action to dismiss the alert
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // Add both actions to the alert controller
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the alert
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
 }

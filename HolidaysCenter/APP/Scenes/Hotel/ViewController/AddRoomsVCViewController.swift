@@ -81,12 +81,12 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var ccell = UITableViewCell()
-       
+        
         
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? RoomsCountTVCell {
                 cell.delegate = self
-                ccell.selectionStyle = .none
+                cell.selectionStyle = .none
                 
                 ccell = cell
             }
@@ -700,93 +700,7 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     
-    
-    //MARK: -
-    //    func btnAction(cell: ButtonTVCell) {
-    //        if let cell = tv.cellForRow(at: IndexPath(item: 0, section: 0)) as? RoomsCountTVCell {
-    //            adtArray.removeAll()
-    //            chArray.removeAll()
-    //            totalRooms = cell.roomCount
-    //            //  totalAdults = (cell.adultcount + cell.adultcount2)
-    //
-    //
-    //
-    //            if totalRooms == 1 {
-    //
-    //                totalAdults = (cell.adultcount)
-    //                totalChildren = (cell.childCount)
-    //
-    //                adtArray.append("\(cell.adultcount)")
-    //                chArray.append("\(cell.childCount)")
-    //
-    //
-    //
-    //
-    //            }
-    //
-    //            if totalRooms == 2 {
-    //
-    //                totalAdults = (cell.adultcount + cell.adultcount2)
-    //                totalChildren = (cell.childCount + cell.childCount2)
-    //
-    //
-    //                adtArray.append("\(cell.adultcount)")
-    //                chArray.append("\(cell.childCount)")
-    //
-    //                adtArray.append("\(cell.adultcount2)")
-    //                chArray.append("\(cell.childCount2)")
-    //
-    //
-    //            }
-    //
-    //
-    //            if totalRooms == 3 {
-    //                totalAdults = (cell.adultcount + cell.adultcount2 + cell.adultcount3)
-    //                totalChildren = (cell.childCount + cell.childCount2 + cell.childCount3)
-    //                adtArray.append("\(cell.adultcount)")
-    //                chArray.append("\(cell.childCount)")
-    //
-    //                adtArray.append("\(cell.adultcount2)")
-    //                chArray.append("\(cell.childCount2)")
-    //
-    //                adtArray.append("\(cell.adultcount3)")
-    //                chArray.append("\(cell.childCount3)")
-    //            }
-    //
-    //
-    //
-    //
-    //        }
-    //
-    //
-    //
-    //        print("totalRooms ==== \(totalRooms)")
-    //        print("totalAdults ==== \(totalAdults)")
-    //        print("totalChildren ==== \(totalChildren)")
-    //
-    //        print("adtArray ==== \(adtArray)")
-    //        print("chArray ==== \(chArray)")
-    //
-    //        defaults.set(totalRooms, forKey: UserDefaultsKeys.roomcount)
-    //        defaults.set(totalAdults, forKey: UserDefaultsKeys.hoteladultscount)
-    //        defaults.set(totalChildren, forKey: UserDefaultsKeys.hotelchildcount)
-    //        defaults.set((totalChildren + totalAdults), forKey: UserDefaultsKeys.guestcount)
-    //        print("guestcount ==== \(totalChildren + totalAdults)")
-    //
-    //
-    //        if totalChildren == 0 {
-    //            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
-    //        }else {
-    //            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? ""),Children \(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
-    //        }
-    //
-    //
-    //
-    //        NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
-    //        dismiss(animated: true)
-    //
-    //    }
-    
+   
     func didTapOnDualBtn1(cell: ButtonTVCell) {
         
     }
