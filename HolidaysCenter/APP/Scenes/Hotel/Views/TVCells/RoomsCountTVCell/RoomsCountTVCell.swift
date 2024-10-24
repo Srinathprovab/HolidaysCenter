@@ -428,6 +428,23 @@ class RoomsCountTVCell: UITableViewCell {
         }
     }
     
+    
+    func updateChild2AgesArray(index: Int, age: String) {
+        if index < childAgesArray2.count {
+            childAgesArray2[index].append(age)
+        } else {
+            childAgesArray2.append([age])
+        }
+    }
+    
+    func updateChild3AgesArray(index: Int, age: String) {
+        if index < childAgesArray3.count {
+            childAgesArray[index].append(age)
+        } else {
+            childAgesArray.append([age])
+        }
+    }
+    
   
     
     
@@ -567,7 +584,7 @@ class RoomsCountTVCell: UITableViewCell {
         room2ChildageTapDropDown1.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room2childagevalue1lbl.text = item
             self?.room2childagevalue1lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild2AgesArray(index: 0, age: item)
         }
     }
     
@@ -582,7 +599,7 @@ class RoomsCountTVCell: UITableViewCell {
         room2ChildageTapDropDown2.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room2childagevalue2lbl.text = item
             self?.room2childagevalue2lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild2AgesArray(index: 0, age: item)
         }
     }
     
@@ -599,7 +616,7 @@ class RoomsCountTVCell: UITableViewCell {
         room2ChildageTapDropDown3.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room2childagevalue3lbl.text = item
             self?.room2childagevalue3lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild2AgesArray(index: 0, age: item)
         }
     }
     
@@ -614,7 +631,7 @@ class RoomsCountTVCell: UITableViewCell {
         room2ChildageTapDropDown4.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room2childagevalue4lbl.text = item
             self?.room2childagevalue4lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild2AgesArray(index: 0, age: item)
         }
     }
     
@@ -629,7 +646,7 @@ class RoomsCountTVCell: UITableViewCell {
         room2ChildageTapDropDown5.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room2childagevalue5lbl.text = item
             self?.room2childagevalue5lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild2AgesArray(index: 0, age: item)
         }
     }
     
@@ -668,7 +685,7 @@ class RoomsCountTVCell: UITableViewCell {
         room3ChildageTapDropDown1.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room3childagevalue1lbl.text = item
             self?.room3childagevalue1lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild3AgesArray(index: 0, age: item)
         }
     }
     
@@ -683,7 +700,7 @@ class RoomsCountTVCell: UITableViewCell {
         room3ChildageTapDropDown2.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room3childagevalue2lbl.text = item
             self?.room3childagevalue2lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild3AgesArray(index: 0, age: item)
         }
     }
     
@@ -699,7 +716,7 @@ class RoomsCountTVCell: UITableViewCell {
         room3ChildageTapDropDown3.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room3childagevalue3lbl.text = item
             self?.room3childagevalue3lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild3AgesArray(index: 0, age: item)
         }
     }
     
@@ -714,7 +731,7 @@ class RoomsCountTVCell: UITableViewCell {
         room3ChildageTapDropDown4.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room3childagevalue4lbl.text = item
             self?.room3childagevalue4lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild3AgesArray(index: 0, age: item)
         }
     }
     
@@ -729,7 +746,7 @@ class RoomsCountTVCell: UITableViewCell {
         room3ChildageTapDropDown5.selectionAction = { [weak self] (index: Int, item: String) in
             self?.room3childagevalue5lbl.text = item
             self?.room3childagevalue5lbl.textColor = .AppLabelColor
-            self?.updateChildAgesArray(index: 0, age: item)
+            self?.updateChild3AgesArray(index: 0, age: item)
         }
     }
     

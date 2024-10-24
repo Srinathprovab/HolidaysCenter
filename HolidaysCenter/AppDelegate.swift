@@ -93,13 +93,13 @@ extension AppDelegate {
     func promptUserToUpdate(appStoreVersion: String) {
         let alertController = UIAlertController(
             title: "Update Available",
-            message: "A new version (\(appStoreVersion)) of Travrate is available. Please update to the latest version for the best experience.",
+            message: "A new version (\(appStoreVersion)) of HolidaysCenters is available. Please update to the latest version for the best experience.",
             preferredStyle: .alert
         )
         
         let updateAction = UIAlertAction(title: "Update", style: .default) { _ in
             // Redirect user to the App Store
-            if let url = URL(string: "https://apps.apple.com/app/id6651840936") {
+            if let url = URL(string: "https://apps.apple.com/app/id6469474891") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }

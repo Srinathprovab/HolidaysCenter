@@ -252,12 +252,19 @@ class BookHotelVC: BaseTableVC {
                 }
             }
 
-            // Check if there are no children at all and handle the case
+
+            // Handle case when no children are selected
             if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
                 payload["childAge_1"] = [""]
             }
 
 
+//            // Handle case when no children are selected
+//            if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
+//                payload["childAge_1"] = [""]
+//            }
+//
+//
 
             
         }
